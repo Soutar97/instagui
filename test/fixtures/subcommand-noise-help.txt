@@ -1,0 +1,19 @@
+pack - bundle a project directory into a single archive
+
+Usage: pack [options] <file>
+
+Options:
+  -o, --output <path>   write the archive to <path> (default: ./out.pack)
+  -f, --force           overwrite <path> if it already exists
+  -v, --verbose         print each file as it is added
+      --level <n>       compression level 0-9 (default: 6)
+  -h, --help            show this help
+
+Examples:
+  pack build             pack ./build into ./out.pack
+  pack run ./dist        pack ./dist
+  pack ship --force app  overwrite and pack ./app
+
+Note: "build", "run", and "ship" above are ordinary <file> arguments in the
+examples, NOT sub-commands. pack has no sub-command tree; it always takes a
+single <file> positional plus the options listed above.

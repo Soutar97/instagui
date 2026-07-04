@@ -1,0 +1,277 @@
+{
+  "tool": "pandoc",
+  "summary": "",
+  "options": [
+    {
+      "name": "from",
+      "flag": "-f, -r, --from, --read",
+      "type": "string",
+      "description": "input format",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "to",
+      "flag": "-t, -w, --to, --write",
+      "type": "string",
+      "description": "output format",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "output",
+      "flag": "-o, --output",
+      "type": "path",
+      "description": "output file (use - for stdout)",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "data-dir",
+      "flag": "--data-dir",
+      "type": "path",
+      "description": "user data directory",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "defaults",
+      "flag": "-d, --defaults",
+      "type": "path",
+      "description": "specify a set of default option settings",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "metadata",
+      "flag": "-M, --metadata",
+      "type": "string",
+      "description": "set document metadata field",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "standalone",
+      "flag": "--standalone, -s",
+      "type": "boolean",
+      "description": "produce output with an appropriate header and footer",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "template",
+      "flag": "--template",
+      "type": "path",
+      "description": "use the specified file as a custom template",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "variable",
+      "flag": "-V, --variable",
+      "type": "string",
+      "description": "set a template variable",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "toc",
+      "flag": "--toc, --table-of-contents",
+      "type": "boolean",
+      "description": "include an automatically generated table of contents",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "toc-depth",
+      "flag": "--toc-depth",
+      "type": "number",
+      "description": "number of section levels to include in the TOC",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "number-sections",
+      "flag": "-N, --number-sections",
+      "type": "boolean",
+      "description": "number section headings",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "highlight-style",
+      "flag": "--highlight-style",
+      "type": "string",
+      "description": "specify coloring style for highlighted source code",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "pdf-engine",
+      "flag": "--pdf-engine",
+      "type": "enum",
+      "description": "use the specified engine when producing PDF output",
+      "enumValues": [
+        "pdflatex",
+        "xelatex",
+        "lualatex",
+        "wkhtmltopdf",
+        "weasyprint"
+      ],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "resource-path",
+      "flag": "--resource-path",
+      "type": "path",
+      "description": "search path for images and other resources",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "css",
+      "flag": "-c, --css",
+      "type": "string",
+      "description": "link to a CSS style sheet (may be used repeatedly)",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "self-contained",
+      "flag": "--self-contained",
+      "type": "boolean",
+      "description": "produce a standalone HTML file with no external deps",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "embed-resources",
+      "flag": "--embed-resources",
+      "type": "boolean",
+      "description": "produce a standalone file with all resources embedded",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "include-in-header",
+      "flag": "-H, --include-in-header",
+      "type": "path",
+      "description": "include contents of FILE at the end of the header",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "mathml",
+      "flag": "--mathml",
+      "type": "boolean",
+      "description": "convert TeX math to MathML",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "mathjax",
+      "flag": "--mathjax",
+      "type": "string",
+      "description": "use MathJax to display embedded TeX math in HTML",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "wrap",
+      "flag": "--wrap",
+      "type": "enum",
+      "description": "how to wrap text in the output",
+      "enumValues": [
+        "auto",
+        "none",
+        "preserve"
+      ],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "columns",
+      "flag": "--columns",
+      "type": "number",
+      "description": "length of lines in characters",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "fail-if-warnings",
+      "flag": "--fail-if-warnings",
+      "type": "boolean",
+      "description": "exit with error status if there are any warnings",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "verbose",
+      "flag": "--verbose",
+      "type": "boolean",
+      "description": "give verbose debugging output",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "quiet",
+      "flag": "--quiet",
+      "type": "boolean",
+      "description": "suppress warning messages",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "version",
+      "flag": "--version",
+      "type": "boolean",
+      "description": "print version",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    },
+    {
+      "name": "help",
+      "flag": "-h, --help",
+      "type": "boolean",
+      "description": "show this help message",
+      "enumValues": [],
+      "required": false,
+      "group": "Options"
+    }
+  ],
+  "positionals": [
+    {
+      "name": "FILES",
+      "type": "path",
+      "description": "",
+      "required": false,
+      "variadic": true
+    }
+  ]
+}

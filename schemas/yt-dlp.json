@@ -1,0 +1,446 @@
+{
+  "tool": "yt-dlp",
+  "summary": "",
+  "options": [
+    {
+      "name": "help",
+      "flag": "-h, --help",
+      "type": "boolean",
+      "description": "Print this help text and exit",
+      "enumValues": [],
+      "required": false,
+      "group": "General Options"
+    },
+    {
+      "name": "version",
+      "flag": "--version",
+      "type": "boolean",
+      "description": "Print program version and exit",
+      "enumValues": [],
+      "required": false,
+      "group": "General Options"
+    },
+    {
+      "name": "update",
+      "flag": "-U, --update",
+      "type": "boolean",
+      "description": "Update this program to the latest version",
+      "enumValues": [],
+      "required": false,
+      "group": "General Options"
+    },
+    {
+      "name": "ignore_errors",
+      "flag": "-i, --ignore-errors",
+      "type": "boolean",
+      "description": "Ignore download and postprocessing errors",
+      "enumValues": [],
+      "required": false,
+      "group": "General Options"
+    },
+    {
+      "name": "abort_on_error",
+      "flag": "--abort-on-error",
+      "type": "boolean",
+      "description": "Abort downloading of further videos if an error occurs",
+      "enumValues": [],
+      "required": false,
+      "group": "General Options"
+    },
+    {
+      "name": "no_abort_on_error",
+      "flag": "--no-abort-on-error",
+      "type": "boolean",
+      "description": "Continue with next video on download errors",
+      "enumValues": [],
+      "required": false,
+      "group": "General Options"
+    },
+    {
+      "name": "quiet",
+      "flag": "-q, --quiet",
+      "type": "boolean",
+      "description": "Activate quiet mode",
+      "enumValues": [],
+      "required": false,
+      "group": "General Options"
+    },
+    {
+      "name": "no_warnings",
+      "flag": "--no-warnings",
+      "type": "boolean",
+      "description": "Ignore warnings",
+      "enumValues": [],
+      "required": false,
+      "group": "General Options"
+    },
+    {
+      "name": "simulate",
+      "flag": "-s, --simulate",
+      "type": "boolean",
+      "description": "Do not download the video and do not write anything to disk",
+      "enumValues": [],
+      "required": false,
+      "group": "General Options"
+    },
+    {
+      "name": "proxy",
+      "flag": "--proxy",
+      "type": "string",
+      "description": "Use the specified HTTP/HTTPS/SOCKS proxy",
+      "enumValues": [],
+      "required": false,
+      "group": "Network Options"
+    },
+    {
+      "name": "socket_timeout",
+      "flag": "--socket-timeout",
+      "type": "number",
+      "description": "Time to wait before giving up, in seconds",
+      "enumValues": [],
+      "required": false,
+      "group": "Network Options"
+    },
+    {
+      "name": "force_ipv4",
+      "flag": "-4, --force-ipv4",
+      "type": "boolean",
+      "description": "Make all connections via IPv4",
+      "enumValues": [],
+      "required": false,
+      "group": "Network Options"
+    },
+    {
+      "name": "force_ipv6",
+      "flag": "-6, --force-ipv6",
+      "type": "boolean",
+      "description": "Make all connections via IPv6",
+      "enumValues": [],
+      "required": false,
+      "group": "Network Options"
+    },
+    {
+      "name": "playlist_items",
+      "flag": "-I, --playlist-items",
+      "type": "string",
+      "description": "Comma separated playlist_index of the items to download",
+      "enumValues": [],
+      "required": false,
+      "group": "Video Selection"
+    },
+    {
+      "name": "min_filesize",
+      "flag": "--min-filesize",
+      "type": "string",
+      "description": "Abort download if the file is smaller than SIZE (e.g. 50k or 44.6M)",
+      "enumValues": [],
+      "required": false,
+      "group": "Video Selection"
+    },
+    {
+      "name": "max_filesize",
+      "flag": "--max-filesize",
+      "type": "string",
+      "description": "Abort download if the file is larger than SIZE",
+      "enumValues": [],
+      "required": false,
+      "group": "Video Selection"
+    },
+    {
+      "name": "date",
+      "flag": "--date",
+      "type": "string",
+      "description": "Download only videos uploaded on this date",
+      "enumValues": [],
+      "required": false,
+      "group": "Video Selection"
+    },
+    {
+      "name": "no_playlist",
+      "flag": "--no-playlist",
+      "type": "boolean",
+      "description": "Download only the video, if the URL refers to a video and a playlist",
+      "enumValues": [],
+      "required": false,
+      "group": "Video Selection"
+    },
+    {
+      "name": "yes_playlist",
+      "flag": "--yes-playlist",
+      "type": "boolean",
+      "description": "Download the playlist, if the URL refers to a video and a playlist",
+      "enumValues": [],
+      "required": false,
+      "group": "Video Selection"
+    },
+    {
+      "name": "concurrent_fragments",
+      "flag": "-N, --concurrent-fragments",
+      "type": "number",
+      "description": "Number of fragments of a dash/hlsnative video to download concurrently (default is 1)",
+      "enumValues": [],
+      "required": false,
+      "group": "Download Options"
+    },
+    {
+      "name": "limit_rate",
+      "flag": "-r, --limit-rate",
+      "type": "string",
+      "description": "Maximum download rate in bytes per second (e.g. 50K or 4.2M)",
+      "enumValues": [],
+      "required": false,
+      "group": "Download Options"
+    },
+    {
+      "name": "retries",
+      "flag": "-R, --retries",
+      "type": "string",
+      "description": "Number of retries (default is 10), or \"infinite\"",
+      "enumValues": [],
+      "required": false,
+      "group": "Download Options"
+    },
+    {
+      "name": "batch_file",
+      "flag": "-a, --batch-file",
+      "type": "path",
+      "description": "File containing URLs to download, one URL per line",
+      "enumValues": [],
+      "required": false,
+      "group": "Filesystem Options"
+    },
+    {
+      "name": "paths",
+      "flag": "-P, --paths",
+      "type": "path",
+      "description": "The paths where the files should be downloaded",
+      "enumValues": [],
+      "required": false,
+      "group": "Filesystem Options"
+    },
+    {
+      "name": "output",
+      "flag": "-o, --output",
+      "type": "string",
+      "description": "Output filename template",
+      "enumValues": [],
+      "required": false,
+      "group": "Filesystem Options"
+    },
+    {
+      "name": "restrict_filenames",
+      "flag": "--restrict-filenames",
+      "type": "boolean",
+      "description": "Restrict filenames to only ASCII characters",
+      "enumValues": [],
+      "required": false,
+      "group": "Filesystem Options"
+    },
+    {
+      "name": "no_overwrites",
+      "flag": "-w, --no-overwrites",
+      "type": "boolean",
+      "description": "Do not overwrite any files",
+      "enumValues": [],
+      "required": false,
+      "group": "Filesystem Options"
+    },
+    {
+      "name": "continue",
+      "flag": "-c, --continue",
+      "type": "boolean",
+      "description": "Resume partially downloaded files (default)",
+      "enumValues": [],
+      "required": false,
+      "group": "Filesystem Options"
+    },
+    {
+      "name": "cookies",
+      "flag": "--cookies",
+      "type": "path",
+      "description": "Netscape formatted file to read cookies from and dump cookie jar in",
+      "enumValues": [],
+      "required": false,
+      "group": "Filesystem Options"
+    },
+    {
+      "name": "print",
+      "flag": "--print",
+      "type": "string",
+      "description": "Field name or output template to print to screen",
+      "enumValues": [],
+      "required": false,
+      "group": "Verbosity and Simulation Options"
+    },
+    {
+      "name": "dump_json",
+      "flag": "-j, --dump-json",
+      "type": "boolean",
+      "description": "Quiet, but print JSON information for each video",
+      "enumValues": [],
+      "required": false,
+      "group": "Verbosity and Simulation Options"
+    },
+    {
+      "name": "verbose",
+      "flag": "-v, --verbose",
+      "type": "boolean",
+      "description": "Print various debugging information",
+      "enumValues": [],
+      "required": false,
+      "group": "Verbosity and Simulation Options"
+    },
+    {
+      "name": "format",
+      "flag": "-f, --format",
+      "type": "string",
+      "description": "Video format code, see \"FORMAT SELECTION\"",
+      "enumValues": [],
+      "required": false,
+      "group": "Video Format Options"
+    },
+    {
+      "name": "format_sort",
+      "flag": "-S, --format-sort",
+      "type": "string",
+      "description": "Sort the formats by the fields given",
+      "enumValues": [],
+      "required": false,
+      "group": "Video Format Options"
+    },
+    {
+      "name": "video_multistreams",
+      "flag": "--video-multistreams",
+      "type": "boolean",
+      "description": "Allow multiple video streams to be merged into a single file",
+      "enumValues": [],
+      "required": false,
+      "group": "Video Format Options"
+    },
+    {
+      "name": "list_formats",
+      "flag": "-F, --list-formats",
+      "type": "boolean",
+      "description": "List available formats of each video",
+      "enumValues": [],
+      "required": false,
+      "group": "Video Format Options"
+    },
+    {
+      "name": "merge_output_format",
+      "flag": "--merge-output-format",
+      "type": "string",
+      "description": "Containers that may be used when merging formats (e.g. mp4, mkv, webm)",
+      "enumValues": [],
+      "required": false,
+      "group": "Video Format Options"
+    },
+    {
+      "name": "write_subs",
+      "flag": "--write-subs",
+      "type": "boolean",
+      "description": "Write subtitle file",
+      "enumValues": [],
+      "required": false,
+      "group": "Subtitle Options"
+    },
+    {
+      "name": "write_auto_subs",
+      "flag": "--write-auto-subs",
+      "type": "boolean",
+      "description": "Write automatically generated subtitle file",
+      "enumValues": [],
+      "required": false,
+      "group": "Subtitle Options"
+    },
+    {
+      "name": "sub_langs",
+      "flag": "--sub-langs",
+      "type": "string",
+      "description": "Languages of the subtitles to download (e.g. \"en.*,ja\")",
+      "enumValues": [],
+      "required": false,
+      "group": "Subtitle Options"
+    },
+    {
+      "name": "extract_audio",
+      "flag": "-x, --extract-audio",
+      "type": "boolean",
+      "description": "Convert video files to audio-only files",
+      "enumValues": [],
+      "required": false,
+      "group": "Post-Processing Options"
+    },
+    {
+      "name": "audio_format",
+      "flag": "--audio-format",
+      "type": "enum",
+      "description": "Format to convert the audio to when -x is used (best, aac, flac, mp3, m4a, opus, wav)",
+      "enumValues": [
+        "best",
+        "aac",
+        "flac",
+        "mp3",
+        "m4a",
+        "opus",
+        "wav"
+      ],
+      "required": false,
+      "group": "Post-Processing Options"
+    },
+    {
+      "name": "audio_quality",
+      "flag": "--audio-quality",
+      "type": "number",
+      "description": "Specify ffmpeg audio quality to use when converting audio (0 best to 10 worst)",
+      "enumValues": [],
+      "required": false,
+      "group": "Post-Processing Options"
+    },
+    {
+      "name": "embed_subs",
+      "flag": "--embed-subs",
+      "type": "boolean",
+      "description": "Embed subtitles in the video",
+      "enumValues": [],
+      "required": false,
+      "group": "Post-Processing Options"
+    },
+    {
+      "name": "embed_thumbnail",
+      "flag": "--embed-thumbnail",
+      "type": "boolean",
+      "description": "Embed thumbnail in the video as cover art",
+      "enumValues": [],
+      "required": false,
+      "group": "Post-Processing Options"
+    },
+    {
+      "name": "embed_metadata",
+      "flag": "--embed-metadata",
+      "type": "boolean",
+      "description": "Embed metadata to the video file",
+      "enumValues": [],
+      "required": false,
+      "group": "Post-Processing Options"
+    },
+    {
+      "name": "keep_video",
+      "flag": "-k, --keep-video",
+      "type": "boolean",
+      "description": "Keep the intermediate video file on disk after post-processing",
+      "enumValues": [],
+      "required": false,
+      "group": "Post-Processing Options"
+    }
+  ],
+  "positionals": [
+    {
+      "name": "URL",
+      "type": "string",
+      "description": "URL to download",
+      "required": true,
+      "variadic": true
+    }
+  ]
+}

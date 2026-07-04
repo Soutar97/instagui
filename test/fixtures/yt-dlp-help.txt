@@ -1,0 +1,86 @@
+Usage: yt-dlp [OPTIONS] URL [URL...]
+
+General Options:
+    -h, --help                      Print this help text and exit
+    --version                       Print program version and exit
+    -U, --update                    Update this program to the latest version
+    -i, --ignore-errors             Ignore download and postprocessing errors
+    --abort-on-error                Abort downloading of further videos if an
+                                    error occurs
+    --no-abort-on-error             Continue with next video on download errors
+    -q, --quiet                     Activate quiet mode
+    --no-warnings                   Ignore warnings
+    -s, --simulate                  Do not download the video and do not write
+                                    anything to disk
+
+Network Options:
+    --proxy URL                     Use the specified HTTP/HTTPS/SOCKS proxy
+    --socket-timeout SECONDS        Time to wait before giving up, in seconds
+    -4, --force-ipv4                Make all connections via IPv4
+    -6, --force-ipv6                Make all connections via IPv6
+
+Video Selection:
+    -I, --playlist-items ITEM_SPEC  Comma separated playlist_index of the items
+                                    to download
+    --min-filesize SIZE             Abort download if the file is smaller than
+                                    SIZE (e.g. 50k or 44.6M)
+    --max-filesize SIZE             Abort download if the file is larger than SIZE
+    --date DATE                     Download only videos uploaded on this date
+    --no-playlist                   Download only the video, if the URL refers
+                                    to a video and a playlist
+    --yes-playlist                  Download the playlist, if the URL refers to
+                                    a video and a playlist
+
+Download Options:
+    -N, --concurrent-fragments N    Number of fragments of a dash/hlsnative
+                                    video to download concurrently (default is 1)
+    -r, --limit-rate RATE           Maximum download rate in bytes per second
+                                    (e.g. 50K or 4.2M)
+    -R, --retries RETRIES           Number of retries (default is 10), or
+                                    "infinite"
+
+Filesystem Options:
+    -a, --batch-file FILE           File containing URLs to download, one URL
+                                    per line
+    -P, --paths TYPES:PATH          The paths where the files should be
+                                    downloaded
+    -o, --output TEMPLATE           Output filename template
+    --restrict-filenames            Restrict filenames to only ASCII characters
+    -w, --no-overwrites             Do not overwrite any files
+    -c, --continue                  Resume partially downloaded files (default)
+    --cookies FILE                  Netscape formatted file to read cookies from
+                                    and dump cookie jar in
+
+Verbosity and Simulation Options:
+    --print TEMPLATE                Field name or output template to print to
+                                    screen
+    -j, --dump-json                 Quiet, but print JSON information for each
+                                    video
+    -v, --verbose                   Print various debugging information
+
+Video Format Options:
+    -f, --format FORMAT             Video format code, see "FORMAT SELECTION"
+    -S, --format-sort SORTORDER     Sort the formats by the fields given
+    --video-multistreams            Allow multiple video streams to be merged
+                                    into a single file
+    -F, --list-formats              List available formats of each video
+    --merge-output-format FORMAT    Containers that may be used when merging
+                                    formats (e.g. mp4, mkv, webm)
+
+Subtitle Options:
+    --write-subs                    Write subtitle file
+    --write-auto-subs               Write automatically generated subtitle file
+    --sub-langs LANGS               Languages of the subtitles to download
+                                    (e.g. "en.*,ja")
+
+Post-Processing Options:
+    -x, --extract-audio             Convert video files to audio-only files
+    --audio-format FORMAT           Format to convert the audio to when -x is
+                                    used (best, aac, flac, mp3, m4a, opus, wav)
+    --audio-quality QUALITY         Specify ffmpeg audio quality to use when
+                                    converting audio (0 best to 10 worst)
+    --embed-subs                    Embed subtitles in the video
+    --embed-thumbnail               Embed thumbnail in the video as cover art
+    --embed-metadata                Embed metadata to the video file
+    -k, --keep-video                Keep the intermediate video file on disk
+                                    after post-processing

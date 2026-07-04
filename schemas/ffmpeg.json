@@ -1,0 +1,564 @@
+{
+  "tool": "ffmpeg",
+  "summary": "FFmpeg version 6.1 - multimedia framework for transcoding, streaming, and recording",
+  "options": [
+    {
+      "name": "license",
+      "flag": "-L",
+      "type": "boolean",
+      "description": "show license",
+      "enumValues": [],
+      "required": false,
+      "group": "Print help / information / capabilities"
+    },
+    {
+      "name": "help",
+      "flag": "-h",
+      "type": "string",
+      "description": "show help on topic (basic, long, or full)",
+      "enumValues": [],
+      "required": false,
+      "group": "Print help / information / capabilities"
+    },
+    {
+      "name": "version",
+      "flag": "-version",
+      "type": "boolean",
+      "description": "show version",
+      "enumValues": [],
+      "required": false,
+      "group": "Print help / information / capabilities"
+    },
+    {
+      "name": "formats",
+      "flag": "-formats",
+      "type": "boolean",
+      "description": "show available formats",
+      "enumValues": [],
+      "required": false,
+      "group": "Print help / information / capabilities"
+    },
+    {
+      "name": "codecs",
+      "flag": "-codecs",
+      "type": "boolean",
+      "description": "show available codecs",
+      "enumValues": [],
+      "required": false,
+      "group": "Print help / information / capabilities"
+    },
+    {
+      "name": "encoders",
+      "flag": "-encoders",
+      "type": "boolean",
+      "description": "show available encoders",
+      "enumValues": [],
+      "required": false,
+      "group": "Print help / information / capabilities"
+    },
+    {
+      "name": "decoders",
+      "flag": "-decoders",
+      "type": "boolean",
+      "description": "show available decoders",
+      "enumValues": [],
+      "required": false,
+      "group": "Print help / information / capabilities"
+    },
+    {
+      "name": "loglevel",
+      "flag": "-loglevel",
+      "type": "string",
+      "description": "set logging level",
+      "enumValues": [],
+      "required": false,
+      "group": "Global options"
+    },
+    {
+      "name": "v",
+      "flag": "-v",
+      "type": "string",
+      "description": "set logging level",
+      "enumValues": [],
+      "required": false,
+      "group": "Global options"
+    },
+    {
+      "name": "overwrite",
+      "flag": "-y",
+      "type": "boolean",
+      "description": "overwrite output files",
+      "enumValues": [],
+      "required": false,
+      "group": "Global options"
+    },
+    {
+      "name": "no_overwrite",
+      "flag": "-n",
+      "type": "boolean",
+      "description": "never overwrite output files",
+      "enumValues": [],
+      "required": false,
+      "group": "Global options"
+    },
+    {
+      "name": "stats",
+      "flag": "-stats",
+      "type": "boolean",
+      "description": "print progress report during encoding",
+      "enumValues": [],
+      "required": false,
+      "group": "Global options"
+    },
+    {
+      "name": "threads",
+      "flag": "-threads",
+      "type": "number",
+      "description": "set the number of threads",
+      "enumValues": [],
+      "required": false,
+      "group": "Global options"
+    },
+    {
+      "name": "format",
+      "flag": "-f",
+      "type": "string",
+      "description": "force format",
+      "enumValues": [],
+      "required": false,
+      "group": "Per-file main options"
+    },
+    {
+      "name": "codec",
+      "flag": "-c",
+      "type": "string",
+      "description": "codec name",
+      "enumValues": [],
+      "required": false,
+      "group": "Per-file main options"
+    },
+    {
+      "name": "codec_long",
+      "flag": "-codec",
+      "type": "string",
+      "description": "codec name",
+      "enumValues": [],
+      "required": false,
+      "group": "Per-file main options"
+    },
+    {
+      "name": "preset",
+      "flag": "-pre",
+      "type": "string",
+      "description": "preset name",
+      "enumValues": [],
+      "required": false,
+      "group": "Per-file main options"
+    },
+    {
+      "name": "duration",
+      "flag": "-t",
+      "type": "string",
+      "description": "record or transcode duration seconds of audio/video",
+      "enumValues": [],
+      "required": false,
+      "group": "Per-file main options"
+    },
+    {
+      "name": "start_time",
+      "flag": "-ss",
+      "type": "string",
+      "description": "set the start time offset",
+      "enumValues": [],
+      "required": false,
+      "group": "Per-file main options"
+    },
+    {
+      "name": "stop_time",
+      "flag": "-to",
+      "type": "string",
+      "description": "record or transcode stop time",
+      "enumValues": [],
+      "required": false,
+      "group": "Per-file main options"
+    },
+    {
+      "name": "file_size_limit",
+      "flag": "-fs",
+      "type": "number",
+      "description": "set the limit file size in bytes",
+      "enumValues": [],
+      "required": false,
+      "group": "Per-file main options"
+    },
+    {
+      "name": "input",
+      "flag": "-i",
+      "type": "path",
+      "description": "input file name",
+      "enumValues": [],
+      "required": false,
+      "group": "Per-file main options"
+    },
+    {
+      "name": "map",
+      "flag": "-map",
+      "type": "string",
+      "description": "set input stream mapping",
+      "enumValues": [],
+      "required": false,
+      "group": "Per-file main options"
+    },
+    {
+      "name": "vframes",
+      "flag": "-vframes",
+      "type": "number",
+      "description": "set the number of video frames to output",
+      "enumValues": [],
+      "required": false,
+      "group": "Video options"
+    },
+    {
+      "name": "rate",
+      "flag": "-r",
+      "type": "string",
+      "description": "set frame rate (Hz value, fraction or abbreviation)",
+      "enumValues": [],
+      "required": false,
+      "group": "Video options"
+    },
+    {
+      "name": "frame_size",
+      "flag": "-s",
+      "type": "string",
+      "description": "set frame size (WxH or abbreviation)",
+      "enumValues": [],
+      "required": false,
+      "group": "Video options"
+    },
+    {
+      "name": "aspect",
+      "flag": "-aspect",
+      "type": "string",
+      "description": "set aspect ratio (4:3, 16:9 or 1.3333, 1.7777)",
+      "enumValues": [],
+      "required": false,
+      "group": "Video options"
+    },
+    {
+      "name": "disable_video",
+      "flag": "-vn",
+      "type": "boolean",
+      "description": "disable video",
+      "enumValues": [],
+      "required": false,
+      "group": "Video options"
+    },
+    {
+      "name": "video_codec",
+      "flag": "-vcodec",
+      "type": "string",
+      "description": "force video codec ('copy' to copy stream)",
+      "enumValues": [],
+      "required": false,
+      "group": "Video options"
+    },
+    {
+      "name": "bitrate",
+      "flag": "-b",
+      "type": "string",
+      "description": "video bitrate (please use -b:v)",
+      "enumValues": [],
+      "required": false,
+      "group": "Video options"
+    },
+    {
+      "name": "video_filter",
+      "flag": "-vf",
+      "type": "string",
+      "description": "set video filters",
+      "enumValues": [],
+      "required": false,
+      "group": "Video options"
+    },
+    {
+      "name": "pixel_format",
+      "flag": "-pix_fmt",
+      "type": "string",
+      "description": "set pixel format",
+      "enumValues": [],
+      "required": false,
+      "group": "Video options"
+    },
+    {
+      "name": "aframes",
+      "flag": "-aframes",
+      "type": "number",
+      "description": "set the number of audio frames to output",
+      "enumValues": [],
+      "required": false,
+      "group": "Audio options"
+    },
+    {
+      "name": "audio_quality",
+      "flag": "-aq",
+      "type": "string",
+      "description": "set audio quality (codec-specific)",
+      "enumValues": [],
+      "required": false,
+      "group": "Audio options"
+    },
+    {
+      "name": "audio_rate",
+      "flag": "-ar",
+      "type": "number",
+      "description": "set audio sampling rate (in Hz)",
+      "enumValues": [],
+      "required": false,
+      "group": "Audio options"
+    },
+    {
+      "name": "audio_channels",
+      "flag": "-ac",
+      "type": "number",
+      "description": "set number of audio channels",
+      "enumValues": [],
+      "required": false,
+      "group": "Audio options"
+    },
+    {
+      "name": "disable_audio",
+      "flag": "-an",
+      "type": "boolean",
+      "description": "disable audio",
+      "enumValues": [],
+      "required": false,
+      "group": "Audio options"
+    },
+    {
+      "name": "audio_codec",
+      "flag": "-acodec",
+      "type": "string",
+      "description": "force audio codec ('copy' to copy stream)",
+      "enumValues": [],
+      "required": false,
+      "group": "Audio options"
+    },
+    {
+      "name": "volume",
+      "flag": "-vol",
+      "type": "number",
+      "description": "change audio volume (256=normal)",
+      "enumValues": [],
+      "required": false,
+      "group": "Audio options"
+    },
+    {
+      "name": "audio_filter",
+      "flag": "-af",
+      "type": "string",
+      "description": "set audio filters",
+      "enumValues": [],
+      "required": false,
+      "group": "Audio options"
+    },
+    {
+      "name": "disable_subtitle",
+      "flag": "-sn",
+      "type": "boolean",
+      "description": "disable subtitle",
+      "enumValues": [],
+      "required": false,
+      "group": "Subtitle options"
+    },
+    {
+      "name": "subtitle_codec",
+      "flag": "-scodec",
+      "type": "string",
+      "description": "force subtitle codec ('copy' to copy stream)",
+      "enumValues": [],
+      "required": false,
+      "group": "Subtitle options"
+    },
+    {
+      "name": "encoding_preset",
+      "flag": "-preset",
+      "type": "string",
+      "description": "set the encoding preset",
+      "enumValues": [],
+      "required": false,
+      "group": "Encoder options"
+    },
+    {
+      "name": "quality",
+      "flag": "-crf",
+      "type": "number",
+      "description": "select the quality for constant quality mode (0-63)",
+      "enumValues": [],
+      "required": false,
+      "group": "Encoder options"
+    },
+    {
+      "name": "profile",
+      "flag": "-profile",
+      "type": "number",
+      "description": "set profile restrictions",
+      "enumValues": [],
+      "required": false,
+      "group": "Encoder options"
+    },
+    {
+      "name": "level",
+      "flag": "-level",
+      "type": "number",
+      "description": "specify level",
+      "enumValues": [],
+      "required": false,
+      "group": "Encoder options"
+    },
+    {
+      "name": "tune",
+      "flag": "-tune",
+      "type": "string",
+      "description": "tune the encoding params",
+      "enumValues": [],
+      "required": false,
+      "group": "Encoder options"
+    },
+    {
+      "name": "gop_size",
+      "flag": "-g",
+      "type": "number",
+      "description": "set the group of picture (GOP) size",
+      "enumValues": [],
+      "required": false,
+      "group": "Encoder options"
+    },
+    {
+      "name": "b_frames",
+      "flag": "-bf",
+      "type": "number",
+      "description": "set maximum number of B-frames",
+      "enumValues": [],
+      "required": false,
+      "group": "Encoder options"
+    },
+    {
+      "name": "refs",
+      "flag": "-refs",
+      "type": "number",
+      "description": "reference frames to consider",
+      "enumValues": [],
+      "required": false,
+      "group": "Encoder options"
+    },
+    {
+      "name": "qmin",
+      "flag": "-qmin",
+      "type": "number",
+      "description": "minimum quantizer",
+      "enumValues": [],
+      "required": false,
+      "group": "Encoder options"
+    },
+    {
+      "name": "qmax",
+      "flag": "-qmax",
+      "type": "number",
+      "description": "maximum quantizer",
+      "enumValues": [],
+      "required": false,
+      "group": "Encoder options"
+    },
+    {
+      "name": "motion_estimation",
+      "flag": "-me_method",
+      "type": "string",
+      "description": "motion estimation method",
+      "enumValues": [],
+      "required": false,
+      "group": "Encoder options"
+    },
+    {
+      "name": "subq",
+      "flag": "-subq",
+      "type": "number",
+      "description": "sub-pel motion estimation quality",
+      "enumValues": [],
+      "required": false,
+      "group": "Encoder options"
+    },
+    {
+      "name": "trellis",
+      "flag": "-trellis",
+      "type": "number",
+      "description": "rate-distortion optimal quantization",
+      "enumValues": [],
+      "required": false,
+      "group": "Encoder options"
+    },
+    {
+      "name": "aq_mode",
+      "flag": "-aq-mode",
+      "type": "number",
+      "description": "adaptive quantization mode",
+      "enumValues": [],
+      "required": false,
+      "group": "Encoder options"
+    },
+    {
+      "name": "deblock",
+      "flag": "-deblock",
+      "type": "string",
+      "description": "loop filter parameters",
+      "enumValues": [],
+      "required": false,
+      "group": "Encoder options"
+    },
+    {
+      "name": "rc_lookahead",
+      "flag": "-rc-lookahead",
+      "type": "number",
+      "description": "number of frames for frametype lookahead",
+      "enumValues": [],
+      "required": false,
+      "group": "Encoder options"
+    },
+    {
+      "name": "keyint_min",
+      "flag": "-keyint_min",
+      "type": "number",
+      "description": "minimum GOP size",
+      "enumValues": [],
+      "required": false,
+      "group": "Encoder options"
+    },
+    {
+      "name": "scene_threshold",
+      "flag": "-sc_threshold",
+      "type": "number",
+      "description": "scene change threshold",
+      "enumValues": [],
+      "required": false,
+      "group": "Encoder options"
+    },
+    {
+      "name": "b_strategy",
+      "flag": "-b_strategy",
+      "type": "number",
+      "description": "strategy to choose between I/P/B-frames",
+      "enumValues": [],
+      "required": false,
+      "group": "Encoder options"
+    }
+  ],
+  "positionals": [
+    {
+      "name": "outfile",
+      "type": "path",
+      "description": "output file",
+      "required": false,
+      "variadic": true
+    }
+  ]
+}

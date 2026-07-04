@@ -1,0 +1,11 @@
+sq - squish files (short flags only)
+
+Usage: sq [-x] [-v] [-r] [-o FILE] [-n NUM] INPUT
+
+  -x        extract instead of compress
+  -v        verbose output
+  -r        recurse into directories
+  -o FILE   write result to FILE
+  -n NUM    compression level (0-9)
+
+This tool has no long-form (--) options. Every switch is a single letter.

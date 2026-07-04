@@ -1,0 +1,45 @@
+pandoc [OPTIONS] [FILES]
+Input formats:  commonmark, docx, epub, html, json, latex, markdown, mediawiki,
+                odt, org, rst, textile
+Output formats: asciidoc, beamer, commonmark, docx, epub, html, html5, json,
+                latex, man, markdown, mediawiki, odt, org, pdf, plain, pptx,
+                revealjs, rst, rtf, textile
+Options:
+  -f FORMAT, -r FORMAT, --from=FORMAT, --read=FORMAT
+                           input format
+  -t FORMAT, -w FORMAT, --to=FORMAT, --write=FORMAT
+                           output format
+  -o FILE, --output=FILE   output file (use - for stdout)
+      --data-dir=DIRECTORY user data directory
+  -d FILE, --defaults=FILE specify a set of default option settings
+  -M KEY[:VALUE], --metadata=KEY[:VALUE]
+                           set document metadata field
+      --standalone, -s     produce output with an appropriate header and footer
+      --template=FILE      use the specified file as a custom template
+  -V KEY[:VALUE], --variable=KEY[:VALUE]
+                           set a template variable
+      --toc, --table-of-contents
+                           include an automatically generated table of contents
+      --toc-depth=NUMBER   number of section levels to include in the TOC
+  -N, --number-sections    number section headings
+      --highlight-style=STYLE|FILE
+                           specify coloring style for highlighted source code
+      --pdf-engine=PROGRAM use the specified engine when producing PDF output
+                           (pdflatex, xelatex, lualatex, wkhtmltopdf, weasyprint)
+      --resource-path=SEARCHPATH
+                           search path for images and other resources
+  -c URL, --css=URL        link to a CSS style sheet (may be used repeatedly)
+      --self-contained     produce a standalone HTML file with no external deps
+      --embed-resources    produce a standalone file with all resources embedded
+  -H FILE, --include-in-header=FILE
+                           include contents of FILE at the end of the header
+      --mathml             convert TeX math to MathML
+      --mathjax[=URL]      use MathJax to display embedded TeX math in HTML
+      --wrap=auto|none|preserve
+                           how to wrap text in the output
+      --columns=NUMBER     length of lines in characters
+      --fail-if-warnings   exit with error status if there are any warnings
+      --verbose            give verbose debugging output
+      --quiet              suppress warning messages
+      --version            print version
+  -h, --help               show this help message

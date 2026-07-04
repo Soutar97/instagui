@@ -1,0 +1,32 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+
+# secrets / env — never commit
+.env
+.env.*
+*.pem
+*.key
+
+# guiup runtime + debug artifacts
+.guiup/
+guiup-debug-*.json
+
+# logs / misc
+*.log
+*.bak
+
+# local tooling — Claude Code config/skills and the BMAD authoring framework install
+# (not part of guiup; keep them out of the public repo)
+.claude/
+_bmad/
+
+# local planning docs — kept out of the public repo (PRD, architecture, epics, resume note,
+# product brief). Remove these lines if you ever want them tracked (e.g. a private repo).
+_bmad-output/
+product-brief.md
+
+# personal launch-prep notes (kept local). docs/demo.gif IS meant to be committed.
+docs/show-hn-draft.md

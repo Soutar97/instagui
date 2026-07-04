@@ -1,0 +1,61 @@
+{
+  "name": "guiup",
+  "version": "0.1.0",
+  "description": "npx guiup <any-cli-tool> — turn any CLI tool into a local web GUI. One command.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Omar <omarsoutari97@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Soutar97/guiup.git"
+  },
+  "homepage": "https://github.com/Soutar97/guiup#readme",
+  "bugs": {
+    "url": "https://github.com/Soutar97/guiup/issues"
+  },
+  "keywords": [
+    "cli",
+    "gui",
+    "web-ui",
+    "form",
+    "wrapper",
+    "ffmpeg",
+    "yt-dlp",
+    "pandoc",
+    "help-text",
+    "ai",
+    "claude",
+    "anthropic",
+    "developer-tools",
+    "npx"
+  ],
+  "bin": {
+    "guiup": "./dist/cli/index.js"
+  },
+  "files": [
+    "dist/",
+    "schemas/",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "eslint .",
+    "test": "node --import tsx --test \"test/**/*.test.ts\"",
+    "extract": "tsx src/cli/index.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.109.1",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "eslint": "^9.17.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.9.0",
+    "typescript-eslint": "^8.20.0"
+  }
+}
