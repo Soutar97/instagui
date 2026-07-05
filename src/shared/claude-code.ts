@@ -6,7 +6,7 @@
 // the caller (core/extract.ts) still runs Schema.parse() + one-retry + debug-file, so the
 // validation pipeline is identical to the SDK path.
 //
-// NOT a published requirement and NOT for user docs: it is inert unless GUIUP_ENGINE is
+// NOT a published requirement and NOT for user docs: it is inert unless INSTAGUI_ENGINE is
 // set to "claude-code", the SDK path remains primary/default, and it depends on a `claude`
 // binary that end users are not expected to have.
 import { spawn } from 'node:child_process';

@@ -23,7 +23,7 @@ test('binds 127.0.0.1 and serves the Form (200 text/html with the tool name)', a
     assert.equal(res.status, 200);
     assert.match(res.headers.get('content-type') ?? '', /text\/html/);
     const body = await res.text();
-    assert.match(body, /<title>guiup — demotool<\/title>/);
+    assert.match(body, /<title>instagui — demotool<\/title>/);
     assert.match(body, /data-name="verbose"/);
   } finally {
     await srv.close();

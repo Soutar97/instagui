@@ -123,7 +123,7 @@ export async function startServer(opts: ServeOptions, deps: ServeDeps = {}): Pro
 
   const server = createServer((req, res) => {
     handle(req, res).catch(() => {
-      if (!res.headersSent) sendText(res, 500, 'guiup: internal error');
+      if (!res.headersSent) sendText(res, 500, 'instagui: internal error');
       else res.end();
     });
   });

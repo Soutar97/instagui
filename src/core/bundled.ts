@@ -1,9 +1,9 @@
 // Story 2.3 — bundled demo schemas. The published package ships a read-only `schemas/`
 // dir so the demo tools (ffmpeg, yt-dlp, pandoc, …) work with NO API key and NO capture:
-// the `npx guiup ffmpeg` magic isn't gated behind getting a key.
+// the `npx instagui ffmpeg` magic isn't gated behind getting a key.
 //
 // This tier is READ-ONLY. It sits below the user cache in precedence (cache wins), and a
-// fresh extraction is never written here — it goes to ~/.guiup (see core/cache.ts). So a
+// fresh extraction is never written here — it goes to ~/.instagui (see core/cache.ts). So a
 // user who re-extracts a bundled tool gets their own entry going forward while the shipped
 // fallback stays pristine.
 import path from 'node:path';

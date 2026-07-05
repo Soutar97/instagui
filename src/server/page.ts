@@ -158,12 +158,12 @@ export function renderPage(schema: Schema, clientScript: string): string {
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>guiup — ${esc(schema.tool)}</title>
+<title>instagui — ${esc(schema.tool)}</title>
 <style>${STYLE}</style>
 </head>
 <body>
 <header>
-  <h1>guiup <code>${esc(schema.tool)}</code></h1>
+  <h1>instagui <code>${esc(schema.tool)}</code></h1>
   ${summary}
 </header>
 <main>

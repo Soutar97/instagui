@@ -69,8 +69,8 @@ export class RunController {
       const code = (err as NodeJS.ErrnoException).code;
       const msg =
         code === 'ENOENT'
-          ? `guiup: "${cmd}" is not installed or not on your PATH.`
-          : `guiup: failed to run command: ${err.message}`;
+          ? `instagui: "${cmd}" is not installed or not on your PATH.`
+          : `instagui: failed to run command: ${err.message}`;
       sink.out(`${msg}\n`);
       finish(null, null);
     });

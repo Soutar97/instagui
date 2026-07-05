@@ -16,7 +16,7 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const fixtures = path.join(here, 'fixtures');
 
 test('readBundled loads a schema from the bundled dir', () => {
-  const dir = mkdtempSync(path.join(os.tmpdir(), 'guiup-bundled-'));
+  const dir = mkdtempSync(path.join(os.tmpdir(), 'instagui-bundled-'));
   try {
     const schema: Schema = { tool: 'demo', summary: '', options: [], positionals: [] };
     writeFileSync(path.join(dir, 'demo.json'), JSON.stringify(schema), 'utf8');
@@ -27,7 +27,7 @@ test('readBundled loads a schema from the bundled dir', () => {
 });
 
 test('readBundled returns null for a tool that is not bundled', () => {
-  const dir = mkdtempSync(path.join(os.tmpdir(), 'guiup-bundled-'));
+  const dir = mkdtempSync(path.join(os.tmpdir(), 'instagui-bundled-'));
   try {
     assert.equal(readBundled('not-bundled', dir), null);
   } finally {

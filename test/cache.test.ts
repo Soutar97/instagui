@@ -1,4 +1,4 @@
-// Story 2.1 — user schema cache in ~/.guiup. Covers: write-then-read round-trip
+// Story 2.1 — user schema cache in ~/.instagui. Covers: write-then-read round-trip
 // (first extraction is cached, keyed by tool name), cache miss, and the corrupt-cache
 // fall-through contract (never crash — return null so the resolver re-extracts).
 import { test } from 'node:test';
@@ -10,7 +10,7 @@ import { readCache, writeCache, cachePath, toolKey } from '../src/core/cache.js'
 import type { Schema } from '../src/core/schema.js';
 
 function tmpDir(): string {
-  return mkdtempSync(path.join(os.tmpdir(), 'guiup-cache-'));
+  return mkdtempSync(path.join(os.tmpdir(), 'instagui-cache-'));
 }
 
 const schema: Schema = {
@@ -36,7 +36,7 @@ test('writeCache then readCache round-trips the Schema (keyed by tool name)', ()
 });
 
 test('writeCache creates the cache dir when it does not exist', () => {
-  const dir = path.join(tmpDir(), 'nested', 'guiup');
+  const dir = path.join(tmpDir(), 'nested', 'instagui');
   try {
     assert.ok(!existsSync(dir));
     writeCache('demo', schema, dir);

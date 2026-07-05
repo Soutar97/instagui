@@ -1,19 +1,19 @@
-# guiup
+# instagui
 
 **Any CLI. Instant GUI. One command.**
 
 Turn any command-line tool into a clean local web form — no config, no code changes to the tool.
 
 <!-- TODO(pre-launch): record and drop the money-demo GIF here.
-     ~10s: `npx guiup ffmpeg` → browser opens → fill a couple fields → Run → output streams.
+     ~10s: `npx instagui ffmpeg` → browser opens → fill a couple fields → Run → output streams.
      Save as docs/demo.gif and it renders below. -->
-![guiup demo — npx guiup ffmpeg opens a web form, click Run, output streams](docs/demo.gif)
+![instagui demo — npx instagui ffmpeg opens a web form, click Run, output streams](docs/demo.gif)
 
 ```sh
-npx guiup ffmpeg
+npx instagui ffmpeg
 ```
 
-That's it. guiup reads the tool's `--help`, turns it into a web form, opens your browser, and
+That's it. instagui reads the tool's `--help`, turns it into a web form, opens your browser, and
 (when you click **Run**) executes the command locally and streams the output back — while always
 showing you the exact command it will run, so it teaches you the CLI instead of hiding it.
 
@@ -23,7 +23,7 @@ showing you the exact command it will run, so it teaches you the CLI instead of 
 
 Thousands of powerful CLIs (ffmpeg, pandoc, yt-dlp, curl, imagemagick…) are unfriendly to anyone
 who doesn't live in a terminal — and even experts re-read man pages to recall flag syntax. Tools
-like Gooey require the tool's *author* to change their code. guiup needs nothing from the tool: it
+like Gooey require the tool's *author* to change their code. instagui needs nothing from the tool: it
 parses the tool's own `--help` text with AI into a structured schema and renders that as a form.
 
 ## Quick start
@@ -31,18 +31,18 @@ parses the tool's own `--help` text with AI into a structured schema and renders
 The three demo tools ship with **bundled schemas**, so they work instantly with **no API key**:
 
 ```sh
-npx guiup ffmpeg      # video/audio transcoding
-npx guiup yt-dlp      # download media
-npx guiup pandoc      # convert documents
+npx instagui ffmpeg      # video/audio transcoding
+npx instagui yt-dlp      # download media
+npx instagui pandoc      # convert documents
 ```
 
-For any *other* tool, guiup extracts the schema on first run using the Claude API (see
+For any *other* tool, instagui extracts the schema on first run using the Claude API (see
 [How it stays free](#how-it-stays-free)):
 
 ```sh
 export ANTHROPIC_API_KEY=sk-ant-...    # POSIX
 $env:ANTHROPIC_API_KEY="sk-ant-..."    # Windows / PowerShell
-npx guiup curl
+npx instagui curl
 ```
 
 Get a key at <https://console.anthropic.com>. The first extraction is cached, so every launch
@@ -63,17 +63,17 @@ after that is instant and free.
 
 ## How it stays free
 
-guiup resolves a schema in this order, and only the last step costs an API call:
+instagui resolves a schema in this order, and only the last step costs an API call:
 
 | Precedence | Source | Needs a key? |
 | --- | --- | --- |
 | 1 | `--schema <file>` override you supply | no |
-| 2 | Your cache in `~/.guiup/` (written on first extraction) | no |
+| 2 | Your cache in `~/.instagui/` (written on first extraction) | no |
 | 3 | Bundled schemas shipped with the package (ffmpeg, yt-dlp, pandoc) | no |
 | 4 | Fresh extraction via the Claude API | **yes** |
 
 So the demo tools are free forever, any tool you've used once is free forever after, and you only
-need a key the first time you point guiup at a brand-new tool. A friendly message tells you exactly
+need a key the first time you point instagui at a brand-new tool. A friendly message tells you exactly
 what to do if a key is needed and missing — you're never dropped into a stack trace.
 
 - `--refresh` re-extracts and overwrites your cache entry.
@@ -82,23 +82,23 @@ what to do if a key is needed and missing — you're never dropped into a stack 
 ## Usage
 
 ```
-guiup <tool>                 resolve <tool>'s Schema and serve the Form (auto-opens the browser)
-guiup <tool> --print         resolve and print the Schema JSON instead of serving
-guiup <tool> --schema <path> use a hand-supplied Schema file (no capture, no AI)
-guiup <tool> --refresh       ignore cache + bundled and re-extract fresh
-guiup <tool> --help-file <p> extract from a captured help-text file
-<tool> --help | guiup <tool> or pipe help text on stdin
+instagui <tool>                 resolve <tool>'s Schema and serve the Form (auto-opens the browser)
+instagui <tool> --print         resolve and print the Schema JSON instead of serving
+instagui <tool> --schema <path> use a hand-supplied Schema file (no capture, no AI)
+instagui <tool> --refresh       ignore cache + bundled and re-extract fresh
+instagui <tool> --help-file <p> extract from a captured help-text file
+<tool> --help | instagui <tool> or pipe help text on stdin
 
   --port <n>     preferred port for the Form server (default 5177; falls back if busy)
   --no-open      do not auto-open the browser (still prints the URL)
   --model <id>   extraction model (default: claude-haiku-4-5)
-  -v, --version  print the guiup version
+  -v, --version  print the instagui version
   -h, --help     show help
 ```
 
 ## Security / threat model
 
-guiup is a **local, single-user tool**. Be clear-eyed about what it does:
+instagui is a **local, single-user tool**. Be clear-eyed about what it does:
 
 - **It runs commands you compose.** The whole point is to execute a real CLI with the arguments you
   set in the form. Treat the form like your own terminal — don't run something you wouldn't type.

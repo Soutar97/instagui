@@ -1,5 +1,5 @@
 // Story 2.2 — the `--schema <file>` override. A power user supplies their own hand-tuned
-// Schema; guiup uses it directly with NO tool-help invocation and NO API call. It sits at
+// Schema; instagui uses it directly with NO tool-help invocation and NO API call. It sits at
 // the top of the resolution precedence (override > cache > bundled > extraction).
 //
 // Unlike the cache/bundled tiers, a bad override is a user-facing error, not a silent
@@ -21,7 +21,7 @@ export function loadOverrideSchema(file: string): Schema {
     missing: `--schema file not found: ${file}`,
     unreadable: `--schema file could not be read: ${file} (${result.detail})`,
     'invalid-json': `--schema file is not valid JSON: ${file} (${result.detail})`,
-    'invalid-schema': `--schema file does not match the guiup Schema: ${file}\n${result.detail}`,
+    'invalid-schema': `--schema file does not match the instagui Schema: ${file}\n${result.detail}`,
   };
   throw new PreconditionError(messages[result.reason]);
 }

@@ -15,7 +15,7 @@ function runCli(args: string[]) {
   return spawnSync(process.execPath, ['--import', 'tsx', CLI, ...args], {
     input: '', // never read; guards against a stdin hang
     encoding: 'utf8',
-    env: { ...process.env, GUIUP_ENGINE: '', ANTHROPIC_API_KEY: '' },
+    env: { ...process.env, INSTAGUI_ENGINE: '', ANTHROPIC_API_KEY: '' },
   });
 }
 
@@ -45,7 +45,7 @@ test('CLI: unknown tool → exit 2, "Tool not found" on stderr, no stack, empty 
   const r = runCli(['definitely-not-a-real-tool-xyz', '--capture']);
   assert.equal(r.status, 2);
   assert.equal(r.stdout.trim(), '');
-  assert.match(r.stderr, /guiup: Tool not found/);
+  assert.match(r.stderr, /instagui: Tool not found/);
   assert.doesNotMatch(r.stderr, /unexpected error/);
   assert.doesNotMatch(r.stderr, /\n\s+at /); // no stack frames for an expected failure
 });
@@ -65,5 +65,5 @@ test('CLI: unexpected error (unreadable --help-file) → exit 1, stack on stderr
 test('CLI: --help → exit 0', () => {
   const r = runCli(['--help']);
   assert.equal(r.status, 0);
-  assert.match(r.stdout, /guiup <tool>/);
+  assert.match(r.stdout, /instagui <tool>/);
 });

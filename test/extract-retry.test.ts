@@ -9,7 +9,7 @@ import { PreconditionError } from '../src/core/errors.js';
 const VALID_JSON = JSON.stringify({ tool: 'demo', summary: '', options: [], positionals: [] });
 
 function tmpDir(): string {
-  return mkdtempSync(path.join(os.tmpdir(), 'guiup-test-'));
+  return mkdtempSync(path.join(os.tmpdir(), 'instagui-test-'));
 }
 
 test('buildUserPrompt includes the tool name and help text', () => {
@@ -50,7 +50,7 @@ test('two failures → PreconditionError (exit 2), exactly one retry, debug file
       assert.ok(err.debugFile, 'debugFile path present');
       // filename sanitized ("/" → "_") and under the given dir
       assert.equal(path.dirname(err.debugFile!), dir);
-      assert.match(path.basename(err.debugFile!), /^guiup-debug-de_mo-1700000000000\.json$/);
+      assert.match(path.basename(err.debugFile!), /^instagui-debug-de_mo-1700000000000\.json$/);
       const saved = JSON.parse(readFileSync(err.debugFile!, 'utf8'));
       assert.equal(saved.rawOutput, bad); // invalid output preserved, not discarded
       assert.equal(saved.tool, 'de/mo');

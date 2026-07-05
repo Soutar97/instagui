@@ -1,4 +1,4 @@
-// Pre-launch — guiup's own --version / --help must be exemplary (we parse everyone else's).
+// Pre-launch — instagui's own --version / --help must be exemplary (we parse everyone else's).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
@@ -14,7 +14,7 @@ function runCli(args: string[]) {
   return spawnSync(process.execPath, ['--import', 'tsx', CLI, ...args], {
     input: '',
     encoding: 'utf8',
-    env: { ...process.env, GUIUP_ENGINE: '', ANTHROPIC_API_KEY: '' },
+    env: { ...process.env, INSTAGUI_ENGINE: '', ANTHROPIC_API_KEY: '' },
   });
 }
 
@@ -34,7 +34,7 @@ test('-v is an alias for --version', () => {
 test('--help exits 0 and documents usage, key options, and examples', () => {
   const r = runCli(['--help']);
   assert.equal(r.status, 0);
-  assert.match(r.stdout, /guiup <tool>/);
+  assert.match(r.stdout, /instagui <tool>/);
   assert.match(r.stdout, /--version/);
   assert.match(r.stdout, /Examples:/);
   assert.match(r.stdout, /127\.0\.0\.1 only/); // the security posture is surfaced in help

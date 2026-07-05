@@ -1,7 +1,7 @@
 // The resolution precedence — the through-line of Epic 2. A Schema is found without
 // re-paying, in this exact order:
 //
-//   --schema override  >  user cache (~/.guiup)  >  bundled schemas  >  fresh extraction
+//   --schema override  >  user cache (~/.instagui)  >  bundled schemas  >  fresh extraction
 //
 // Only the extraction tier captures help or calls the AI; the first three are free and
 // keyless. A fresh extraction is written back to the user cache so the next run is free.

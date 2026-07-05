@@ -18,7 +18,7 @@ export default tseslint.config(
             {
               group: ['**/core/**', '**/server/**', '**/cli/**'],
               message:
-                'AD-2: shared/ must not import internal modules (core/server/cli). It stays guiup-agnostic.',
+                'AD-2: shared/ must not import internal modules (core/server/cli). It stays instagui-agnostic.',
             },
           ],
         },

@@ -5,7 +5,7 @@
 // schemas/<tool>.json — the read-only keyless fallback tier.
 //
 // Run keyless with the dev engine (no ANTHROPIC_API_KEY needed):
-//   GUIUP_ENGINE=claude-code npx tsx scripts/gen-bundled-schemas.ts
+//   INSTAGUI_ENGINE=claude-code npx tsx scripts/gen-bundled-schemas.ts
 // Or against the real SDK/haiku path (pre-publish gate — see schemas/README.md):
 //   ANTHROPIC_API_KEY=sk-ant-... npx tsx scripts/gen-bundled-schemas.ts
 //

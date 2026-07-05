@@ -11,9 +11,9 @@ import { findHallucinatedFlags, flagTokens } from '../src/core/golden.js';
 import type { Schema } from '../src/core/schema.js';
 
 // Runs against a real model via either engine: the SDK path (needs ANTHROPIC_API_KEY) or
-// the dev-only claude-code adapter (GUIUP_ENGINE=claude-code, subscription auth).
+// the dev-only claude-code adapter (INSTAGUI_ENGINE=claude-code, subscription auth).
 const HAS_KEY = !!(process.env.ANTHROPIC_API_KEY && process.env.ANTHROPIC_API_KEY.trim());
-const CLAUDE_CODE = process.env.GUIUP_ENGINE === 'claude-code';
+const CLAUDE_CODE = process.env.INSTAGUI_ENGINE === 'claude-code';
 const HAS_KEY_OR_ENGINE = HAS_KEY || CLAUDE_CODE;
 const here = path.dirname(fileURLToPath(import.meta.url));
 const fixture = (name: string) => readFileSync(path.join(here, 'fixtures', name), 'utf8');

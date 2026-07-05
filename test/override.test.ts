@@ -22,7 +22,7 @@ function catchPrecondition(fn: () => unknown): PreconditionError {
 }
 
 function tmpFile(name: string, contents: string): { file: string; dir: string } {
-  const dir = mkdtempSync(path.join(os.tmpdir(), 'guiup-override-'));
+  const dir = mkdtempSync(path.join(os.tmpdir(), 'instagui-override-'));
   const file = path.join(dir, name);
   writeFileSync(file, contents, 'utf8');
   return { file, dir };
@@ -53,7 +53,7 @@ test('an override that fails Schema.parse → PreconditionError (exit 2) naming 
   try {
     const err = catchPrecondition(() => loadOverrideSchema(file));
     assert.equal(err.exitCode, 2);
-    assert.match(err.message, /does not match the guiup Schema/);
+    assert.match(err.message, /does not match the instagui Schema/);
     assert.match(err.message, new RegExp(file.replace(/[\\.]/g, '\\$&')));
   } finally {
     rmSync(dir, { recursive: true, force: true });
@@ -73,7 +73,7 @@ test('an override that is not valid JSON → PreconditionError (exit 2), clear m
 
 test('a missing override file → PreconditionError (exit 2), not a raw crash', () => {
   const err = catchPrecondition(() =>
-    loadOverrideSchema(path.join(os.tmpdir(), 'guiup-nope', 'missing.json')),
+    loadOverrideSchema(path.join(os.tmpdir(), 'instagui-nope', 'missing.json')),
   );
   assert.equal(err.exitCode, 2);
   assert.match(err.message, /not found/);

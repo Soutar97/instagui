@@ -109,7 +109,7 @@ function validate(raw: string): ValidateOutcome {
 function writeDebugFile(raw: string, tool: string, reason: string, opts: ExtractOptions): string {
   const dir = opts.debugDir ?? process.cwd();
   const ts = opts.now ?? Date.now();
-  const file = path.join(dir, `guiup-debug-${tool.replace(/[^\w.-]/g, '_')}-${ts}.json`);
+  const file = path.join(dir, `instagui-debug-${tool.replace(/[^\w.-]/g, '_')}-${ts}.json`);
   const body = JSON.stringify({ tool, reason, rawOutput: raw }, null, 2);
   writeFileSync(file, body, 'utf8');
   return file;

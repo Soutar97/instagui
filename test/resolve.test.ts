@@ -86,7 +86,7 @@ test('--refresh bypasses cache AND bundled, re-extracts, and overwrites the user
   assert.equal(calls.readCache, 0);
   assert.equal(calls.readBundled, 0);
   assert.equal(calls.extract, 1);
-  assert.equal(calls.writeCache, 1); // re-cached; writeCache targets ~/.guiup, never bundled
+  assert.equal(calls.writeCache, 1); // re-cached; writeCache targets ~/.instagui, never bundled
 });
 
 test('corrupt cache (readCache→null) falls through to bundled', async () => {

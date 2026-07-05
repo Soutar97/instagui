@@ -58,7 +58,7 @@ test('positionals get inputs (the money demo needs input/output files)', () => {
 test('the Schema is embedded for the client and the tool name titles the page', () => {
   assert.match(html, /<script type="application\/json" id="schema">/);
   assert.match(html, /"tool":"demotool"/);
-  assert.match(html, /<title>guiup — demotool<\/title>/);
+  assert.match(html, /<title>instagui — demotool<\/title>/);
 });
 
 test('embedded JSON cannot break out of the script tag', () => {

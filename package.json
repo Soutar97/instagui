@@ -1,17 +1,17 @@
 {
-  "name": "guiup",
+  "name": "instagui",
   "version": "0.1.0",
-  "description": "npx guiup <any-cli-tool> — turn any CLI tool into a local web GUI. One command.",
+  "description": "npx instagui <any-cli-tool> — turn any CLI tool into a local web GUI. One command.",
   "type": "module",
   "license": "MIT",
   "author": "Omar <omarsoutari97@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Soutar97/guiup.git"
+    "url": "git+https://github.com/Soutar97/instagui.git"
   },
-  "homepage": "https://github.com/Soutar97/guiup#readme",
+  "homepage": "https://github.com/Soutar97/instagui#readme",
   "bugs": {
-    "url": "https://github.com/Soutar97/guiup/issues"
+    "url": "https://github.com/Soutar97/instagui/issues"
   },
   "keywords": [
     "cli",
@@ -30,7 +30,7 @@
     "npx"
   ],
   "bin": {
-    "guiup": "./dist/cli/index.js"
+    "instagui": "dist/cli/index.js"
   },
   "files": [
     "dist/",

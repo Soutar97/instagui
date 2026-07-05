@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-// cli/index.ts — `guiup <tool>` resolves a validated Schema and serves it as a local web Form
+// cli/index.ts — `instagui <tool>` resolves a validated Schema and serves it as a local web Form
 // (Epic 3). `--print` keeps the Epic 1/2 behaviour of emitting the Schema JSON and exiting.
 //
-// Resolution precedence (Epic 2): --schema override > user cache (~/.guiup) > bundled
+// Resolution precedence (Epic 2): --schema override > user cache (~/.instagui) > bundled
 // schemas > fresh extraction. Only the extraction tier captures help or calls the AI, and
 // only it needs an API key — so the demo tools, a cache hit, or --schema never prompt for
 // one. A fresh extraction is written back to the user cache so the next run is free.
@@ -40,18 +40,18 @@ function readVersion(): string {
   }
 }
 
-const USAGE = `guiup <tool> — turn a CLI tool into a local web Form. Resolves a validated option
+const USAGE = `instagui <tool> — turn a CLI tool into a local web Form. Resolves a validated option
 Schema, serves it as a single-page Form, and (on Run) executes the command and streams output.
 
 Usage:
-  guiup <tool>                        resolve <tool>'s Schema and serve the Form (auto-opens browser)
-  guiup <tool> --print                resolve and print the Schema JSON instead of serving
-  guiup <tool> --schema <path>        use a hand-supplied Schema file (no capture, no AI)
-  guiup <tool> --refresh              ignore cache + bundled and re-extract fresh
-  guiup <tool> --help-file <path>     extract from a captured help-text file
-  <tool> --help | guiup <tool>        or pipe help text on stdin
+  instagui <tool>                        resolve <tool>'s Schema and serve the Form (auto-opens browser)
+  instagui <tool> --print                resolve and print the Schema JSON instead of serving
+  instagui <tool> --schema <path>        use a hand-supplied Schema file (no capture, no AI)
+  instagui <tool> --refresh              ignore cache + bundled and re-extract fresh
+  instagui <tool> --help-file <path>     extract from a captured help-text file
+  <tool> --help | instagui <tool>        or pipe help text on stdin
 
-Resolution precedence: --schema > user cache (~/.guiup) > bundled schemas > fresh extraction.
+Resolution precedence: --schema > user cache (~/.instagui) > bundled schemas > fresh extraction.
 The demo tools (ffmpeg, yt-dlp, pandoc) ship bundled Schemas, so they work with no API key.
 
 Options:
@@ -63,14 +63,14 @@ Options:
   --help-file <path>   read help text from a file instead of capturing (extraction only)
   --capture            force live capture (ignore piped stdin)
   --model <id>         extraction model (default: claude-haiku-4-5)
-  -v, --version        print the guiup version and exit
+  -v, --version        print the instagui version and exit
   -h, --help           show this message
 
 Examples:
-  guiup ffmpeg                        open a Form for ffmpeg (bundled — no key needed)
-  guiup yt-dlp --no-open              serve without launching a browser; print the URL
-  guiup mytool --print                just resolve and print the Schema as JSON
-  guiup mytool --schema ./mytool.json use a hand-tuned Schema, skip capture + AI
+  instagui ffmpeg                        open a Form for ffmpeg (bundled — no key needed)
+  instagui yt-dlp --no-open              serve without launching a browser; print the URL
+  instagui mytool --print                just resolve and print the Schema as JSON
+  instagui mytool --schema ./mytool.json use a hand-tuned Schema, skip capture + AI
 
 The server binds 127.0.0.1 only. Extraction needs ANTHROPIC_API_KEY (https://console.anthropic.com).
 Exit codes: 0 ok · 2 known failure · 1 unexpected.`;
@@ -133,7 +133,7 @@ async function main(): Promise<number> {
   // the key requirement surfaces exactly when it is genuinely needed.
   const extract = async () => {
     const { helpText, source } = await resolveHelpText(tool, values['help-file'], values.capture ?? false);
-    console.error(`guiup: help from ${source}`);
+    console.error(`instagui: help from ${source}`);
 
     // captureHelp throws on empty/no-help; only file/stdin can reach here empty.
     if (helpText.trim().length === 0) {
@@ -143,7 +143,7 @@ async function main(): Promise<number> {
     }
 
     if (!usingClaudeCode && !hasApiKey()) throw apiKeyOnboardingError();
-    if (usingClaudeCode) console.error(`guiup: using ${activeEngineName()} extraction engine`);
+    if (usingClaudeCode) console.error(`instagui: using ${activeEngineName()} extraction engine`);
 
     const { schema } = await extractSchema(helpText, tool, { model: values.model });
     return schema;
@@ -160,8 +160,8 @@ async function main(): Promise<number> {
     },
   );
 
-  console.error(`guiup: schema from ${result.source}`);
-  if (result.cachedTo) console.error(`guiup: cached to ${result.cachedTo}`);
+  console.error(`instagui: schema from ${result.source}`);
+  if (result.cachedTo) console.error(`instagui: cached to ${result.cachedTo}`);
 
   // --print keeps the Epic 1/2 behaviour: emit the Schema JSON and exit (no server).
   if (values.print) {
@@ -179,15 +179,15 @@ async function main(): Promise<number> {
   }
 
   const server = await startServer({ schema: result.schema, port });
-  console.error(`guiup: serving ${tool} form at ${server.url}`);
+  console.error(`instagui: serving ${tool} form at ${server.url}`);
   console.log(server.url); // the URL on stdout so it's scriptable / copyable
   if (!values['no-open']) openBrowser(server.url);
-  console.error('guiup: press Ctrl-C to stop.');
+  console.error('instagui: press Ctrl-C to stop.');
 
   // Hold the process open; shut the server down cleanly on Ctrl-C.
   await new Promise<void>((resolve) => {
     const shutdown = () => {
-      console.error('\nguiup: shutting down.');
+      console.error('\ninstagui: shutting down.');
       server.close().finally(resolve);
     };
     process.on('SIGINT', shutdown);
@@ -200,11 +200,11 @@ main()
   .then((code) => process.exit(code))
   .catch((err: unknown) => {
     if (err instanceof PreconditionError) {
-      console.error(`guiup: ${err.message}`);
+      console.error(`instagui: ${err.message}`);
       process.exit(err.exitCode);
     }
     // Unexpected: stack to stderr only, exit 1.
-    console.error('guiup: unexpected error');
+    console.error('instagui: unexpected error');
     console.error(err instanceof Error ? err.stack : String(err));
     process.exit(1);
   });

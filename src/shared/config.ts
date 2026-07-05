@@ -1,4 +1,4 @@
-// AD-3 — shared/ is guiup-agnostic. Config is limited to the two things the whole
+// AD-3 — shared/ is instagui-agnostic. Config is limited to the two things the whole
 // program shares: the API key and the on-disk data dir. No Tool/Schema/Form concepts.
 import os from 'node:os';
 import path from 'node:path';
@@ -12,8 +12,8 @@ export function hasApiKey(): boolean {
   return typeof v === 'string' && v.trim().length > 0;
 }
 
-/** The per-user data directory (`~/.guiup`). Used by the cache in Epic 2; defined here
+/** The per-user data directory (`~/.instagui`). Used by the cache in Epic 2; defined here
  *  so the boundary lives in one place. */
-export function guiupDir(): string {
-  return path.join(os.homedir(), '.guiup');
+export function instaguiDir(): string {
+  return path.join(os.homedir(), '.instagui');
 }

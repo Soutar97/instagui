@@ -1,7 +1,7 @@
 # Bundled demo schemas
 
 These are the read-only fallback schemas that let the demo tools work with **no API key**
-(Epic 2 / Story 2.3). Resolution precedence: `--schema` override → user cache (`~/.guiup`)
+(Epic 2 / Story 2.3). Resolution precedence: `--schema` override → user cache (`~/.instagui`)
 → **these bundled schemas** → fresh extraction. The user cache always wins; these files are
 never overwritten at runtime.
 
@@ -16,7 +16,7 @@ in the fixture) and a golden sanity check before it is written.
 ## ⚠️ Pending SDK/haiku regeneration (pre-publish gate)
 
 The committed schemas were generated with the **dev `claude-code` engine**
-(`GUIUP_ENGINE=claude-code`) so they could be produced keyless. Before publishing, they
+(`INSTAGUI_ENGINE=claude-code`) so they could be produced keyless. Before publishing, they
 must be **regenerated via the real SDK path on `claude-haiku-4-5`** and re-committed, so the
 shipped schemas reflect the same model users' fresh extractions will use. This shares the
 carried Epic 1 pre-publish gate (live SDK/haiku verification).
@@ -25,7 +25,7 @@ Regenerate:
 
 ```
 # keyless (dev engine) — current committed state
-GUIUP_ENGINE=claude-code npx tsx scripts/gen-bundled-schemas.ts
+INSTAGUI_ENGINE=claude-code npx tsx scripts/gen-bundled-schemas.ts
 
 # pre-publish (SDK / haiku) — required before shipping
 ANTHROPIC_API_KEY=sk-ant-... npx tsx scripts/gen-bundled-schemas.ts

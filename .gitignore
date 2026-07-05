@@ -10,16 +10,16 @@ dist/
 *.pem
 *.key
 
-# guiup runtime + debug artifacts
-.guiup/
-guiup-debug-*.json
+# instagui runtime + debug artifacts
+.instagui/
+instagui-debug-*.json
 
 # logs / misc
 *.log
 *.bak
 
 # local tooling — Claude Code config/skills and the BMAD authoring framework install
-# (not part of guiup; keep them out of the public repo)
+# (not part of instagui; keep them out of the public repo)
 .claude/
 _bmad/
 

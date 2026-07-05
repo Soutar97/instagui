@@ -20,7 +20,7 @@ function runKeyless(args: string[]) {
   return spawnSync(process.execPath, ['--import', 'tsx', CLI, ...args], {
     input: '',
     encoding: 'utf8',
-    env: { ...process.env, GUIUP_ENGINE: '', ANTHROPIC_API_KEY: '' },
+    env: { ...process.env, INSTAGUI_ENGINE: '', ANTHROPIC_API_KEY: '' },
   });
 }
 

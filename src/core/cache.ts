@@ -1,4 +1,4 @@
-// Story 2.1 — the user schema cache in ~/.guiup. A successful extraction is written here,
+// Story 2.1 — the user schema cache in ~/.instagui. A successful extraction is written here,
 // keyed by tool name, so repeat launches load instantly with zero capture and zero API
 // call. This is the WRITE target of the resolution chain; the packaged schemas/ dir
 // (Story 2.3) is a read-only fallback and is never written here.
@@ -7,7 +7,7 @@
 // unreadable/invalid file so the resolver falls through to bundled/extraction.
 import { mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
-import { guiupDir } from '../shared/config.js';
+import { instaguiDir } from '../shared/config.js';
 import { readSchemaFile } from './schema-file.js';
 import type { Schema } from './schema.js';
 
@@ -19,7 +19,7 @@ export function toolKey(tool: string): string {
 }
 
 /** Absolute path of the cache entry for `tool`. `dir` is injectable for tests. */
-export function cachePath(tool: string, dir: string = guiupDir()): string {
+export function cachePath(tool: string, dir: string = instaguiDir()): string {
   return path.join(dir, `${toolKey(tool)}.json`);
 }
 
@@ -28,16 +28,16 @@ export function cachePath(tool: string, dir: string = guiupDir()): string {
  * unreadable, non-JSON, or failing Schema.parse). Null means "cache miss" — the caller
  * falls through to the next resolution tier rather than crashing.
  */
-export function readCache(tool: string, dir: string = guiupDir()): Schema | null {
+export function readCache(tool: string, dir: string = instaguiDir()): Schema | null {
   const result = readSchemaFile(cachePath(tool, dir));
   return result.ok ? result.schema : null;
 }
 
 /**
- * Persist a validated Schema to the user cache, creating ~/.guiup if needed. Returns the
+ * Persist a validated Schema to the user cache, creating ~/.instagui if needed. Returns the
  * path written. Overwrites any existing entry (this is how --refresh re-caches).
  */
-export function writeCache(tool: string, schema: Schema, dir: string = guiupDir()): string {
+export function writeCache(tool: string, schema: Schema, dir: string = instaguiDir()): string {
   mkdirSync(dir, { recursive: true });
   const file = cachePath(tool, dir);
   writeFileSync(file, `${JSON.stringify(schema, null, 2)}\n`, 'utf8');

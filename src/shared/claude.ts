@@ -1,4 +1,4 @@
-// AD-3 — a guiup-agnostic Claude client: prompt + output shape in, raw JSON text out.
+// AD-3 — a instagui-agnostic Claude client: prompt + output shape in, raw JSON text out.
 // It knows nothing about Tools, Schemas, or Forms — it takes any zod object as the
 // output shape and returns the model's raw JSON string. Callers run their own
 // validation (core does Schema.parse), which keeps the invalid raw text available for
@@ -58,5 +58,5 @@ export async function complete(req: CompletionRequest, client?: ClaudeClient): P
 
 /** The completion seam every engine implements: prompt + output shape in, raw JSON
  *  text out. `complete` (SDK) is the primary implementation; the claude-code adapter is
- *  a dev-only alternative selected via GUIUP_ENGINE. */
+ *  a dev-only alternative selected via INSTAGUI_ENGINE. */
 export type CompleteFn = (req: CompletionRequest, client?: ClaudeClient) => Promise<string>;

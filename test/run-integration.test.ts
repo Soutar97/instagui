@@ -186,7 +186,7 @@ test('streaming + exit code: output streams over SSE and a non-zero exit is repo
 });
 
 test('ENOENT at run time: a missing binary yields a friendly message + a failed-start exit', async () => {
-  const bogus = 'guiup-nonexistent-binary-xyzzy';
+  const bogus = 'instagui-nonexistent-binary-xyzzy';
   const schema: Schema = { tool: bogus, summary: '', options: [], positionals: [] };
   const srv = await startServer({ schema, port: 0 });
   const origin = new URL(srv.url).origin;
