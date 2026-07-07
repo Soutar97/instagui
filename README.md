@@ -2,6 +2,8 @@
 
 **Any CLI. Instant GUI. One command.**
 
+As featured in [The Register](https://www.theregister.com/software/2026/07/07/new-tool-gives-clis-a-warm-and-gui-feeling-instead/5267798)
+
 Turn any command-line tool into a clean local web form — no config, no code changes to the tool.
 
 <!-- TODO(pre-launch): record and drop the money-demo GIF here.
