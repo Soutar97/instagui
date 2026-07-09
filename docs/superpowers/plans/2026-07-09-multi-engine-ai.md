@@ -11,19 +11,20 @@
 ## Global Constraints
 
 - **Node ≥ 22**, ESM. All intra-repo imports use `.js` specifiers (e.g. `./types.js`).
-- **Layer boundary (ESLint-enforced):** new code lives in `src/shared/engines/`; `shared` must not import from `core`/`server`/`cli`. `test/eslint-dep-rule.test.ts` must stay green.
+- **Layer boundary (ESLint-enforced, AD-2):** new code lives in `src/shared/engines/`; `shared` must not import from `core`/`server`/`cli`. `test/eslint-dep-rule.test.ts` must stay green. **Because engines need `PreconditionError` and `shared` cannot import `core`, the base `PreconditionError` is moved to `src/shared/errors.ts` and re-exported from `src/core/errors.ts` (see Task 2). Engine files import it from `../errors.js`; test files may keep importing from `../src/core/errors.js` (the re-export).**
 - **zod:** import from `'zod/v4'` (matches `src/core/schema.ts`); the `Schema`/`outputSchema` are zod v4 objects.
 - **Exit codes:** user-facing failures throw `PreconditionError` (exit 2) from `src/core/errors.js`. Never call `process.exit` outside `src/cli/`.
 - **Secrets:** API keys are read from env by name (`keyEnv`), never logged, never included in error messages or diagnostics.
 - **No-shell rule:** `cli` adapters spawn with an args array (`shell:false` where possible) and pass the prompt via stdin when `promptVia:'stdin'`; the existing `claude-code.ts` uses `shell:true` only for Windows `.cmd` resolution — preserve that exact behavior in the generalized adapter.
 - **Extraction contract unchanged:** an engine's `CompleteFn` returns *raw* model text (not validated). `core/extract.ts` keeps ownership of `Schema.parse` + one retry + debug-file.
-- **Test runner:** `node --import tsx --test "test/**/*.test.ts"`; single file: `node --import tsx --test test/<name>.test.ts`.
+- **Test runner:** full suite: `node --import tsx --test test/*.test.ts` (tests are flat in `test/`; `test/fixtures/` holds none). Single file: `node --import tsx --test test/<name>.test.ts`. NOTE: this environment is Node 20, and the `npm test` script's `**` glob only resolves on Node ≥22 — use the `test/*.test.ts` form. `npm run lint` and `npm run build` work as-is.
 
 ---
 
 ## File Structure
 
 **Create:**
+- `src/shared/errors.ts` — base `PreconditionError` (moved from `core/errors.ts`) so `shared/` throws it without an upward import (AD-2). Added in Task 2.
 - `src/shared/engines/types.ts` — `EngineKind`, `EngineDescriptor`, re-export `CompleteFn`.
 - `src/shared/engines/structured.ts` — `jsonSchemaText`, `schemaInstruction`, `extractJsonText` (shared structured-output helpers).
 - `src/shared/engines/config.ts` — load + zod-validate `~/.instagui/config.json` → `{ default?, engines }`.
@@ -35,6 +36,7 @@
 - Tests mirror each under `test/engines-*.test.ts`.
 
 **Modify:**
+- `src/core/errors.ts` — re-export `PreconditionError` from `../shared/errors.js`; keep `ToolNotFoundError`/`NoHelpError` extending it (so all existing importers are unaffected). Done in Task 2.
 - `src/shared/engine.ts` — `resolveComplete` delegates to the registry; keep `ENGINE_ENV`, `activeEngineName` back-compat.
 - `src/shared/claude-code.ts` — reduce to a thin re-export of the `cli` adapter's helpers (keep `INSTAGUI_ENGINE=claude-code` working).
 - `src/cli/index.ts` — add `--engine`, resolve selection, inject `opts.complete`, stderr diagnostics, `--engines` listing, updated `USAGE`.
@@ -278,7 +280,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { z } from 'zod/v4';
 import { instaguiDir } from '../config.js';
-import { PreconditionError } from '../../core/errors.js';
+import { PreconditionError } from '../errors.js';
 import type { EngineDescriptor } from './types.js';
 
 export const CONFIG_FILENAME = 'config.json';
@@ -530,7 +532,7 @@ Expected: FAIL — module not found.
 // as an EngineDescriptor adapter. Delegates to shared/claude.ts `complete` for the actual call
 // (server-enforced structured output via zodOutputFormat).
 import { complete, type CompletionRequest, type CompleteFn, type ClaudeClient } from '../claude.js';
-import { PreconditionError } from '../../core/errors.js';
+import { PreconditionError } from '../errors.js';
 import type { EngineDescriptor } from './types.js';
 
 function keyName(engine: EngineDescriptor): string {
@@ -683,7 +685,7 @@ Expected: FAIL — module not found.
 // is ALWAYS embedded in the user message so schema-poor endpoints still comply. Validation
 // stays in core/extract.ts (this returns raw text).
 import type { CompletionRequest, CompleteFn } from '../claude.js';
-import { PreconditionError } from '../../core/errors.js';
+import { PreconditionError } from '../errors.js';
 import { jsonSchemaText, schemaInstruction, extractJsonText } from './structured.js';
 import type { EngineDescriptor, StructuredMode } from './types.js';
 
@@ -877,7 +879,7 @@ Expected: FAIL — module not found.
 import { spawn } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
-import { PreconditionError } from '../../core/errors.js';
+import { PreconditionError } from '../errors.js';
 import { jsonSchemaText, schemaInstruction, extractJsonText } from './structured.js';
 import type { CompletionRequest, CompleteFn } from '../claude.js';
 import type { EngineDescriptor } from './types.js';
@@ -1099,7 +1101,7 @@ Expected: FAIL — module not found.
 // src/shared/engines/registry.ts — the one place that knows all engines: merges built-ins
 // with user config, resolves a name, auto-detects, applies selection precedence, and
 // dispatches an EngineDescriptor to the right adapter's CompleteFn.
-import { PreconditionError } from '../../core/errors.js';
+import { PreconditionError } from '../errors.js';
 import type { CompleteFn } from '../claude.js';
 import type { EngineDescriptor } from './types.js';
 import type { EngineConfig } from './config.js';
