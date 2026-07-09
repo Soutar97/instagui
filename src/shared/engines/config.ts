@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { z } from 'zod/v4';
 import { instaguiDir } from '../config.js';
-import { PreconditionError } from '../../core/errors.js';
+import { PreconditionError } from '../errors.js';
 import type { EngineDescriptor } from './types.js';
 
 export const CONFIG_FILENAME = 'config.json';
