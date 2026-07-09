@@ -2,6 +2,8 @@
 // (claude/codex/gemini, or `ollama` etc. via config) that is authenticated by the user's
 // own login. Generalizes the former shared/claude-code.ts. Prompt goes over stdin
 // (promptVia:'stdin') or as an argument (promptVia:'arg'); args are static flags only.
+// The default runner spawns WITHOUT a shell (shell:false) — promptVia:'arg' engines put the
+// (untrusted) prompt into argv, and a shell would interpret metacharacters in it.
 import { spawn } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
@@ -45,12 +47,31 @@ export function buildCliArgv(engine: EngineDescriptor, model: string, prompt: st
   return { argv, stdin: prompt };
 }
 
-/** Default runner: spawn with shell:true so a Windows `<bin>.cmd` shim resolves via PATHEXT
- *  (matches the former claude-code.ts). Args are static flags; when promptVia:'stdin' the
- *  prompt never touches the command line. */
+/** Resolve a binary to a concrete executable path via PATH (including Windows extensions), so
+ *  we can spawn WITHOUT a shell. shell:true would let untrusted prompt text in argv
+ *  (promptVia:'arg' — the prompt carries the target tool's --help text) break out via shell
+ *  metacharacters. No shell → argv is passed verbatim, never interpreted. On POSIX a bare name
+ *  also resolves via execvp, but we resolve explicitly so Windows finds a .cmd/.exe shim too. */
+function resolveBinaryPath(binary: string): string {
+  const dirs = (process.env.PATH ?? '').split(path.delimiter).filter(Boolean);
+  const exts = process.platform === 'win32' ? ['.cmd', '.exe', '.bat', ''] : [''];
+  for (const dir of dirs) {
+    for (const ext of exts) {
+      const full = path.join(dir, binary + ext);
+      if (existsSync(full)) return full;
+    }
+  }
+  return binary; // let spawn surface ENOENT if truly missing
+}
+
+/** Default runner: spawn WITHOUT a shell. Args are static flags; when promptVia:'stdin' the
+ *  prompt never touches the command line, and when promptVia:'arg' it is passed as a verbatim
+ *  argv element (never interpreted by a shell). */
 const defaultRun: RunCli = (binary, argv, stdin, timeoutMs) =>
   new Promise((resolve, reject) => {
-    const child = spawn(binary, argv, { shell: true });
+    // shell:false — the prompt may be an argv element (promptVia:'arg') and carries untrusted
+    // help text; a shell would interpret metacharacters in it. No shell → argv passed verbatim.
+    const child = spawn(resolveBinaryPath(binary), argv, { shell: false, windowsHide: true });
     let stdout = ''; let stderr = '';
     const timer = setTimeout(() => { child.kill(); reject(new PreconditionError(`${binary} timed out after ${timeoutMs}ms`)); }, timeoutMs);
     child.stdout.on('data', (d: Buffer) => (stdout += d.toString('utf8')));

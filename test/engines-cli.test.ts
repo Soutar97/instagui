@@ -55,3 +55,22 @@ test('availability + readiness follow PATH; missing binary → actionable error'
     return true;
   });
 });
+
+test('default runner does not shell-interpret an arg-mode prompt (injection guard)', async () => {
+  if (process.platform === 'win32') return; // POSIX-focused; Windows binary resolution differs
+  const { existsSync } = await import('node:fs');
+  const os = await import('node:os');
+  const path = await import('node:path');
+  const marker = path.join(os.tmpdir(), `instagui-injtest-${process.pid}-${process.hrtime.bigint()}.txt`);
+  // `--` stops node's flag parsing so model + prompt become plain argv; the script echoes the last arg.
+  const engine = {
+    name: 'probe', kind: 'cli', binary: 'node',
+    headlessArgs: ['-e', 'process.stdout.write(String(process.argv[process.argv.length - 1]))'],
+    modelFlag: '--', model: 'x', promptVia: 'arg',
+  } as const;
+  // Put a shell-injection payload in the user prompt; if a shell ran it, `marker` would be created.
+  const req2 = { model: 'x', system: 's', user: `hi"; touch ${marker}; echo "`, outputSchema: Demo };
+  const complete = createCliComplete(engine as unknown as EngineDescriptor, { onPath: () => true });
+  try { await complete(req2 as never); } catch { /* return value irrelevant; we assert the side effect */ }
+  assert.equal(existsSync(marker), false, 'shell metacharacters in the prompt must NOT execute');
+});
