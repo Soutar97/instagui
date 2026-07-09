@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  buildRegistry, resolveEngine, autodetect, selectEngine, describeEngines,
+  buildRegistry, resolveEngine, autodetect, selectEngine, describeEngines, createComplete,
 } from '../src/shared/engines/registry.js';
 import { PreconditionError } from '../src/core/errors.js';
 import type { EngineConfig } from '../src/shared/engines/config.js';
@@ -68,4 +68,29 @@ test('describeEngines reports availability per engine', () => {
   assert.equal(byName.openai.available, true);
   assert.equal(byName.gemini.available, true);
   assert.equal(byName.anthropic.available, false);
+});
+
+test('createComplete routes each kind to its adapter, asserting readiness first', () => {
+  const reg = buildRegistry({ engines: {} });
+  // anthropic kind, no key -> anthropic readiness error names the env var
+  assert.throws(() => createComplete(reg.anthropic, { env: {}, onPath: () => false }),
+    (e) => e instanceof PreconditionError && /ANTHROPIC_API_KEY/.test((e as Error).message));
+  // openai-compatible kind, no key -> openai readiness error names its keyEnv/endpoint (NOT a cli error)
+  assert.throws(() => createComplete(reg.openai, { env: {}, onPath: () => false }),
+    (e) => e instanceof PreconditionError && /OPENAI_API_KEY|api\.openai\.com/.test((e as Error).message));
+  // cli kind, binary not on PATH -> cli readiness error names the binary
+  assert.throws(() => createComplete(reg.claude, { env: {}, onPath: () => false }),
+    (e) => e instanceof PreconditionError && /claude/.test((e as Error).message));
+});
+
+test('createComplete returns a callable CompleteFn for a ready engine', () => {
+  const reg = buildRegistry({ engines: {} });
+  const fn = createComplete(reg.anthropic, { env: { ANTHROPIC_API_KEY: 'sk' }, onPath: () => false });
+  assert.equal(typeof fn, 'function');
+});
+
+test('createComplete throws a clear error for an unsupported engine kind', () => {
+  const bogus = { name: 'bogus', kind: 'quantum' } as unknown as import('../src/shared/engines/types.js').EngineDescriptor;
+  assert.throws(() => createComplete(bogus, { env: {}, onPath: () => false }),
+    (e) => e instanceof PreconditionError && /unsupported kind|quantum/.test((e as Error).message));
 });

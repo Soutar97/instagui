@@ -39,7 +39,8 @@ export function engineAvailable(engine: EngineDescriptor, deps: SelectDeps = {})
   const env = deps.env ?? process.env;
   if (engine.kind === 'anthropic') return anthropicAvailable(engine, env);
   if (engine.kind === 'openai-compatible') return openaiAvailable(engine, env);
-  return cliAvailable(engine, { onPath: deps.onPath });
+  if (engine.kind === 'cli') return cliAvailable(engine, { onPath: deps.onPath });
+  return false;
 }
 
 export function autodetect(
@@ -85,8 +86,8 @@ export function createComplete(engine: EngineDescriptor, deps: SelectDeps = {}):
   const env = deps.env ?? process.env;
   if (engine.kind === 'anthropic') { assertAnthropicReady(engine, env); return createAnthropicComplete(engine); }
   if (engine.kind === 'openai-compatible') { assertOpenAIReady(engine, env); return createOpenAIComplete(engine, { env }); }
-  assertCliReady(engine, { onPath: deps.onPath });
-  return createCliComplete(engine, { onPath: deps.onPath });
+  if (engine.kind === 'cli') { assertCliReady(engine, { onPath: deps.onPath }); return createCliComplete(engine, { onPath: deps.onPath }); }
+  throw new PreconditionError(`Engine "${engine.name}" has an unsupported kind "${engine.kind}".`);
 }
 
 export function describeEngines(
