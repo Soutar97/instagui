@@ -58,19 +58,27 @@ test('availability + readiness follow PATH; missing binary → actionable error'
 
 test('default runner does not shell-interpret an arg-mode prompt (injection guard)', async () => {
   if (process.platform === 'win32') return; // POSIX-focused; Windows binary resolution differs
-  const { existsSync } = await import('node:fs');
+  const { existsSync, rmSync } = await import('node:fs');
   const os = await import('node:os');
-  const path = await import('node:path');
-  const marker = path.join(os.tmpdir(), `instagui-injtest-${process.pid}-${process.hrtime.bigint()}.txt`);
-  // `--` stops node's flag parsing so model + prompt become plain argv; the script echoes the last arg.
-  const engine = {
-    name: 'probe', kind: 'cli', binary: 'node',
-    headlessArgs: ['-e', 'process.stdout.write(String(process.argv[process.argv.length - 1]))'],
-    modelFlag: '--', model: 'x', promptVia: 'arg',
-  } as const;
-  // Put a shell-injection payload in the user prompt; if a shell ran it, `marker` would be created.
-  const req2 = { model: 'x', system: 's', user: `hi"; touch ${marker}; echo "`, outputSchema: Demo };
-  const complete = createCliComplete(engine as unknown as EngineDescriptor, { onPath: () => true });
-  try { await complete(req2 as never); } catch { /* return value irrelevant; we assert the side effect */ }
-  assert.equal(existsSync(marker), false, 'shell metacharacters in the prompt must NOT execute');
+  const pathMod = await import('node:path');
+  const { z } = await import('zod/v4');
+  type Eng = import('../src/shared/engines/types.js').EngineDescriptor;
+
+  const marker = pathMod.join(os.tmpdir(), `instagui-injtest-${process.pid}-${process.hrtime.bigint()}.txt`);
+  try { rmSync(marker, { force: true }); } catch { /* ignore */ }
+
+  // `echo` has no metacharacter args of its own, so nothing syntax-errors before the payload.
+  // buildCliArgv -> argv = ['--', 'x', <composed prompt>]; the prompt is the last arg.
+  const engine = { name: 'probe', kind: 'cli', binary: 'echo', headlessArgs: [], modelFlag: '--', model: 'x', promptVia: 'arg' } as unknown as Eng;
+  const Demo = z.object({ tool: z.string() });
+  // A newline-delimited command in the prompt: under a shell it runs as its own line BEFORE the
+  // trailing JSON-schema braces are parsed; with shell:false it is inert literal argv text.
+  const req = { model: 'x', system: 's', user: `\ntouch ${marker}\n`, outputSchema: Demo };
+
+  const complete = createCliComplete(engine, { onPath: () => true });
+  try { await complete(req as never); } catch { /* return value irrelevant; assert the side effect */ }
+
+  const created = existsSync(marker);
+  try { rmSync(marker, { force: true }); } catch { /* ignore */ }
+  assert.equal(created, false, 'a shell metacharacter/command in the prompt must NOT execute');
 });
