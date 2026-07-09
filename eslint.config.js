@@ -6,7 +6,9 @@ import tseslint from 'typescript-eslint';
 //   core/   imports only shared/ (+ externals).
 //   server/ + cli/ sit on top.
 export default tseslint.config(
-  { ignores: ['dist/**', 'node_modules/**'] },
+  // Product source only. The gitignored local dev-tooling dirs (BMAD authoring framework,
+  // bmad-loop orchestrator state, Claude Code config) are not instagui code — never lint them.
+  { ignores: ['dist/**', 'node_modules/**', '_bmad/**', '.bmad-loop/**', '.claude/**'] },
   ...tseslint.configs.recommended,
   {
     files: ['src/shared/**/*.ts'],
