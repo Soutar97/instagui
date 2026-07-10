@@ -14,13 +14,23 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const CLI = path.join(here, '..', 'src', 'cli', 'index.ts');
 const ffmpegHelp = path.join(here, 'fixtures', 'ffmpeg-help.txt');
 
-/** Run the CLI with no API key and the default (SDK) engine, so the extraction tier would
- *  genuinely need a key. Never reads stdin (guards against a hang). */
+/** Run the CLI with no API key, no engine selection, and no subscription CLI on PATH, so the
+ *  extraction tier would genuinely have no usable engine. PATH is scrubbed (not just unset env
+ *  vars) so this is deterministic even on a machine that happens to have `claude`/`codex`/
+ *  `gemini` installed (auto-detect would otherwise pick one up and shell out for real).
+ *  Never reads stdin (guards against a hang). */
 function runKeyless(args: string[]) {
   return spawnSync(process.execPath, ['--import', 'tsx', CLI, ...args], {
     input: '',
     encoding: 'utf8',
-    env: { ...process.env, INSTAGUI_ENGINE: '', ANTHROPIC_API_KEY: '' },
+    env: {
+      ...process.env,
+      INSTAGUI_ENGINE: '',
+      ANTHROPIC_API_KEY: '',
+      OPENAI_API_KEY: '',
+      GEMINI_API_KEY: '',
+      PATH: '',
+    },
   });
 }
 
@@ -35,12 +45,18 @@ test('onboarding error: exit 2, actionable, both Windows and POSIX syntax, never
   assert.doesNotMatch(err.message, /sk-ant-[A-Za-z0-9]{6,}/); // no real-looking key echoed
 });
 
-test('CLI: key missing AND genuinely needed (no override/cache/bundled) → friendly exit 2, no stack, no API call', () => {
+// Since Task 9 (multi-engine CLI wiring), the extraction tier resolves an AI *engine* rather
+// than requiring ANTHROPIC_API_KEY specifically — so with no flag/env/config default and
+// nothing auto-detectable (no keys, no subscription CLI on PATH), the error comes from
+// resolveEngineSelection(), not apiKeyOnboardingError() directly. It stays friendly, exit 2,
+// names the env vars, and points at `instagui --engines` — the "core meaning" is unchanged.
+test('CLI: no engine resolvable (no key, no CLI, no override/cache/bundled) → friendly exit 2, no stack, no API call', () => {
   const r = runKeyless(['zzz-not-a-bundled-tool-xyz', '--help-file', ffmpegHelp]);
   assert.equal(r.status, 2);
   assert.equal(r.stdout.trim(), ''); // no schema emitted
   assert.match(r.stderr, /API key/i);
-  assert.match(r.stderr, /export ANTHROPIC_API_KEY=|\$env:ANTHROPIC_API_KEY=/);
+  assert.match(r.stderr, /ANTHROPIC_API_KEY/);
+  assert.match(r.stderr, /instagui --engines/);
   assert.doesNotMatch(r.stderr, /unexpected error/);
   assert.doesNotMatch(r.stderr, /\n\s+at /); // friendly, not a stack
 });

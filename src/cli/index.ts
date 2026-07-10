@@ -17,14 +17,10 @@ import { resolveSchema } from '../core/resolve.js';
 import { readCache, writeCache } from '../core/cache.js';
 import { readBundled } from '../core/bundled.js';
 import { loadOverrideSchema } from '../core/override.js';
-import { apiKeyOnboardingError } from '../core/onboarding.js';
 import { PreconditionError } from '../core/errors.js';
-import { hasApiKey } from '../shared/config.js';
-import { activeEngineName, ENGINE_ENV } from '../shared/engine.js';
+import { resolveEngineSelection } from '../shared/engine.js';
 import { startServer } from '../server/server.js';
 import { openBrowser } from '../server/browser.js';
-
-const usingClaudeCode = process.env[ENGINE_ENV] === 'claude-code';
 
 /** Our own version, read from the shipped package.json (works from both dist/ and src/ — the
  *  relative path to the package root is the same). We parse everyone else's help text; our own
@@ -63,6 +59,9 @@ Options:
   --help-file <path>   read help text from a file instead of capturing (extraction only)
   --capture            force live capture (ignore piped stdin)
   --model <id>         extraction model (default: claude-haiku-4-5)
+  --engine <name>      AI engine: anthropic | openai | google | ollama | claude | codex | gemini
+                       | any engine in ~/.instagui/config.json. Default: auto-detect.
+  --engines            list available engines and whether each is ready, then exit
   -v, --version        print the instagui version and exit
   -h, --help           show this message
 
@@ -72,7 +71,8 @@ Examples:
   instagui mytool --print                just resolve and print the Schema as JSON
   instagui mytool --schema ./mytool.json use a hand-tuned Schema, skip capture + AI
 
-The server binds 127.0.0.1 only. Extraction needs ANTHROPIC_API_KEY (https://console.anthropic.com).
+The server binds 127.0.0.1 only. Extraction uses your selected AI engine (--engine / INSTAGUI_ENGINE /
+~/.instagui/config.json / auto-detect). Run \`instagui --engines\` to see options.
 Exit codes: 0 ok · 2 known failure · 1 unexpected.`;
 
 async function readStdin(): Promise<string> {
@@ -111,6 +111,8 @@ async function main(): Promise<number> {
       print: { type: 'boolean' },
       port: { type: 'string' },
       'no-open': { type: 'boolean' },
+      engine: { type: 'string' },
+      engines: { type: 'boolean' },
       version: { type: 'boolean', short: 'v' },
       help: { type: 'boolean', short: 'h' },
     },
@@ -121,6 +123,18 @@ async function main(): Promise<number> {
     return 0;
   }
 
+  if (values.engines) {
+    const { buildRegistry, describeEngines } = await import('../shared/engines/registry.js');
+    const { loadEngineConfig } = await import('../shared/engines/config.js');
+    const rows = describeEngines(buildRegistry(loadEngineConfig()));
+    console.log('Available instagui AI engines (● = ready now):\n');
+    for (const r of rows) {
+      console.log(`  ${r.available ? '●' : '○'} ${r.name.padEnd(10)} ${r.kind.padEnd(18)} ${r.detail}`);
+    }
+    console.log('\nSelect with --engine <name>, INSTAGUI_ENGINE=<name>, or a "default" in ~/.instagui/config.json.');
+    return 0;
+  }
+
   if (values.help || positionals.length === 0) {
     console.log(USAGE);
     return values.help ? 0 : 2;
@@ -128,9 +142,9 @@ async function main(): Promise<number> {
 
   const tool = positionals[0]!;
 
-  // The extraction tier: capture help, require a key (unless the dev engine is active), and
-  // run the AI. Only reached when override/cache/bundled all miss (or --refresh is set), so
-  // the key requirement surfaces exactly when it is genuinely needed.
+  // The extraction tier: capture help, resolve an AI engine, and run it. Only reached when
+  // override/cache/bundled all miss (or --refresh is set), so engine readiness (a key, a
+  // logged-in CLI, etc.) is only required exactly when it is genuinely needed.
   const extract = async () => {
     const { helpText, source } = await resolveHelpText(tool, values['help-file'], values.capture ?? false);
     console.error(`instagui: help from ${source}`);
@@ -142,10 +156,11 @@ async function main(): Promise<number> {
       );
     }
 
-    if (!usingClaudeCode && !hasApiKey()) throw apiKeyOnboardingError();
-    if (usingClaudeCode) console.error(`instagui: using ${activeEngineName()} extraction engine`);
+    // Resolve the AI engine (throws a friendly PreconditionError if none is usable).
+    const selection = resolveEngineSelection({ flag: values.engine });
+    console.error(`instagui: extracting via ${selection.engine} (${selection.reason})`);
 
-    const { schema } = await extractSchema(helpText, tool, { model: values.model });
+    const { schema } = await extractSchema(helpText, tool, { model: values.model, complete: selection.complete });
     return schema;
   };
 
