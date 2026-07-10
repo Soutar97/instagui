@@ -56,8 +56,8 @@ test('availability + readiness follow PATH; missing binary → actionable error'
   });
 });
 
-test('default runner does not shell-interpret an arg-mode prompt (injection guard)', async () => {
-  if (process.platform === 'win32') return; // POSIX-focused; Windows binary resolution differs
+test('default runner does not shell-interpret an arg-mode prompt (injection guard)', async (t) => {
+  if (process.platform === 'win32') return t.skip('POSIX-only: Windows binary resolution differs');
   const { existsSync, rmSync } = await import('node:fs');
   const os = await import('node:os');
   const pathMod = await import('node:path');

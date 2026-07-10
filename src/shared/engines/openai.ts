@@ -81,7 +81,8 @@ export function createOpenAIComplete(engine: EngineDescriptor, deps: OpenAIDeps 
       throw new PreconditionError(`Request to ${engine.name} (${url}) failed: ${(e as Error).message}`);
     }
     if (!res.ok) {
-      const detail = (await res.text().catch(() => '')).slice(0, 500);
+      let detail = (await res.text().catch(() => '')).slice(0, 500);
+      if (key) detail = detail.split(key).join('[redacted]');
       throw new PreconditionError(`Engine "${engine.name}" returned HTTP ${res.status} from ${url}. ${detail}`);
     }
     const data = (await res.json()) as { choices?: Array<{ message?: { content?: string } }> };

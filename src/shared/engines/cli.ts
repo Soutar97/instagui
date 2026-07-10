@@ -14,6 +14,8 @@ import type { EngineDescriptor } from './types.js';
 
 const DEFAULT_TIMEOUT_MS = 180_000;
 
+const BINARY_EXTS = process.platform === 'win32' ? ['.cmd', '.exe', '.bat', ''] : [''];
+
 export type RunCli = (
   binary: string, argv: string[], stdin: string, timeoutMs: number,
 ) => Promise<{ stdout: string; stderr: string; code: number | null }>;
@@ -54,9 +56,8 @@ export function buildCliArgv(engine: EngineDescriptor, model: string, prompt: st
  *  also resolves via execvp, but we resolve explicitly so Windows finds a .cmd/.exe shim too. */
 function resolveBinaryPath(binary: string): string {
   const dirs = (process.env.PATH ?? '').split(path.delimiter).filter(Boolean);
-  const exts = process.platform === 'win32' ? ['.cmd', '.exe', '.bat', ''] : [''];
   for (const dir of dirs) {
-    for (const ext of exts) {
+    for (const ext of BINARY_EXTS) {
       const full = path.join(dir, binary + ext);
       if (existsSync(full)) return full;
     }
@@ -85,8 +86,7 @@ const defaultRun: RunCli = (binary, argv, stdin, timeoutMs) =>
 function onPathDefault(binary: string): boolean {
   // Best-effort: probe PATH entries for the binary (or a Windows shim). No spawn.
   const dirs = (process.env.PATH ?? '').split(path.delimiter).filter(Boolean);
-  const exts = process.platform === 'win32' ? ['', '.exe', '.cmd', '.bat'] : [''];
-  return dirs.some((dir) => exts.some((ext) => existsSync(path.join(dir, binary + ext))));
+  return dirs.some((dir) => BINARY_EXTS.some((ext) => existsSync(path.join(dir, binary + ext))));
 }
 
 export function cliAvailable(engine: EngineDescriptor, deps: CliDeps = {}): boolean {

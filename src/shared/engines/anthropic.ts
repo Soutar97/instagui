@@ -10,7 +10,7 @@ function keyName(engine: EngineDescriptor): string {
 }
 
 export function anthropicAvailable(engine: EngineDescriptor, env: NodeJS.ProcessEnv = process.env): boolean {
-  if (engine.key) return true;
+  if (engine.key) return engine.key.trim().length > 0;
   const v = env[keyName(engine)];
   return typeof v === 'string' && v.trim().length > 0;
 }

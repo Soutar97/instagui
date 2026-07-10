@@ -17,14 +17,16 @@ export interface EngineSelection {
 /** Resolve the full engine selection. `flag` is the --engine value; env + PATH come via deps
  *  (defaults to the real process env). configDir is injectable for tests. */
 export function resolveEngineSelection(
-  opts: { flag?: string; configDir?: string } = {}, deps: SelectDeps = {},
+  opts: { flag?: string; configDir?: string; modelOverride?: string } = {}, deps: SelectDeps = {},
 ): EngineSelection {
   const env = deps.env ?? process.env;
   const config = loadEngineConfig(opts.configDir);
   const { engine, reason } = selectEngine(
     { flag: opts.flag, envName: env[ENGINE_ENV], config }, deps,
   );
-  return { engine: engine.name, reason, complete: createComplete(engine, deps) };
+  // An explicit --model overrides the selected engine's default model for this run only.
+  const resolved = opts.modelOverride ? { ...engine, model: opts.modelOverride } : engine;
+  return { engine: engine.name, reason, complete: createComplete(resolved, deps) };
 }
 
 /** Back-compat: env-only resolution returning just the CompleteFn. */

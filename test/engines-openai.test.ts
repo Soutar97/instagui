@@ -61,6 +61,19 @@ test('non-2xx response → PreconditionError with status, no secret leak', async
   );
 });
 
+test('non-2xx response body containing the key is redacted, not leaked', async () => {
+  const fetchFn = (async () => jsonResponse({ error: 'bad key sk-secret' }, 401)) as unknown as typeof fetch;
+  await assert.rejects(
+    () => createOpenAIComplete(openai, { fetchFn, env: { OPENAI_API_KEY: 'sk-secret' } })(req),
+    (e: unknown) => {
+      assert.ok(e instanceof PreconditionError);
+      assert.doesNotMatch(e.message, /sk-secret/);
+      assert.match(e.message, /\[redacted\]/);
+      return true;
+    },
+  );
+});
+
 test('availability + readiness follow key presence (local baseURL is always ready)', () => {
   assert.equal(openaiAvailable(openai, { OPENAI_API_KEY: 'x' }), true);
   assert.equal(openaiAvailable(openai, {}), false);

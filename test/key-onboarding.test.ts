@@ -7,6 +7,8 @@ import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { mkdtempSync } from 'node:fs';
+import os from 'node:os';
 import { apiKeyOnboardingError } from '../src/core/onboarding.js';
 import { PreconditionError } from '../src/core/errors.js';
 
@@ -17,9 +19,11 @@ const ffmpegHelp = path.join(here, 'fixtures', 'ffmpeg-help.txt');
 /** Run the CLI with no API key, no engine selection, and no subscription CLI on PATH, so the
  *  extraction tier would genuinely have no usable engine. PATH is scrubbed (not just unset env
  *  vars) so this is deterministic even on a machine that happens to have `claude`/`codex`/
- *  `gemini` installed (auto-detect would otherwise pick one up and shell out for real).
- *  Never reads stdin (guards against a hang). */
+ *  `gemini` installed (auto-detect would otherwise pick one up and shell out for real). HOME
+ *  (and USERPROFILE on Windows) point at a fresh empty temp dir so the child never reads the
+ *  real ~/.instagui/config.json. Never reads stdin (guards against a hang). */
 function runKeyless(args: string[]) {
+  const home = mkdtempSync(path.join(os.tmpdir(), 'instagui-home-'));
   return spawnSync(process.execPath, ['--import', 'tsx', CLI, ...args], {
     input: '',
     encoding: 'utf8',
@@ -30,6 +34,8 @@ function runKeyless(args: string[]) {
       OPENAI_API_KEY: '',
       GEMINI_API_KEY: '',
       PATH: '',
+      HOME: home,
+      USERPROFILE: home,
     },
   });
 }

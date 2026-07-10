@@ -157,10 +157,10 @@ async function main(): Promise<number> {
     }
 
     // Resolve the AI engine (throws a friendly PreconditionError if none is usable).
-    const selection = resolveEngineSelection({ flag: values.engine });
+    const selection = resolveEngineSelection({ flag: values.engine, modelOverride: values.model });
     console.error(`instagui: extracting via ${selection.engine} (${selection.reason})`);
 
-    const { schema } = await extractSchema(helpText, tool, { model: values.model, complete: selection.complete });
+    const { schema } = await extractSchema(helpText, tool, { complete: selection.complete });
     return schema;
   };
 
