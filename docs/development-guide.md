@@ -5,9 +5,12 @@ _Generated: 2026-07-09 · Deep scan_
 ## Prerequisites
 
 - **Node.js ≥ 22** (`package.json` `engines`). Uses `node:util` `parseArgs`, `node:test`, ESM.
-- **`ANTHROPIC_API_KEY`** — only needed for **fresh extraction** (a new, non-bundled tool with no
-  cache). The demo tools (ffmpeg, yt-dlp, pandoc), a cache hit, or `--schema` need no key.
-  Get one at <https://console.anthropic.com/settings/keys>; `export ANTHROPIC_API_KEY="sk-ant-..."`.
+- **An AI engine** — only needed for **fresh extraction** (a new, non-bundled tool with no cache).
+  The demo tools (ffmpeg, yt-dlp, pandoc), a cache hit, or `--schema` need no engine. By default
+  instagui auto-detects: `ANTHROPIC_API_KEY` (get one at
+  <https://console.anthropic.com/settings/keys>; `export ANTHROPIC_API_KEY="sk-ant-..."`) works out
+  of the box, or log into the `claude`/`codex`/`gemini` CLI. See `--engine` / `--engines` below and
+  `docs/superpowers/specs/2026-07-09-multi-engine-ai-design.md` for the full selection model.
 
 ## Install
 
@@ -42,13 +45,32 @@ echo "$(mytool --help)" | npx tsx src/cli/index.ts mytool   # pipe help on stdin
 ```
 
 Useful flags (see `USAGE` in `src/cli/index.ts`): `--print`, `--schema <path>`, `--refresh`,
-`--help-file <path>`, `--capture`, `--model <id>`, `--port <n>`, `--no-open`, `-v/--version`, `-h/--help`.
+`--help-file <path>`, `--capture`, `--model <id>`, `--port <n>`, `--no-open`, `--engine <name>`,
+`--engines`, `-v/--version`, `-h/--help`.
 
-### Dev engine (extract without an API key)
+### Choosing an engine in development
 
-`INSTAGUI_ENGINE=claude-code` routes extraction through a headless Claude Code adapter
-(`src/shared/claude-code.ts`) instead of the Anthropic SDK — a test harness for running extraction
-without a key. Any other value (or unset) uses the SDK.
+- **`--engine <name>`** — pick an engine explicitly for one run: `anthropic`, `openai`, `google`,
+  `ollama` (API kinds) or `claude`, `codex`, `gemini` (subscription CLIs), or any name defined in
+  `~/.instagui/config.json`.
+- **`instagui --engines`** — lists every registered engine, its kind, and whether it's ready right
+  now (key present / CLI on `PATH`). Handy for checking what a fresh shell will auto-detect.
+- **`INSTAGUI_ENGINE=claude-code`** still works — it's a back-compat alias for `--engine claude`
+  (the `claude` CLI adapter, no API key needed, just `claude` logged in once). Any other
+  `INSTAGUI_ENGINE` value is treated as an engine name.
+- **`~/.instagui/config.json`** — add engines (e.g. `kimi`/Moonshot, a self-hosted vLLM endpoint),
+  override a built-in's model, or set a `default` engine used when no flag/env selects one. Merged
+  **over** the built-ins registered in `src/shared/engines/builtins.ts` (same name overrides). See
+  the README's [Choosing an AI engine](../README.md#choosing-an-ai-engine) section for the example
+  file and `docs/superpowers/specs/2026-07-09-multi-engine-ai-design.md` §4–§6 for the full
+  precedence and auto-detect rules.
+- New env keys (`OPENAI_API_KEY`, `GEMINI_API_KEY`, `MOONSHOT_API_KEY`, …) are each read only by
+  the engine whose `keyEnv` names them (`src/shared/engines/openai.ts`) — setting one has no effect
+  unless that engine is selected or wins auto-detect.
+
+Selection precedence end-to-end: `--engine` flag > `INSTAGUI_ENGINE` env > config `default` >
+auto-detect (a set API key wins over a logged-in CLI — see `src/shared/engines/registry.ts`
+`selectEngine`/`autodetect`).
 
 ## Regenerate bundled demo schemas
 
@@ -71,8 +93,9 @@ runtime — fresh user extractions are written to `~/.instagui`, never here.
 - **Execution safety**: never build a shell string — always spawn with an args array (`shell:false`).
 - **Dependency injection for testability**: spawn/runner, Claude client, completion fn, and cache dir
   are all injectable. Prefer injecting a fake over touching the real process/API/filesystem in tests.
-- **The API key is never read, logged, or sent to the browser.** Only `shared/config.ts` touches its
-  presence.
+- **Engine API keys are never logged or sent to the browser.** Each engine adapter in
+  `src/shared/engines/` reads only the env var its `keyEnv` names, and only checks presence —
+  never logs the value.
 
 ## Where things live
 
@@ -82,6 +105,9 @@ runtime — fresh user extractions are written to `~/.instagui`, never here.
 - Change **capture fallbacks** → `core/capture.ts` (`DEFAULT_ARG_SETS`, `isUsableHelp`, `tryMan`).
 - Change the **extraction prompt/model** → `core/extract.ts` (`SYSTEM_PROMPT`, `DEFAULT_MODEL`).
 - Add a **server route** → `server/server.ts` `handle()` (mind CSRF for state-changing routes).
+- Add/change an **AI engine** → `src/shared/engines/builtins.ts` (built-in registration) and the
+  relevant adapter (`anthropic.ts` / `openai.ts` / `cli.ts`); selection precedence and auto-detect
+  live in `src/shared/engines/registry.ts`.
 
 ## Build/publish notes
 

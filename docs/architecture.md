@@ -71,16 +71,34 @@ to the model than an omitted key.
 
 ## The AI seam (AD-3)
 
-- `shared/claude.ts` — a instagui-agnostic client: `complete(req, client?)` takes any Zod object as
-  the output shape and returns the model's **raw JSON string** (not validated here). Callers run
-  their own `Schema.parse`, which keeps the invalid raw text available for debugging.
-- `shared/engine.ts` — engine selection. The SDK path is primary/default. `INSTAGUI_ENGINE=claude-code`
-  opts into a dev-only headless Claude Code adapter (`shared/claude-code.ts`) for running extraction
-  without an API key (test harness).
-- Default extraction model: **`claude-haiku-4-5`** (`core/extract.ts` `DEFAULT_MODEL`), overridable
-  via `--model`.
+`core/extract.ts` is **engine-agnostic and unchanged** by the multi-engine work: it still accepts
+an injected `opts.complete` (`CompleteFn`: prompt + output shape in → raw JSON text out, not
+validated there) and runs `Schema.parse` + one retry + debug-file regardless of which engine
+produced the text. Everything engine-specific lives under `src/shared/`, keeping the `core →
+shared` layer boundary intact. Full design/rationale:
+[docs/superpowers/specs/2026-07-09-multi-engine-ai-design.md](./superpowers/specs/2026-07-09-multi-engine-ai-design.md).
+
+- `shared/engines/` — a config-driven **engine registry** with three adapter *kinds*:
+  - `anthropic` — Claude via the Anthropic SDK (`shared/claude.ts`), auth via `ANTHROPIC_API_KEY`.
+  - `openai-compatible` — any `POST /chat/completions` endpoint (OpenAI, Gemini's OpenAI-compat
+    endpoint, Ollama, Moonshot/Kimi, etc.), fetch-based and fetch-injectable for tests.
+  - `cli` — subscription shell-out (`claude`, `codex`, `gemini` CLIs), prompt piped over stdin,
+    auth via the CLI's own login.
+  - Built-ins (`anthropic`, `openai`, `google`, `ollama`, `claude`, `codex`, `gemini`) are
+    registered in code (`shared/engines/builtins.ts`); a user's `~/.instagui/config.json` is
+    zod-validated and merged **over** them by name (`shared/engines/config.ts`,
+    `shared/engines/registry.ts`).
+- `shared/engine.ts` — the selection entry point (`resolveEngineSelection`). **Precedence** (first
+  hit wins): `--engine <name>` flag → `INSTAGUI_ENGINE` env (`claude-code` is a back-compat alias
+  for the `claude` cli engine) → config `default` → **auto-detect** (an engine whose API key env is
+  set, in order `anthropic` → `openai` → `google`; else a logged-in CLI on `PATH`, in order `claude`
+  → `codex` → `gemini` — a set key always wins over a CLI). An unresolvable name or no usable engine
+  is a `PreconditionError` (exit 2) listing available engines.
+- Default extraction model: **`claude-haiku-4-5`** for the `anthropic` engine (`core/extract.ts`
+  `DEFAULT_MODEL`), overridable via `--model`; other engines default per their own config.
 - Robustness: exactly one retry on malformed output, then the raw output is written to a
-  `instagui-debug-<tool>-<ts>.json` file and a `PreconditionError` (exit 2) is thrown.
+  `instagui-debug-<tool>-<ts>.json` file and a `PreconditionError` (exit 2) is thrown — unchanged,
+  applies regardless of engine.
 
 ## Execution model (AD-5 / AD-6)
 
@@ -97,8 +115,10 @@ to the model than an omitted key.
 - Server binds **`127.0.0.1` only** (NFR-2) — never a public interface.
 - State-changing routes (`/run`, `/stop`) **fail closed** on a missing/mismatched `Origin` (CSRF, AD-6).
 - Request bodies capped at 512 KB (413 on exceed).
-- The API key lives only in `shared/config.ts` (env `ANTHROPIC_API_KEY`); it never reaches the page —
-  only the Schema and tool name are served. Key presence is checked but its value is never read/logged.
+- Engine API keys are read from the environment variable each engine's `keyEnv` names (e.g.
+  `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`) by that engine's adapter in `shared/engines/`; a key
+  never reaches the page — only the Schema and tool name are served, and a key's presence is
+  checked but its value is never read into a log.
 - Help capture runs under a 10s timeout and 1 MB output cap so a misbehaving tool can't hang the launch.
 
 ## Testing strategy
