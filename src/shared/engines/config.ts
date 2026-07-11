@@ -15,7 +15,8 @@ const EngineEntry = z.object({
   model: z.string().optional(),
   baseURL: z.string().optional(),
   keyEnv: z.string().optional(),
-  key: z.string().optional(),
+  // NOTE: no `key` field. A raw API key must never live on disk — reference an environment
+  // variable via `keyEnv` instead. loadEngineConfig() rejects a config that sets a plaintext key.
   structuredOutput: z.enum(['auto', 'json_schema', 'json_object', 'none']).optional(),
   binary: z.string().optional(),
   headlessArgs: z.array(z.string()).optional(),
@@ -52,6 +53,19 @@ export function loadEngineConfig(dir: string = instaguiDir()): EngineConfig {
     json = JSON.parse(raw);
   } catch (e) {
     throw new PreconditionError(`${file} is not valid JSON: ${(e as Error).message}`);
+  }
+  // Fail closed on a plaintext key on disk. Zod would silently strip an unknown `key`; we reject
+  // it loudly so the user is told to use an env var (keyEnv) instead — no secret ever sits in the file.
+  const engines = (json as { engines?: Record<string, unknown> } | null)?.engines;
+  if (engines && typeof engines === 'object') {
+    for (const [name, entry] of Object.entries(engines)) {
+      if (entry && typeof entry === 'object' && 'key' in entry) {
+        throw new PreconditionError(
+          `${file}: engine "${name}" sets a plaintext "key". instagui never reads a raw API key from disk. ` +
+            `Put the key in an environment variable and reference it with "keyEnv" (e.g. "keyEnv": "OPENAI_API_KEY").`,
+        );
+      }
+    }
   }
   const parsed = ConfigShape.safeParse(json);
   if (!parsed.success) {

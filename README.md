@@ -111,7 +111,8 @@ model, or set a `default` engine, create `~/.instagui/config.json`:
 ```
 
 `engines` entries are merged **over** the built-ins (same name overrides). `keyEnv` names an
-**environment variable** that holds the key — never put a raw key in the file itself.
+**environment variable** that holds the key — instagui never reads a raw key from disk, and a
+config that puts a plaintext `key` in the file is rejected with an error pointing you back to `keyEnv`.
 
 None of this applies to the bundled demo tools: `ffmpeg`, `yt-dlp`, and `pandoc` resolve from
 shipped schemas and need **no engine at all**, ready or not.
