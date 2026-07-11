@@ -1,20 +1,13 @@
 // Exit-code contract (spine): 0 ok · 2 known precondition failure (distinct messages) ·
 // 1 unexpected. Core throws typed errors; the CLI maps them to process exit codes so the
 // core stays testable and free of process.exit.
+//
+// The base PreconditionError lives in shared/errors.ts (leaf layer) so shared/ modules can
+// throw it without violating AD-2; it is re-exported here alongside the capture-specific
+// subclasses, so existing importers of core/errors.js are unaffected.
+import { PreconditionError } from '../shared/errors.js';
 
-/** A known, user-facing precondition failure → exit code 2. Message is safe to print
- *  as-is (no stack trace). */
-export class PreconditionError extends Error {
-  readonly exitCode = 2;
-  /** Path to a written debug artifact, when the failure produced one. */
-  readonly debugFile?: string;
-
-  constructor(message: string, debugFile?: string) {
-    super(message);
-    this.name = 'PreconditionError';
-    this.debugFile = debugFile;
-  }
-}
+export { PreconditionError };
 
 // Capture failures — distinct types so Story 1.3 can route distinct messages/exit codes.
 // All are precondition failures (exit 2); messages here are serviceable and refined in 1.3.
@@ -41,4 +34,3 @@ export class NoHelpError extends PreconditionError {
     this.name = 'NoHelpError';
   }
 }
-

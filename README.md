@@ -50,6 +50,72 @@ npx instagui curl
 Get a key at <https://console.anthropic.com>. The first extraction is cached, so every launch
 after that is instant and free.
 
+## Choosing an AI engine
+
+Fresh extraction (a tool that isn't bundled or cached) needs an AI engine, but you rarely have to
+pick one yourself: instagui **auto-detects** what you already have.
+
+**Selection order** (first hit wins):
+
+1. `--engine <name>` on the command line
+2. `INSTAGUI_ENGINE` environment variable
+3. `default` in `~/.instagui/config.json`
+4. **auto-detect** — a set API key wins; otherwise a logged-in CLI:
+   1. `ANTHROPIC_API_KEY` → `OPENAI_API_KEY` → `GEMINI_API_KEY` (first one that's set)
+   2. else `claude` → `codex` → `gemini` (first CLI found on `PATH`)
+
+So if you already have a Claude/ChatGPT/Gemini API key exported, or you're logged into the
+`claude`, `codex`, or `gemini` CLI, instagui just uses it — no flags needed. **A set API key
+always wins over a logged-in CLI**, so existing key-based setups keep working exactly as before.
+
+Run `instagui --engines` to see every configured engine and whether it's ready right now:
+
+```sh
+npx instagui --engines
+```
+
+Pick one explicitly with `--engine <name>`:
+
+```sh
+npx instagui curl --engine claude    # use the claude CLI (no API key needed, just `claude` login)
+npx instagui curl --engine openai    # use the OpenAI API (needs OPENAI_API_KEY)
+```
+
+Built-in engine names, no config required:
+
+| Name | Kind | Auth |
+| --- | --- | --- |
+| `anthropic` | Anthropic API | `ANTHROPIC_API_KEY` |
+| `openai` | OpenAI API | `OPENAI_API_KEY` |
+| `google` | Gemini API (OpenAI-compatible endpoint) | `GEMINI_API_KEY` |
+| `ollama` | local Ollama server | none (local) |
+| `claude` | Claude Code CLI (subscription) | `claude` login |
+| `codex` | Codex CLI (subscription) | `codex` login |
+| `gemini` | Gemini CLI (subscription) | `gemini` login |
+
+To add another provider (e.g. Kimi/Moonshot, a hosted vLLM/LM Studio endpoint), change a default
+model, or set a `default` engine, create `~/.instagui/config.json`:
+
+```json
+{
+  "default": "claude",
+  "engines": {
+    "claude":   { "kind": "cli", "binary": "claude", "model": "sonnet" },
+    "anthropic":{ "kind": "anthropic", "keyEnv": "ANTHROPIC_API_KEY", "model": "claude-haiku-4-5" },
+    "openai":   { "kind": "openai-compatible", "baseURL": "https://api.openai.com/v1", "keyEnv": "OPENAI_API_KEY", "model": "gpt-4o-mini" },
+    "google":   { "kind": "openai-compatible", "baseURL": "https://generativelanguage.googleapis.com/v1beta/openai/", "keyEnv": "GEMINI_API_KEY", "model": "gemini-2.5-flash" },
+    "ollama":   { "kind": "openai-compatible", "baseURL": "http://localhost:11434/v1", "model": "llama3.1" },
+    "kimi":     { "kind": "openai-compatible", "baseURL": "https://api.moonshot.cn/v1", "keyEnv": "MOONSHOT_API_KEY", "model": "moonshot-v1-8k" }
+  }
+}
+```
+
+`engines` entries are merged **over** the built-ins (same name overrides). `keyEnv` names an
+**environment variable** that holds the key — never put a raw key in the file itself.
+
+None of this applies to the bundled demo tools: `ffmpeg`, `yt-dlp`, and `pandoc` resolve from
+shipped schemas and need **no engine at all**, ready or not.
+
 ## How it works
 
 1. **Capture** — run `<tool> --help` (falling back to `-h`, `help`, then the man page), reading
@@ -72,11 +138,11 @@ instagui resolves a schema in this order, and only the last step costs an API ca
 | 1 | `--schema <file>` override you supply | no |
 | 2 | Your cache in `~/.instagui/` (written on first extraction) | no |
 | 3 | Bundled schemas shipped with the package (ffmpeg, yt-dlp, pandoc) | no |
-| 4 | Fresh extraction via the Claude API | **yes** |
+| 4 | Fresh extraction via your selected AI engine | **yes** (a key or a logged-in CLI — see [Choosing an AI engine](#choosing-an-ai-engine)) |
 
 So the demo tools are free forever, any tool you've used once is free forever after, and you only
-need a key the first time you point instagui at a brand-new tool. A friendly message tells you exactly
-what to do if a key is needed and missing — you're never dropped into a stack trace.
+need a working engine the first time you point instagui at a brand-new tool. A friendly message
+tells you exactly what to do if none is configured — you're never dropped into a stack trace.
 
 - `--refresh` re-extracts and overwrites your cache entry.
 - `--schema ./mytool.json` uses a hand-tuned schema and skips capture **and** the AI entirely.
@@ -94,6 +160,9 @@ instagui <tool> --help-file <p> extract from a captured help-text file
   --port <n>     preferred port for the Form server (default 5177; falls back if busy)
   --no-open      do not auto-open the browser (still prints the URL)
   --model <id>   extraction model (default: claude-haiku-4-5)
+  --engine <name> AI engine: anthropic | openai | google | ollama | claude | codex | gemini
+                 | any engine in ~/.instagui/config.json. Default: auto-detect.
+  --engines      list available engines and whether each is ready, then exit
   -v, --version  print the instagui version
   -h, --help     show help
 ```
@@ -114,7 +183,8 @@ instagui is a **local, single-user tool**. Be clear-eyed about what it does:
   header; a missing or foreign origin is rejected (CSRF protection). Exactly one run at a time, and
   closing the tab (dropping the stream) kills the child process — no orphans.
 - **Your API key is never logged, echoed, or embedded in any served page.** The only data that
-  leaves your machine is the tool's help text, sent to the Claude API for extraction. No telemetry.
+  leaves your machine is the tool's help text, sent to your selected AI engine for extraction
+  (nowhere, for a local `ollama` engine). No telemetry.
 
 ## Contribute a schema
 
@@ -133,13 +203,15 @@ hallucinated options. See [`schemas/README.md`](schemas/README.md) for provenanc
 ## Requirements
 
 - **Node.js ≥ 22**
-- An `ANTHROPIC_API_KEY` only for extracting a tool that isn't bundled or cached.
+- An AI engine — an API key (`ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GEMINI_API_KEY`, ...) or a
+  logged-in CLI (`claude`, `codex`, `gemini`) — only for extracting a tool that isn't bundled or
+  cached. See [Choosing an AI engine](#choosing-an-ai-engine).
 
 ## Non-goals (v0.1)
 
 Deliberately out of scope to keep it small and sharp: interactive/TUI programs (vim, top, REPLs);
 subcommand trees (flat tools only — `git commit` vs `git push` is v0.2); native file-picker dialogs;
-a hosted version, auth, telemetry, or a plugin system; a local-LLM option (contributions welcome).
+a hosted version, auth, telemetry, or a plugin system.
 
 ## License
 

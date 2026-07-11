@@ -18,10 +18,11 @@ instagui-debug-*.json
 *.log
 *.bak
 
-# local tooling — Claude Code config/skills and the BMAD authoring framework install
-# (not part of instagui; keep them out of the public repo)
+# local tooling — Claude Code config/skills, the BMAD authoring framework install,
+# and the bmad-loop orchestrator state (not part of instagui; keep out of the public repo)
 .claude/
 _bmad/
+.bmad-loop/
 
 # local planning docs — kept out of the public repo (PRD, architecture, epics, resume note,
 # product brief). Remove these lines if you ever want them tracked (e.g. a private repo).

@@ -5,6 +5,7 @@ import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { buildRegistry, describeEngines } from '../src/shared/engines/registry.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const CLI = path.join(here, '..', 'src', 'cli', 'index.ts');
@@ -44,4 +45,12 @@ test('no arguments prints usage and exits 2 (nothing to do)', () => {
   const r = runCli([]);
   assert.equal(r.status, 2);
   assert.match(r.stdout, /Usage:/);
+});
+
+test('describeEngines includes anthropic + a cli + an openai-compatible engine', () => {
+  const rows = describeEngines(buildRegistry({ engines: {} }), { env: {}, onPath: () => false });
+  const names = rows.map((r) => r.name);
+  assert.ok(names.includes('anthropic'));
+  assert.ok(names.includes('claude'));
+  assert.ok(names.includes('openai'));
 });

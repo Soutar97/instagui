@@ -16,6 +16,8 @@ export function apiKeyOnboardingError(): PreconditionError {
       `  2. Set it in your shell, then re-run:\n` +
       `       PowerShell:  $env:${API_KEY_ENV}="sk-ant-..."\n` +
       `       POSIX:       export ${API_KEY_ENV}="sk-ant-..."\n` +
-      `Tip: the bundled demo tools (ffmpeg, yt-dlp, pandoc) work with no key at all.`,
+      `Tip: the bundled demo tools (ffmpeg, yt-dlp, pandoc) work with no key at all.` +
+      `\nOr use a subscription CLI instead of a key: install & sign into one, then run ` +
+      `\`instagui <tool> --engine claude\` (or codex / gemini). See \`instagui --engines\`.`,
   );
 }
