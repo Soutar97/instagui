@@ -29,5 +29,17 @@ _bmad/
 _bmad-output/
 product-brief.md
 
+# BMAD document-project / superpowers planning + scan output — local context only, not
+# instagui product docs. (docs/demo.gif and docs/*roadmap*.md are intentionally NOT ignored.)
+docs/superpowers/
+docs/api-contracts.md
+docs/architecture.md
+docs/data-models.md
+docs/development-guide.md
+docs/index.md
+docs/project-overview.md
+docs/project-scan-report.json
+docs/source-tree-analysis.md
+
 # personal launch-prep notes (kept local). docs/demo.gif IS meant to be committed.
 docs/show-hn-draft.md
