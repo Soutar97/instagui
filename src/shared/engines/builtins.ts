@@ -15,6 +15,11 @@ export const BUILTIN_ENGINES: Record<string, EngineDescriptor> = {
     baseURL: 'https://generativelanguage.googleapis.com/v1beta/openai/', keyEnv: 'GEMINI_API_KEY',
     model: 'gemini-2.5-flash', structuredOutput: 'auto',
   },
+  deepseek: {
+    name: 'deepseek', kind: 'openai-compatible',
+    baseURL: 'https://api.deepseek.com/v1', keyEnv: 'DEEPSEEK_API_KEY',
+    model: 'deepseek-chat', structuredOutput: 'json_object',
+  },
   ollama: {
     name: 'ollama', kind: 'openai-compatible',
     baseURL: 'http://localhost:11434/v1', model: 'llama3.1', structuredOutput: 'json_object',

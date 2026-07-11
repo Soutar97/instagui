@@ -61,18 +61,33 @@ pick one yourself: instagui **auto-detects** what you already have.
 2. `INSTAGUI_ENGINE` environment variable
 3. `default` in `~/.instagui/config.json`
 4. **auto-detect** — a set API key wins; otherwise a logged-in CLI:
-   1. `ANTHROPIC_API_KEY` → `OPENAI_API_KEY` → `GEMINI_API_KEY` (first one that's set)
+   1. `ANTHROPIC_API_KEY` → `OPENAI_API_KEY` → `GEMINI_API_KEY` → `DEEPSEEK_API_KEY` (first that's set)
    2. else `claude` → `codex` → `gemini` (first CLI found on `PATH`)
 
 So if you already have a Claude/ChatGPT/Gemini API key exported, or you're logged into the
 `claude`, `codex`, or `gemini` CLI, instagui just uses it — no flags needed. **A set API key
 always wins over a logged-in CLI**, so existing key-based setups keep working exactly as before.
 
-Run `instagui --engines` to see every configured engine and whether it's ready right now:
+Run `instagui --engines` to see every configured engine and whether it's ready right now — for
+each one it says exactly *why* (which key is set or not, or whether the CLI is on your `PATH`).
+It never prints a key value, only its status:
 
 ```sh
-npx instagui --engines
+$ npx instagui --engines
+Available instagui AI engines (● = ready now):
+
+  ○ anthropic  anthropic          ANTHROPIC_API_KEY: not set
+  ● openai     openai-compatible  OPENAI_API_KEY: set
+  ○ google     openai-compatible  GEMINI_API_KEY: not set
+  ○ deepseek   openai-compatible  DEEPSEEK_API_KEY: not set
+  ● ollama     openai-compatible  local endpoint (http://localhost:11434/v1) — no key needed
+  ○ claude     cli                claude CLI — not found on PATH
+  ● codex      cli                codex CLI — found on PATH
+  ○ gemini     cli                gemini CLI — not found on PATH
 ```
+
+So instagui never asks you to put a key in a file — you set the relevant **environment variable**
+(the one named in each row), and `--engines` confirms it's picked up.
 
 Pick one explicitly with `--engine <name>`:
 
@@ -88,6 +103,7 @@ Built-in engine names, no config required:
 | `anthropic` | Anthropic API | `ANTHROPIC_API_KEY` |
 | `openai` | OpenAI API | `OPENAI_API_KEY` |
 | `google` | Gemini API (OpenAI-compatible endpoint) | `GEMINI_API_KEY` |
+| `deepseek` | DeepSeek API (OpenAI-compatible) | `DEEPSEEK_API_KEY` |
 | `ollama` | local Ollama server | none (local) |
 | `claude` | Claude Code CLI (subscription) | `claude` login |
 | `codex` | Codex CLI (subscription) | `codex` login |
@@ -161,9 +177,9 @@ instagui <tool> --help-file <p> extract from a captured help-text file
   --port <n>     preferred port for the Form server (default 5177; falls back if busy)
   --no-open      do not auto-open the browser (still prints the URL)
   --model <id>   extraction model (default: claude-haiku-4-5)
-  --engine <name> AI engine: anthropic | openai | google | ollama | claude | codex | gemini
-                 | any engine in ~/.instagui/config.json. Default: auto-detect.
-  --engines      list available engines and whether each is ready, then exit
+  --engine <name> AI engine: anthropic | openai | google | deepseek | ollama | claude | codex
+                 | gemini | any engine in ~/.instagui/config.json. Default: auto-detect.
+  --engines      list engines + whether each is ready (which key is set / CLI on PATH), then exit
   -v, --version  print the instagui version
   -h, --help     show help
 ```

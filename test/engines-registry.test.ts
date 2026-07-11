@@ -70,6 +70,19 @@ test('describeEngines reports availability per engine', () => {
   assert.equal(byName.anthropic.available, false);
 });
 
+test('describeEngines detail states key/PATH status without printing any key value', () => {
+  const reg = buildRegistry(emptyCfg);
+  const rows = describeEngines(reg, { env: { OPENAI_API_KEY: 'sk-secret' }, onPath: (b) => b === 'codex' });
+  const byName = Object.fromEntries(rows.map((r) => [r.name, r]));
+  assert.equal(byName.openai.detail, 'OPENAI_API_KEY: set');
+  assert.equal(byName.anthropic.detail, 'ANTHROPIC_API_KEY: not set');
+  assert.equal(byName.deepseek.detail, 'DEEPSEEK_API_KEY: not set');
+  assert.match(byName.ollama.detail, /no key needed/); // keyless local endpoint
+  assert.equal(byName.codex.detail, 'codex CLI — found on PATH');
+  assert.equal(byName.claude.detail, 'claude CLI — not found on PATH');
+  for (const r of rows) assert.doesNotMatch(r.detail, /sk-secret/); // value never leaks
+});
+
 test('createComplete routes each kind to its adapter, asserting readiness first', () => {
   const reg = buildRegistry({ engines: {} });
   // anthropic kind, no key -> anthropic readiness error names the env var

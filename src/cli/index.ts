@@ -59,9 +59,9 @@ Options:
   --help-file <path>   read help text from a file instead of capturing (extraction only)
   --capture            force live capture (ignore piped stdin)
   --model <id>         extraction model (default: claude-haiku-4-5)
-  --engine <name>      AI engine: anthropic | openai | google | ollama | claude | codex | gemini
-                       | any engine in ~/.instagui/config.json. Default: auto-detect.
-  --engines            list available engines and whether each is ready, then exit
+  --engine <name>      AI engine: anthropic | openai | google | deepseek | ollama | claude | codex
+                       | gemini | any engine in ~/.instagui/config.json. Default: auto-detect.
+  --engines            list engines + whether each is ready (which key is set / CLI on PATH), then exit
   -v, --version        print the instagui version and exit
   -h, --help           show this message
 

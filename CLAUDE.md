@@ -37,16 +37,18 @@ Resolution order (`src/shared/engines/registry.ts` `selectEngine`), first hit wi
 2. `INSTAGUI_ENGINE` env var (value `claude-code` aliases → `claude`)
 3. `default` in `~/.instagui/config.json`
 4. auto-detect **API tier**: `anthropic` (ANTHROPIC_API_KEY) → `openai` (OPENAI_API_KEY) →
-   `google` (GEMINI_API_KEY) — a set key wins over any CLI
+   `google` (GEMINI_API_KEY) → `deepseek` (DEEPSEEK_API_KEY) — a set key wins over any CLI
 5. auto-detect **CLI tier**: `claude` → `codex` → `gemini` (first binary on PATH)
 6. none usable → `PreconditionError` (exit 2), actionable message
 
-Seven built-ins (`src/shared/engines/builtins.ts`): `anthropic`, `openai`, `google`, `ollama`
-(all API/local), `claude`, `codex`, `gemini` (subscription CLIs). Three adapter kinds:
+Eight built-ins (`src/shared/engines/builtins.ts`): `anthropic`, `openai`, `google`, `deepseek`,
+`ollama` (all API/local), `claude`, `codex`, `gemini` (subscription CLIs). Three adapter kinds:
 `anthropic` (SDK), `openai-compatible` (any `/chat/completions` endpoint), `cli` (spawned tool).
 Optional config file `~/.instagui/config.json` (`config.ts`, Zod-validated): `default` + `engines`
 map merged **over** built-ins. Absent → empty config. Malformed → PreconditionError. A plaintext
 `key` in the file is rejected (use `keyEnv` → env var; instagui never reads a raw key from disk).
+`instagui --engines` is the readiness view: per engine it prints whether its key env var is set /
+its CLI is on PATH (`describeEngines`) — status only, never a key value.
 
 ## Schema resolution order
 `--schema <file>` > user cache (`~/.instagui/`) > bundled (shipped: ffmpeg, yt-dlp, pandoc) >
