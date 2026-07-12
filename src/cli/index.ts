@@ -20,7 +20,7 @@ import { loadOverrideSchema } from '../core/override.js';
 import { PreconditionError } from '../core/errors.js';
 import { resolveEngineSelection } from '../shared/engine.js';
 import { startServer } from '../server/server.js';
-import { openBrowser } from '../server/browser.js';
+import { announceServing } from '../server/browser.js';
 
 /** Our own version, read from the shipped package.json (works from both dist/ and src/ — the
  *  relative path to the package root is the same). We parse everyone else's help text; our own
@@ -71,8 +71,10 @@ Examples:
   instagui mytool --print                just resolve and print the Schema as JSON
   instagui mytool --schema ./mytool.json use a hand-tuned Schema, skip capture + AI
 
-The server binds 127.0.0.1 only. Extraction uses your selected AI engine (--engine / INSTAGUI_ENGINE /
-~/.instagui/config.json / auto-detect). Run \`instagui --engines\` to see options.
+The server binds 127.0.0.1 only. Over SSH the browser is not auto-opened; instagui prints an
+\`ssh -L\` port-forward hint so you can reach the Form from your local machine. Extraction uses your
+selected AI engine (--engine / INSTAGUI_ENGINE / ~/.instagui/config.json / auto-detect). Run
+\`instagui --engines\` to see options.
 Exit codes: 0 ok · 2 known failure · 1 unexpected.`;
 
 async function readStdin(): Promise<string> {
@@ -196,7 +198,11 @@ async function main(): Promise<number> {
   const server = await startServer({ schema: result.schema, port });
   console.error(`instagui: serving ${tool} form at ${server.url}`);
   console.log(server.url); // the URL on stdout so it's scriptable / copyable
-  if (!values['no-open']) openBrowser(server.url);
+  // Over SSH the "default browser" is on the remote host (or absent), so auto-opening is
+  // useless: skip it and print a copy-ready port-forward hint instead. --no-open still
+  // suppresses the open in the non-SSH case. Server binding stays 127.0.0.1 only.
+  const announcement = announceServing(server.url, server.port, { noOpen: values['no-open'] });
+  if (announcement.action === 'ssh-hint') console.error(`instagui: ${announcement.hint}`);
   console.error('instagui: press Ctrl-C to stop.');
 
   // Hold the process open; shut the server down cleanly on Ctrl-C.

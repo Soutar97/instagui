@@ -184,6 +184,27 @@ instagui <tool> --help-file <p> extract from a captured help-text file
   -h, --help     show help
 ```
 
+## Using instagui over SSH
+
+The form is served on `127.0.0.1` on the **remote** machine, so opening a browser there is
+useless. When instagui detects an SSH session (`SSH_CONNECTION` / `SSH_TTY`) it **skips the
+browser auto-open** and prints a copy-ready port-forward hint after the listening line:
+
+```
+$ instagui ffmpeg
+http://127.0.0.1:5177/
+instagui: Running over SSH. On your local machine run:
+  ssh -L 5177:127.0.0.1:5177 <user>@<host>
+then open http://127.0.0.1:5177
+```
+
+Run that `ssh -L` command in a terminal **on your local machine**, then open
+`http://127.0.0.1:5177` there — the tunnel forwards your local port to the remote form.
+`<host>` is filled in from `SSH_CONNECTION` when available; `<user>` (and an unknown host) stay
+as placeholders for you to edit. The forwarded port always matches the port instagui bound
+(pass `--port <n>` to pick it; it falls back to a free port if busy). Nothing about the binding
+changes — the server is still `127.0.0.1`-only, reachable only through your own tunnel.
+
 ## Security / threat model
 
 instagui is a **local, single-user tool**. Be clear-eyed about what it does:
