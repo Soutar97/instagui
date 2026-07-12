@@ -205,6 +205,18 @@ as placeholders for you to edit. The forwarded port always matches the port inst
 (pass `--port <n>` to pick it; it falls back to a free port if busy). Nothing about the binding
 changes — the server is still `127.0.0.1`-only, reachable only through your own tunnel.
 
+### Persistent sessions
+
+Plain `ssh -L` is fine for a quick session, but the tunnel dies with the connection. For a
+long-lived tunnel to a box you keep coming back to, use `autossh` instead:
+
+```sh
+autossh -M 0 -N -f -L 5177:127.0.0.1:5177 <user>@<host>
+```
+
+It re-establishes the forward automatically after a network drop, so the form stays reachable
+without you re-running the command each time.
+
 ## Security / threat model
 
 instagui is a **local, single-user tool**. Be clear-eyed about what it does:
