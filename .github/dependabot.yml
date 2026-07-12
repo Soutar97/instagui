@@ -1,0 +1,22 @@
+version: 2
+updates:
+  # Runtime + dev npm dependencies. The prod tree is intentionally tiny
+  # (@anthropic-ai/sdk, zod), so update noise here is near zero — see CLAUDE.md
+  # "Zero new runtime dependencies without a logged decision".
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: chore
+      include: scope
+
+  # GitHub Actions used in workflows. Dependabot bumps the pinned commit SHAs
+  # (and updates the version comment beside each) so pin-by-SHA stays current.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: chore
