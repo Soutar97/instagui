@@ -46,3 +46,17 @@ test('bad shape (unknown kind) → PreconditionError', () => {
     return true;
   });
 });
+
+test('plaintext "key" on disk is rejected, pointing to keyEnv (no raw secret in a config file)', () => {
+  const dir = tmpDir();
+  writeFileSync(path.join(dir, 'config.json'), JSON.stringify({
+    engines: { openai: { kind: 'openai-compatible', baseURL: 'https://api.openai.com/v1', key: 'sk-secret' } },
+  }));
+  assert.throws(() => loadEngineConfig(dir), (e: unknown) => {
+    assert.ok(e instanceof PreconditionError);
+    assert.equal((e as PreconditionError).exitCode, 2);
+    assert.match((e as Error).message, /keyEnv/);
+    assert.doesNotMatch((e as Error).message, /sk-secret/); // never echo the secret back
+    return true;
+  });
+});

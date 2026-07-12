@@ -16,10 +16,10 @@ export interface EngineDescriptor {
   kind: EngineKind;
   model?: string;
 
-  // api kinds
+  // api kinds. The key is only ever read from the environment (via keyEnv) — never stored on the
+  // descriptor or on disk, so a raw secret has no place to live.
   baseURL?: string;
   keyEnv?: string;
-  key?: string;
   structuredOutput?: StructuredMode;
 
   // cli kind

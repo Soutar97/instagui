@@ -16,7 +16,7 @@ export interface SelectDeps {
 }
 
 /** Auto-detect order (design §6). */
-const API_DETECT_ORDER = ['anthropic', 'openai', 'google'];
+const API_DETECT_ORDER = ['anthropic', 'openai', 'google', 'deepseek'];
 const CLI_DETECT_ORDER = ['claude', 'codex', 'gemini'];
 
 export function buildRegistry(config: EngineConfig): Record<string, EngineDescriptor> {
@@ -90,13 +90,20 @@ export function createComplete(engine: EngineDescriptor, deps: SelectDeps = {}):
   throw new PreconditionError(`Engine "${engine.name}" has an unsupported kind "${engine.kind}".`);
 }
 
+/** Human-readable readiness reason for the `--engines` listing. States *why* an engine is or
+ *  isn't ready — the env var and whether it's set, or the CLI binary and whether it's on PATH —
+ *  without ever printing a key value. */
+function engineDetail(e: EngineDescriptor, available: boolean): string {
+  if (e.kind === 'cli') return `${e.binary} CLI — ${available ? 'found on PATH' : 'not found on PATH'}`;
+  if (!e.keyEnv) return `local endpoint (${e.baseURL}) — no key needed`;
+  return `${e.keyEnv}: ${available ? 'set' : 'not set'}`;
+}
+
 export function describeEngines(
   registry: Record<string, EngineDescriptor>, deps: SelectDeps = {},
 ): Array<{ name: string; kind: string; available: boolean; detail: string }> {
-  return Object.values(registry).map((e) => ({
-    name: e.name,
-    kind: e.kind,
-    available: engineAvailable(e, deps),
-    detail: e.kind === 'cli' ? `cli:${e.binary}` : `${e.baseURL ?? 'anthropic'} ${e.keyEnv ? `(${e.keyEnv})` : '(no key)'}`,
-  }));
+  return Object.values(registry).map((e) => {
+    const available = engineAvailable(e, deps);
+    return { name: e.name, kind: e.kind, available, detail: engineDetail(e, available) };
+  });
 }

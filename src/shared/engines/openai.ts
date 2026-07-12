@@ -18,11 +18,11 @@ export interface OpenAIDeps {
 
 /** An engine is keyless when it declares no keyEnv (e.g. local Ollama). */
 function keyless(engine: EngineDescriptor): boolean {
-  return !engine.keyEnv && !engine.key;
+  return !engine.keyEnv;
 }
 
+/** The key is read only from the environment (via keyEnv) — never from the descriptor/disk. */
 function apiKey(engine: EngineDescriptor, env: NodeJS.ProcessEnv): string | undefined {
-  if (engine.key) return engine.key;
   return engine.keyEnv ? env[engine.keyEnv] : undefined;
 }
 

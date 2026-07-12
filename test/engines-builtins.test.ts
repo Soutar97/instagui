@@ -5,7 +5,7 @@ import { BUILTIN_ENGINES } from '../src/shared/engines/builtins.js';
 test('ships the expected built-in engine names', () => {
   assert.deepEqual(
     Object.keys(BUILTIN_ENGINES).sort(),
-    ['anthropic', 'claude', 'codex', 'gemini', 'google', 'ollama', 'openai'],
+    ['anthropic', 'claude', 'codex', 'deepseek', 'gemini', 'google', 'ollama', 'openai'],
   );
 });
 
@@ -21,6 +21,14 @@ test('google built-in uses the Gemini OpenAI-compatible endpoint', () => {
   assert.equal(g.kind, 'openai-compatible');
   assert.match(g.baseURL!, /generativelanguage\.googleapis\.com\/v1beta\/openai/);
   assert.equal(g.keyEnv, 'GEMINI_API_KEY');
+});
+
+test('deepseek built-in is an OpenAI-compatible engine keyed on DEEPSEEK_API_KEY', () => {
+  const d = BUILTIN_ENGINES.deepseek;
+  assert.equal(d.kind, 'openai-compatible');
+  assert.match(d.baseURL!, /api\.deepseek\.com/);
+  assert.equal(d.keyEnv, 'DEEPSEEK_API_KEY');
+  assert.equal(d.structuredOutput, 'json_object'); // DeepSeek honors json_object, not strict json_schema
 });
 
 test('claude built-in is a stdin cli engine that maps model aliases', () => {
