@@ -263,6 +263,11 @@ Deliberately out of scope to keep it small and sharp: interactive/TUI programs (
 subcommand trees (flat tools only — `git commit` vs `git push` is v0.2); native file-picker dialogs;
 a hosted version, auth, telemetry, or a plugin system.
 
+## Support
+
+If instagui saves you time, you can sponsor development on [GitHub](https://github.com/sponsors/Soutar97).
+Starring the repo and contributing schemas helps just as much.
+
 ## License
 
 MIT © Omar
