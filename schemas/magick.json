@@ -1,0 +1,2395 @@
+{
+  "tool": "magick",
+  "summary": "ImageMagick image processing and conversion tool",
+  "options": [
+    {
+      "name": "adjoin",
+      "flag": "-adjoin",
+      "type": "boolean",
+      "description": "join images into a single multi-image file",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "affine",
+      "flag": "-affine",
+      "type": "string",
+      "description": "affine transform matrix",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "alpha",
+      "flag": "-alpha",
+      "type": "enum",
+      "description": "activate, deactivate, reset, or set the alpha channel",
+      "enumValues": [
+        "on",
+        "activate",
+        "off",
+        "deactivate",
+        "set",
+        "opaque",
+        "copy",
+        "transparent",
+        "extract",
+        "background",
+        "shape"
+      ],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "antialias",
+      "flag": "-antialias",
+      "type": "boolean",
+      "description": "remove pixel-aliasing",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "authenticate",
+      "flag": "-authenticate",
+      "type": "string",
+      "description": "decipher image with this password",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "attenuate",
+      "flag": "-attenuate",
+      "type": "number",
+      "description": "lessen (or intensify) when adding noise to an image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "background",
+      "flag": "-background",
+      "type": "string",
+      "description": "background color",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "bias",
+      "flag": "-bias",
+      "type": "string",
+      "description": "add bias when convolving an image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "black-point-compensation",
+      "flag": "-black-point-compensation",
+      "type": "boolean",
+      "description": "use black point compensation",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "blue-primary",
+      "flag": "-blue-primary",
+      "type": "string",
+      "description": "chromaticity blue primary point",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "bordercolor",
+      "flag": "-bordercolor",
+      "type": "string",
+      "description": "border color",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "caption",
+      "flag": "-caption",
+      "type": "string",
+      "description": "assign a caption to an image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "clip",
+      "flag": "-clip",
+      "type": "boolean",
+      "description": "clip along the first path from the 8BIM profile",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "clip-mask",
+      "flag": "-clip-mask",
+      "type": "path",
+      "description": "associate a clip mask with the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "clip-path",
+      "flag": "-clip-path",
+      "type": "string",
+      "description": "clip along a named path from the 8BIM profile",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "colorspace",
+      "flag": "-colorspace",
+      "type": "string",
+      "description": "alternate image colorspace",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "comment",
+      "flag": "-comment",
+      "type": "string",
+      "description": "annotate image with comment",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "compose",
+      "flag": "-compose",
+      "type": "string",
+      "description": "set image composite operator",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "compress",
+      "flag": "-compress",
+      "type": "string",
+      "description": "type of pixel compression when writing the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "define",
+      "flag": "-define",
+      "type": "string",
+      "description": "define one or more image format options",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "delay",
+      "flag": "-delay",
+      "type": "string",
+      "description": "display the next image after pausing",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "density",
+      "flag": "-density",
+      "type": "string",
+      "description": "horizontal and vertical density of the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "depth",
+      "flag": "-depth",
+      "type": "number",
+      "description": "image depth",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "direction",
+      "flag": "-direction",
+      "type": "string",
+      "description": "render text right-to-left or left-to-right",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "display",
+      "flag": "-display",
+      "type": "string",
+      "description": "get image or font from this X server",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "dispose",
+      "flag": "-dispose",
+      "type": "string",
+      "description": "layer disposal method",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "dither",
+      "flag": "-dither",
+      "type": "string",
+      "description": "apply error diffusion to image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "encoding",
+      "flag": "-encoding",
+      "type": "string",
+      "description": "text encoding type",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "endian",
+      "flag": "-endian",
+      "type": "enum",
+      "description": "endianness (MSB or LSB) of the image",
+      "enumValues": [
+        "MSB",
+        "LSB"
+      ],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "family",
+      "flag": "-family",
+      "type": "string",
+      "description": "render text with this font family",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "features",
+      "flag": "-features",
+      "type": "string",
+      "description": "analyze image features (e.g. contrast, correlation)",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "fill",
+      "flag": "-fill",
+      "type": "string",
+      "description": "color to use when filling a graphic primitive",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "filter",
+      "flag": "-filter",
+      "type": "string",
+      "description": "use this filter when resizing an image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "font",
+      "flag": "-font",
+      "type": "string",
+      "description": "render text with this font",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "format",
+      "flag": "-format",
+      "type": "string",
+      "description": "output formatted image characteristics",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "fuzz",
+      "flag": "-fuzz",
+      "type": "string",
+      "description": "colors within this distance are considered equal",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "gravity",
+      "flag": "-gravity",
+      "type": "string",
+      "description": "horizontal and vertical text placement",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "green-primary",
+      "flag": "-green-primary",
+      "type": "string",
+      "description": "chromaticity green primary point",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "illuminant",
+      "flag": "-illuminant",
+      "type": "string",
+      "description": "reference illuminant",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "intensity",
+      "flag": "-intensity",
+      "type": "string",
+      "description": "method to generate an intensity value from a pixel",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "intent",
+      "flag": "-intent",
+      "type": "string",
+      "description": "type of rendering intent when managing the image color",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "interlace",
+      "flag": "-interlace",
+      "type": "string",
+      "description": "type of image interlacing scheme",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "interline-spacing",
+      "flag": "-interline-spacing",
+      "type": "number",
+      "description": "set the space between two text lines",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "interpolate",
+      "flag": "-interpolate",
+      "type": "string",
+      "description": "pixel color interpolation method",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "interword-spacing",
+      "flag": "-interword-spacing",
+      "type": "number",
+      "description": "set the space between two words",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "kerning",
+      "flag": "-kerning",
+      "type": "number",
+      "description": "set the space between two letters",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "label",
+      "flag": "-label",
+      "type": "string",
+      "description": "assign a label to an image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "limit",
+      "flag": "-limit",
+      "type": "string",
+      "description": "pixel cache resource limit",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "loop",
+      "flag": "-loop",
+      "type": "number",
+      "description": "add Netscape loop extension to your GIF animation",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "matte",
+      "flag": "-matte",
+      "type": "boolean",
+      "description": "store matte channel if the image has one",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "mattecolor",
+      "flag": "-mattecolor",
+      "type": "string",
+      "description": "frame color",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "moments",
+      "flag": "-moments",
+      "type": "boolean",
+      "description": "report image moments",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "monitor",
+      "flag": "-monitor",
+      "type": "boolean",
+      "description": "monitor progress",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "orient",
+      "flag": "-orient",
+      "type": "string",
+      "description": "image orientation",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "page",
+      "flag": "-page",
+      "type": "string",
+      "description": "size and location of an image canvas (setting)",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "ping",
+      "flag": "-ping",
+      "type": "boolean",
+      "description": "efficiently determine image attributes",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "pointsize",
+      "flag": "-pointsize",
+      "type": "number",
+      "description": "font point size",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "precision",
+      "flag": "-precision",
+      "type": "number",
+      "description": "maximum number of significant digits to print",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "preview",
+      "flag": "-preview",
+      "type": "string",
+      "description": "image preview type",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "quality",
+      "flag": "-quality",
+      "type": "number",
+      "description": "JPEG/MIFF/PNG compression level",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "quiet",
+      "flag": "-quiet",
+      "type": "boolean",
+      "description": "suppress all warning messages",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "read-mask",
+      "flag": "-read-mask",
+      "type": "path",
+      "description": "associate a read mask with the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "red-primary",
+      "flag": "-red-primary",
+      "type": "string",
+      "description": "chromaticity red primary point",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "regard-warnings",
+      "flag": "-regard-warnings",
+      "type": "boolean",
+      "description": "pay attention to warning messages",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "remap",
+      "flag": "-remap",
+      "type": "path",
+      "description": "transform image colors to match this set of colors",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "repage",
+      "flag": "-repage",
+      "type": "string",
+      "description": "size and location of an image canvas",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "respect-parentheses",
+      "flag": "-respect-parentheses",
+      "type": "boolean",
+      "description": "settings remain in effect until parenthesis boundary",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "sampling-factor",
+      "flag": "-sampling-factor",
+      "type": "string",
+      "description": "horizontal and vertical sampling factor",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "scene",
+      "flag": "-scene",
+      "type": "number",
+      "description": "image scene number",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "seed",
+      "flag": "-seed",
+      "type": "number",
+      "description": "seed a new sequence of pseudo-random numbers",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "size",
+      "flag": "-size",
+      "type": "string",
+      "description": "width and height of image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "stretch",
+      "flag": "-stretch",
+      "type": "string",
+      "description": "render text with this font stretch",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "stroke",
+      "flag": "-stroke",
+      "type": "string",
+      "description": "graphic primitive stroke color",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "strokewidth",
+      "flag": "-strokewidth",
+      "type": "number",
+      "description": "graphic primitive stroke width",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "style",
+      "flag": "-style",
+      "type": "string",
+      "description": "render text with this font style",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "support",
+      "flag": "-support",
+      "type": "number",
+      "description": "resize support: > 1.0 is blurry, < 1.0 is sharp",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "synchronize",
+      "flag": "-synchronize",
+      "type": "boolean",
+      "description": "synchronize image to storage device",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "taint",
+      "flag": "-taint",
+      "type": "boolean",
+      "description": "declare the image as modified",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "texture",
+      "flag": "-texture",
+      "type": "path",
+      "description": "name of texture to tile onto the image background",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "tile-offset",
+      "flag": "-tile-offset",
+      "type": "string",
+      "description": "tile offset",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "treedepth",
+      "flag": "-treedepth",
+      "type": "number",
+      "description": "color tree depth",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "transparent-color",
+      "flag": "-transparent-color",
+      "type": "string",
+      "description": "transparent color",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "undercolor",
+      "flag": "-undercolor",
+      "type": "string",
+      "description": "annotation bounding box color",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "units",
+      "flag": "-units",
+      "type": "string",
+      "description": "the units of image resolution",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "verbose",
+      "flag": "-verbose",
+      "type": "boolean",
+      "description": "print detailed information about the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "view",
+      "flag": "-view",
+      "type": "boolean",
+      "description": "FlashPix viewing transforms",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "virtual-pixel",
+      "flag": "-virtual-pixel",
+      "type": "string",
+      "description": "virtual pixel access method",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "weight",
+      "flag": "-weight",
+      "type": "string",
+      "description": "render text with this font weight",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "white-point",
+      "flag": "-white-point",
+      "type": "string",
+      "description": "chromaticity white point",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "write-mask",
+      "flag": "-write-mask",
+      "type": "path",
+      "description": "associate a write mask with the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "word-break",
+      "flag": "-word-break",
+      "type": "string",
+      "description": "sets whether line breaks appear wherever the text would otherwise overflow",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Settings"
+    },
+    {
+      "name": "adaptive-blur",
+      "flag": "-adaptive-blur",
+      "type": "string",
+      "description": "adaptively blur pixels; decrease effect near edges",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "adaptive-resize",
+      "flag": "-adaptive-resize",
+      "type": "string",
+      "description": "adaptively resize image using 'mesh' interpolation",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "adaptive-sharpen",
+      "flag": "-adaptive-sharpen",
+      "type": "string",
+      "description": "adaptively sharpen pixels; increase effect near edges",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "annotate",
+      "flag": "-annotate",
+      "type": "string",
+      "description": "annotate the image with text",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "auto-gamma",
+      "flag": "-auto-gamma",
+      "type": "boolean",
+      "description": "automagically adjust gamma level of image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "auto-level",
+      "flag": "-auto-level",
+      "type": "boolean",
+      "description": "automagically adjust color levels of image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "auto-orient",
+      "flag": "-auto-orient",
+      "type": "boolean",
+      "description": "automagically orient (rotate) image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "auto-threshold",
+      "flag": "-auto-threshold",
+      "type": "string",
+      "description": "automatically perform image thresholding",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "bench",
+      "flag": "-bench",
+      "type": "number",
+      "description": "measure performance",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "bilateral-blur",
+      "flag": "-bilateral-blur",
+      "type": "string",
+      "description": "non-linear, edge-preserving, and noise-reducing smoothing filter",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "black-threshold",
+      "flag": "-black-threshold",
+      "type": "string",
+      "description": "force all pixels below the threshold into black",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "blue-shift",
+      "flag": "-blue-shift",
+      "type": "number",
+      "description": "simulate a scene at nighttime in the moonlight",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "blur",
+      "flag": "-blur",
+      "type": "string",
+      "description": "reduce image noise and reduce detail levels",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "border",
+      "flag": "-border",
+      "type": "string",
+      "description": "surround image with a border of color",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "brightness-contrast",
+      "flag": "-brightness-contrast",
+      "type": "string",
+      "description": "improve brightness / contrast of the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "canny",
+      "flag": "-canny",
+      "type": "string",
+      "description": "detect edges in the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "cdl",
+      "flag": "-cdl",
+      "type": "path",
+      "description": "color correct with a color decision list",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "channel",
+      "flag": "-channel",
+      "type": "string",
+      "description": "set the image channel mask",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "charcoal",
+      "flag": "-charcoal",
+      "type": "number",
+      "description": "simulate a charcoal drawing",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "chop",
+      "flag": "-chop",
+      "type": "string",
+      "description": "remove pixels from the image interior",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "clahe",
+      "flag": "-clahe",
+      "type": "string",
+      "description": "contrast limited adaptive histogram equalization",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "clamp",
+      "flag": "-clamp",
+      "type": "boolean",
+      "description": "keep pixel values in range (0-QuantumRange)",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "colorize",
+      "flag": "-colorize",
+      "type": "string",
+      "description": "colorize the image with the fill color",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "color-matrix",
+      "flag": "-color-matrix",
+      "type": "string",
+      "description": "apply color correction to the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "colors",
+      "flag": "-colors",
+      "type": "number",
+      "description": "preferred number of colors in the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "connected-components",
+      "flag": "-connected-components",
+      "type": "number",
+      "description": "connected-components uniquely labeled",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "contrast",
+      "flag": "-contrast",
+      "type": "boolean",
+      "description": "enhance or reduce the image contrast",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "contrast-stretch",
+      "flag": "-contrast-stretch",
+      "type": "string",
+      "description": "improve contrast by 'stretching' the intensity range",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "convolve",
+      "flag": "-convolve",
+      "type": "string",
+      "description": "apply a convolution kernel to the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "cycle",
+      "flag": "-cycle",
+      "type": "number",
+      "description": "cycle the image colormap",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "decipher",
+      "flag": "-decipher",
+      "type": "path",
+      "description": "convert cipher pixels to plain pixels",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "deskew",
+      "flag": "-deskew",
+      "type": "string",
+      "description": "straighten an image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "despeckle",
+      "flag": "-despeckle",
+      "type": "boolean",
+      "description": "reduce the speckles within an image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "distort",
+      "flag": "-distort",
+      "type": "string",
+      "description": "distort images according to given method and args",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "draw",
+      "flag": "-draw",
+      "type": "string",
+      "description": "annotate the image with a graphic primitive",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "edge",
+      "flag": "-edge",
+      "type": "number",
+      "description": "apply a filter to detect edges in the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "encipher",
+      "flag": "-encipher",
+      "type": "path",
+      "description": "convert plain pixels to cipher pixels",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "emboss",
+      "flag": "-emboss",
+      "type": "number",
+      "description": "emboss an image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "enhance",
+      "flag": "-enhance",
+      "type": "boolean",
+      "description": "apply a digital filter to enhance a noisy image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "equalize",
+      "flag": "-equalize",
+      "type": "boolean",
+      "description": "perform histogram equalization to an image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "evaluate",
+      "flag": "-evaluate",
+      "type": "string",
+      "description": "evaluate an arithmetic, relational, or logical expression",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "extent",
+      "flag": "-extent",
+      "type": "string",
+      "description": "set the image size",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "extract",
+      "flag": "-extract",
+      "type": "string",
+      "description": "extract area from image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "fft",
+      "flag": "-fft",
+      "type": "boolean",
+      "description": "implements the discrete Fourier transform (DFT)",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "flip",
+      "flag": "-flip",
+      "type": "boolean",
+      "description": "flip image vertically",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "floodfill",
+      "flag": "-floodfill",
+      "type": "string",
+      "description": "floodfill the image with color",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "flop",
+      "flag": "-flop",
+      "type": "boolean",
+      "description": "flop image horizontally",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "frame",
+      "flag": "-frame",
+      "type": "string",
+      "description": "surround image with an ornamental border",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "function",
+      "flag": "-function",
+      "type": "string",
+      "description": "apply function over image values",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "gamma",
+      "flag": "-gamma",
+      "type": "number",
+      "description": "level of gamma correction",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "gaussian-blur",
+      "flag": "-gaussian-blur",
+      "type": "string",
+      "description": "reduce image noise and reduce detail levels",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "geometry",
+      "flag": "-geometry",
+      "type": "string",
+      "description": "preferred size or location of the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "grayscale",
+      "flag": "-grayscale",
+      "type": "string",
+      "description": "convert image to grayscale",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "hough-lines",
+      "flag": "-hough-lines",
+      "type": "string",
+      "description": "identify lines in the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "identify",
+      "flag": "-identify",
+      "type": "boolean",
+      "description": "identify the format and characteristics of the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "ift",
+      "flag": "-ift",
+      "type": "boolean",
+      "description": "implements the inverse discrete Fourier transform (DFT)",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "implode",
+      "flag": "-implode",
+      "type": "number",
+      "description": "implode image pixels about the center",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "integral",
+      "flag": "-integral",
+      "type": "boolean",
+      "description": "calculate the sum of values (pixel values) in the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "interpolative-resize",
+      "flag": "-interpolative-resize",
+      "type": "string",
+      "description": "resize image using interpolation",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "kmeans",
+      "flag": "-kmeans",
+      "type": "string",
+      "description": "K means color reduction",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "kuwahara",
+      "flag": "-kuwahara",
+      "type": "string",
+      "description": "edge preserving noise reduction filter",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "lat",
+      "flag": "-lat",
+      "type": "string",
+      "description": "local adaptive thresholding",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "level",
+      "flag": "-level",
+      "type": "string",
+      "description": "adjust the level of image contrast",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "level-colors",
+      "flag": "-level-colors",
+      "type": "string",
+      "description": "level image with the given colors",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "linear-stretch",
+      "flag": "-linear-stretch",
+      "type": "string",
+      "description": "improve contrast by 'stretching with saturation'",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "liquid-rescale",
+      "flag": "-liquid-rescale",
+      "type": "string",
+      "description": "rescale image with seam-carving",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "local-contrast",
+      "flag": "-local-contrast",
+      "type": "string",
+      "description": "enhance local contrast",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "mean-shift",
+      "flag": "-mean-shift",
+      "type": "string",
+      "description": "delineate arbitrarily shaped clusters in the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "median",
+      "flag": "-median",
+      "type": "string",
+      "description": "apply a median filter to the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "mode",
+      "flag": "-mode",
+      "type": "string",
+      "description": "make each pixel the 'predominant color' of the neighborhood",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "modulate",
+      "flag": "-modulate",
+      "type": "string",
+      "description": "vary the brightness, saturation, and hue",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "monochrome",
+      "flag": "-monochrome",
+      "type": "boolean",
+      "description": "transform image to black and white",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "morphology",
+      "flag": "-morphology",
+      "type": "string",
+      "description": "apply a morphology method to the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "motion-blur",
+      "flag": "-motion-blur",
+      "type": "string",
+      "description": "simulate motion blur",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "negate",
+      "flag": "-negate",
+      "type": "boolean",
+      "description": "replace every pixel with its complementary color",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "noise",
+      "flag": "-noise",
+      "type": "string",
+      "description": "add or reduce noise in an image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "normalize",
+      "flag": "-normalize",
+      "type": "boolean",
+      "description": "transform image to span the full range of colors",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "opaque",
+      "flag": "-opaque",
+      "type": "string",
+      "description": "change this color to the fill color",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "ordered-dither",
+      "flag": "-ordered-dither",
+      "type": "string",
+      "description": "add a noise pattern to the image with specific amplitudes",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "paint",
+      "flag": "-paint",
+      "type": "number",
+      "description": "simulate an oil painting",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "perceptible",
+      "flag": "-perceptible",
+      "type": "number",
+      "description": "pixel value less than |epsilon| become epsilon or -epsilon",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "polaroid",
+      "flag": "-polaroid",
+      "type": "number",
+      "description": "simulate a Polaroid picture",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "posterize",
+      "flag": "-posterize",
+      "type": "number",
+      "description": "reduce the image to a limited number of color levels",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "profile",
+      "flag": "-profile",
+      "type": "path",
+      "description": "add, delete, or apply an image profile",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "quantize",
+      "flag": "-quantize",
+      "type": "string",
+      "description": "reduce colors in this colorspace",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "raise",
+      "flag": "-raise",
+      "type": "string",
+      "description": "lighten/darken image edges to create a 3-D effect",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "random-threshold",
+      "flag": "-random-threshold",
+      "type": "string",
+      "description": "random threshold the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "range-threshold",
+      "flag": "-range-threshold",
+      "type": "string",
+      "description": "perform either hard or soft thresholding within some range of values in an image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "region",
+      "flag": "-region",
+      "type": "string",
+      "description": "apply options to a portion of the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "render",
+      "flag": "-render",
+      "type": "boolean",
+      "description": "render vector graphics",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "resample",
+      "flag": "-resample",
+      "type": "string",
+      "description": "change the resolution of an image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "reshape",
+      "flag": "-reshape",
+      "type": "string",
+      "description": "reshape the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "resize",
+      "flag": "-resize",
+      "type": "string",
+      "description": "resize the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "roll",
+      "flag": "-roll",
+      "type": "string",
+      "description": "roll an image vertically or horizontally",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "rotate",
+      "flag": "-rotate",
+      "type": "number",
+      "description": "apply Paeth rotation to the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "rotational-blur",
+      "flag": "-rotational-blur",
+      "type": "number",
+      "description": "rotational blur the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "sample",
+      "flag": "-sample",
+      "type": "string",
+      "description": "scale image with pixel sampling",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "scale",
+      "flag": "-scale",
+      "type": "string",
+      "description": "scale the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "segment",
+      "flag": "-segment",
+      "type": "string",
+      "description": "segment an image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "selective-blur",
+      "flag": "-selective-blur",
+      "type": "string",
+      "description": "selectively blur pixels within a contrast threshold",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "sepia-tone",
+      "flag": "-sepia-tone",
+      "type": "string",
+      "description": "simulate a sepia-toned photo",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "set",
+      "flag": "-set",
+      "type": "string",
+      "description": "set an image property",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "shade",
+      "flag": "-shade",
+      "type": "number",
+      "description": "shade the image using a distant light source",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "shadow",
+      "flag": "-shadow",
+      "type": "string",
+      "description": "simulate an image shadow",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "sharpen",
+      "flag": "-sharpen",
+      "type": "string",
+      "description": "sharpen the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "shave",
+      "flag": "-shave",
+      "type": "string",
+      "description": "shave pixels from the image edges",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "shear",
+      "flag": "-shear",
+      "type": "string",
+      "description": "slide one edge of the image along the X or Y axis",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "sigmoidal-contrast",
+      "flag": "-sigmoidal-contrast",
+      "type": "string",
+      "description": "increase the contrast without saturating highlights or shadows",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "sketch",
+      "flag": "-sketch",
+      "type": "string",
+      "description": "simulate a pencil sketch",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "solarize",
+      "flag": "-solarize",
+      "type": "string",
+      "description": "negate all pixels above the threshold level",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "sort-pixels",
+      "flag": "-sort-pixels",
+      "type": "boolean",
+      "description": "sort each scanline in ascending order of intensity",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "sparse-color",
+      "flag": "-sparse-color",
+      "type": "string",
+      "description": "fill in a image based on a few color points",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "splice",
+      "flag": "-splice",
+      "type": "string",
+      "description": "splice the background color into the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "spread",
+      "flag": "-spread",
+      "type": "number",
+      "description": "displace image pixels by a random amount",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "statistic",
+      "flag": "-statistic",
+      "type": "string",
+      "description": "replace each pixel with corresponding statistic from the neighborhood",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "strip",
+      "flag": "-strip",
+      "type": "boolean",
+      "description": "strip image of all profiles and comments",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "swirl",
+      "flag": "-swirl",
+      "type": "number",
+      "description": "swirl image pixels about the center",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "threshold",
+      "flag": "-threshold",
+      "type": "string",
+      "description": "threshold the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "thumbnail",
+      "flag": "-thumbnail",
+      "type": "string",
+      "description": "create a thumbnail of the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "tile",
+      "flag": "-tile",
+      "type": "path",
+      "description": "tile image when filling a graphic primitive",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "tint",
+      "flag": "-tint",
+      "type": "string",
+      "description": "tint the image with the fill color",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "transform",
+      "flag": "-transform",
+      "type": "boolean",
+      "description": "affine transform image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "transparent",
+      "flag": "-transparent",
+      "type": "string",
+      "description": "make this color transparent within the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "transpose",
+      "flag": "-transpose",
+      "type": "boolean",
+      "description": "flip image vertically and rotate 90 degrees",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "transverse",
+      "flag": "-transverse",
+      "type": "boolean",
+      "description": "flop image horizontally and rotate 270 degrees",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "trim",
+      "flag": "-trim",
+      "type": "boolean",
+      "description": "trim image edges",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "type",
+      "flag": "-type",
+      "type": "string",
+      "description": "image type",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "unique-colors",
+      "flag": "-unique-colors",
+      "type": "boolean",
+      "description": "discard all but one of any pixel color",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "unsharp",
+      "flag": "-unsharp",
+      "type": "string",
+      "description": "sharpen the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "vignette",
+      "flag": "-vignette",
+      "type": "string",
+      "description": "soften the edges of the image in vignette style",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "wave",
+      "flag": "-wave",
+      "type": "string",
+      "description": "alter an image along a sine wave",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "wavelet-denoise",
+      "flag": "-wavelet-denoise",
+      "type": "string",
+      "description": "removes noise from the image using a wavelet transform",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "white-balance",
+      "flag": "-white-balance",
+      "type": "boolean",
+      "description": "automagically adjust white balance of image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "white-threshold",
+      "flag": "-white-threshold",
+      "type": "string",
+      "description": "force all pixels above the threshold into white",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Operators"
+    },
+    {
+      "name": "channel-fx",
+      "flag": "-channel-fx",
+      "type": "string",
+      "description": "exchange, extract, or transfer one or more image channels",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Channel Operators"
+    },
+    {
+      "name": "separate",
+      "flag": "-separate",
+      "type": "boolean",
+      "description": "separate an image channel into a grayscale image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Channel Operators"
+    },
+    {
+      "name": "append",
+      "flag": "-append",
+      "type": "boolean",
+      "description": "append an image sequence",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "clut",
+      "flag": "-clut",
+      "type": "boolean",
+      "description": "apply a color lookup table to the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "coalesce",
+      "flag": "-coalesce",
+      "type": "boolean",
+      "description": "merge a sequence of images",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "combine",
+      "flag": "-combine",
+      "type": "boolean",
+      "description": "combine a sequence of images",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "compare",
+      "flag": "-compare",
+      "type": "boolean",
+      "description": "mathematically and visually annotate the difference between an image and its reconstruction",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "complex",
+      "flag": "-complex",
+      "type": "string",
+      "description": "perform complex mathematics on an image sequence",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "composite",
+      "flag": "-composite",
+      "type": "boolean",
+      "description": "composite image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "copy",
+      "flag": "-copy",
+      "type": "string",
+      "description": "copy pixels from one area of an image to another",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "crop",
+      "flag": "-crop",
+      "type": "string",
+      "description": "cut out a rectangular region of the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "deconstruct",
+      "flag": "-deconstruct",
+      "type": "boolean",
+      "description": "break down an image sequence into constituent parts",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "evaluate-sequence",
+      "flag": "-evaluate-sequence",
+      "type": "string",
+      "description": "evaluate an arithmetic, relational, or logical expression",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "flatten",
+      "flag": "-flatten",
+      "type": "boolean",
+      "description": "flatten a sequence of images",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "fx",
+      "flag": "-fx",
+      "type": "string",
+      "description": "apply mathematical expression to an image channel(s)",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "hald-clut",
+      "flag": "-hald-clut",
+      "type": "boolean",
+      "description": "apply a Hald color lookup table to the image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "layers",
+      "flag": "-layers",
+      "type": "string",
+      "description": "optimize, merge, or compare image layers",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "morph",
+      "flag": "-morph",
+      "type": "number",
+      "description": "morph an image sequence",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "mosaic",
+      "flag": "-mosaic",
+      "type": "boolean",
+      "description": "create a mosaic from an image sequence",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "poly",
+      "flag": "-poly",
+      "type": "string",
+      "description": "build a polynomial from the image sequence and the corresponding terms",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "print",
+      "flag": "-print",
+      "type": "string",
+      "description": "interpret string and print to console",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "process",
+      "flag": "-process",
+      "type": "string",
+      "description": "process the image with a custom image filter",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "smush",
+      "flag": "-smush",
+      "type": "string",
+      "description": "smush an image sequence together",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "write",
+      "flag": "-write",
+      "type": "path",
+      "description": "write images to this file",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Sequence Operators"
+    },
+    {
+      "name": "clone",
+      "flag": "-clone",
+      "type": "string",
+      "description": "clone an image",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Stack Operators"
+    },
+    {
+      "name": "delete",
+      "flag": "-delete",
+      "type": "string",
+      "description": "delete the image from the image sequence",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Stack Operators"
+    },
+    {
+      "name": "duplicate",
+      "flag": "-duplicate",
+      "type": "string",
+      "description": "duplicate an image one or more times",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Stack Operators"
+    },
+    {
+      "name": "insert",
+      "flag": "-insert",
+      "type": "number",
+      "description": "insert last image into the image sequence",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Stack Operators"
+    },
+    {
+      "name": "reverse",
+      "flag": "-reverse",
+      "type": "boolean",
+      "description": "reverse image sequence",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Stack Operators"
+    },
+    {
+      "name": "swap",
+      "flag": "-swap",
+      "type": "string",
+      "description": "swap two images in the image sequence",
+      "enumValues": [],
+      "required": false,
+      "group": "Image Stack Operators"
+    },
+    {
+      "name": "debug",
+      "flag": "-debug",
+      "type": "string",
+      "description": "display copious debugging information",
+      "enumValues": [],
+      "required": false,
+      "group": "Miscellaneous Options"
+    },
+    {
+      "name": "distribute-cache",
+      "flag": "-distribute-cache",
+      "type": "number",
+      "description": "distributed pixel cache spanning one or more servers",
+      "enumValues": [],
+      "required": false,
+      "group": "Miscellaneous Options"
+    },
+    {
+      "name": "help",
+      "flag": "-help",
+      "type": "boolean",
+      "description": "print program options",
+      "enumValues": [],
+      "required": false,
+      "group": "Miscellaneous Options"
+    },
+    {
+      "name": "list",
+      "flag": "-list",
+      "type": "string",
+      "description": "print a list of supported option arguments",
+      "enumValues": [],
+      "required": false,
+      "group": "Miscellaneous Options"
+    },
+    {
+      "name": "log",
+      "flag": "-log",
+      "type": "string",
+      "description": "format of debugging information",
+      "enumValues": [],
+      "required": false,
+      "group": "Miscellaneous Options"
+    },
+    {
+      "name": "usage",
+      "flag": "-usage",
+      "type": "boolean",
+      "description": "print program usage",
+      "enumValues": [],
+      "required": false,
+      "group": "Miscellaneous Options"
+    },
+    {
+      "name": "version",
+      "flag": "-version",
+      "type": "boolean",
+      "description": "print version information",
+      "enumValues": [],
+      "required": false,
+      "group": "Miscellaneous Options"
+    }
+  ],
+  "positionals": [
+    {
+      "name": "input_image",
+      "type": "path",
+      "description": "One or more input image files",
+      "required": false,
+      "variadic": true
+    },
+    {
+      "name": "output_image",
+      "type": "path",
+      "description": "Output image file",
+      "required": true,
+      "variadic": false
+    }
+  ]
+}

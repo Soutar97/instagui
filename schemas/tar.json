@@ -1,0 +1,1450 @@
+{
+  "tool": "tar",
+  "summary": "GNU tar saves many files together into a single tape or disk archive, and can restore individual files from the archive.",
+  "options": [
+    {
+      "name": "catenate",
+      "flag": "-A, --catenate, --concatenate",
+      "type": "boolean",
+      "description": "Append tar files to an archive",
+      "enumValues": [],
+      "required": false,
+      "group": "Main operation mode"
+    },
+    {
+      "name": "create",
+      "flag": "-c, --create",
+      "type": "boolean",
+      "description": "Create a new archive",
+      "enumValues": [],
+      "required": false,
+      "group": "Main operation mode"
+    },
+    {
+      "name": "delete",
+      "flag": "--delete",
+      "type": "boolean",
+      "description": "Delete from the archive (not on mag tapes!)",
+      "enumValues": [],
+      "required": false,
+      "group": "Main operation mode"
+    },
+    {
+      "name": "diff",
+      "flag": "-d, --diff, --compare",
+      "type": "boolean",
+      "description": "Find differences between archive and file system",
+      "enumValues": [],
+      "required": false,
+      "group": "Main operation mode"
+    },
+    {
+      "name": "append",
+      "flag": "-r, --append",
+      "type": "boolean",
+      "description": "Append files to the end of an archive",
+      "enumValues": [],
+      "required": false,
+      "group": "Main operation mode"
+    },
+    {
+      "name": "test-label",
+      "flag": "--test-label",
+      "type": "boolean",
+      "description": "Test the archive volume label and exit",
+      "enumValues": [],
+      "required": false,
+      "group": "Main operation mode"
+    },
+    {
+      "name": "list",
+      "flag": "-t, --list",
+      "type": "boolean",
+      "description": "List the contents of an archive",
+      "enumValues": [],
+      "required": false,
+      "group": "Main operation mode"
+    },
+    {
+      "name": "update",
+      "flag": "-u, --update",
+      "type": "boolean",
+      "description": "Only append files newer than copy in archive",
+      "enumValues": [],
+      "required": false,
+      "group": "Main operation mode"
+    },
+    {
+      "name": "extract",
+      "flag": "-x, --extract, --get",
+      "type": "boolean",
+      "description": "Extract files from an archive",
+      "enumValues": [],
+      "required": false,
+      "group": "Main operation mode"
+    },
+    {
+      "name": "check-device",
+      "flag": "--check-device",
+      "type": "boolean",
+      "description": "Check device numbers when creating incremental archives (default)",
+      "enumValues": [],
+      "required": false,
+      "group": "Operation modifiers"
+    },
+    {
+      "name": "listed-incremental",
+      "flag": "-g, --listed-incremental=FILE",
+      "type": "path",
+      "description": "Handle new GNU-format incremental backup",
+      "enumValues": [],
+      "required": false,
+      "group": "Operation modifiers"
+    },
+    {
+      "name": "incremental",
+      "flag": "-G, --incremental",
+      "type": "boolean",
+      "description": "Handle old GNU-format incremental backup",
+      "enumValues": [],
+      "required": false,
+      "group": "Operation modifiers"
+    },
+    {
+      "name": "hole-detection",
+      "flag": "--hole-detection=TYPE",
+      "type": "string",
+      "description": "Technique to detect holes",
+      "enumValues": [],
+      "required": false,
+      "group": "Operation modifiers"
+    },
+    {
+      "name": "ignore-failed-read",
+      "flag": "--ignore-failed-read",
+      "type": "boolean",
+      "description": "Do not exit with nonzero on unreadable files",
+      "enumValues": [],
+      "required": false,
+      "group": "Operation modifiers"
+    },
+    {
+      "name": "level",
+      "flag": "--level=NUMBER",
+      "type": "number",
+      "description": "Dump level for created listed-incremental archive",
+      "enumValues": [],
+      "required": false,
+      "group": "Operation modifiers"
+    },
+    {
+      "name": "no-check-device",
+      "flag": "--no-check-device",
+      "type": "boolean",
+      "description": "Do not check device numbers when creating incremental archives",
+      "enumValues": [],
+      "required": false,
+      "group": "Operation modifiers"
+    },
+    {
+      "name": "no-seek",
+      "flag": "--no-seek",
+      "type": "boolean",
+      "description": "Archive is not seekable",
+      "enumValues": [],
+      "required": false,
+      "group": "Operation modifiers"
+    },
+    {
+      "name": "seek",
+      "flag": "-n, --seek",
+      "type": "boolean",
+      "description": "Archive is seekable",
+      "enumValues": [],
+      "required": false,
+      "group": "Operation modifiers"
+    },
+    {
+      "name": "occurrence",
+      "flag": "--occurrence[=NUMBER]",
+      "type": "string",
+      "description": "Process only the NUMBERth occurrence of each file in the archive",
+      "enumValues": [],
+      "required": false,
+      "group": "Operation modifiers"
+    },
+    {
+      "name": "sparse-version",
+      "flag": "--sparse-version=MAJOR[.MINOR]",
+      "type": "string",
+      "description": "Set version of the sparse format to use (implies --sparse)",
+      "enumValues": [],
+      "required": false,
+      "group": "Operation modifiers"
+    },
+    {
+      "name": "sparse",
+      "flag": "-S, --sparse",
+      "type": "boolean",
+      "description": "Handle sparse files efficiently",
+      "enumValues": [],
+      "required": false,
+      "group": "Operation modifiers"
+    },
+    {
+      "name": "add-file",
+      "flag": "--add-file=FILE",
+      "type": "path",
+      "description": "Add given FILE to the archive (useful if its name starts with a dash)",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "directory",
+      "flag": "-C, --directory=DIR",
+      "type": "path",
+      "description": "Change to directory DIR",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "exclude",
+      "flag": "--exclude=PATTERN",
+      "type": "string",
+      "description": "Exclude files, given as a PATTERN",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "exclude-backups",
+      "flag": "--exclude-backups",
+      "type": "boolean",
+      "description": "Exclude backup and lock files",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "exclude-caches",
+      "flag": "--exclude-caches",
+      "type": "boolean",
+      "description": "Exclude contents of directories containing CACHEDIR.TAG, except for the tag file itself",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "exclude-caches-all",
+      "flag": "--exclude-caches-all",
+      "type": "boolean",
+      "description": "Exclude directories containing CACHEDIR.TAG",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "exclude-caches-under",
+      "flag": "--exclude-caches-under",
+      "type": "boolean",
+      "description": "Exclude everything under directories containing CACHEDIR.TAG",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "exclude-ignore",
+      "flag": "--exclude-ignore=FILE",
+      "type": "path",
+      "description": "Read exclude patterns for each directory from FILE, if it exists",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "exclude-ignore-recursive",
+      "flag": "--exclude-ignore-recursive=FILE",
+      "type": "path",
+      "description": "Read exclude patterns for each directory and its subdirectories from FILE, if it exists",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "exclude-tag",
+      "flag": "--exclude-tag=FILE",
+      "type": "path",
+      "description": "Exclude contents of directories containing FILE, except for FILE itself",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "exclude-tag-all",
+      "flag": "--exclude-tag-all=FILE",
+      "type": "path",
+      "description": "Exclude directories containing FILE",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "exclude-tag-under",
+      "flag": "--exclude-tag-under=FILE",
+      "type": "path",
+      "description": "Exclude everything under directories containing FILE",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "exclude-vcs",
+      "flag": "--exclude-vcs",
+      "type": "boolean",
+      "description": "Exclude version control system directories",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "exclude-vcs-ignores",
+      "flag": "--exclude-vcs-ignores",
+      "type": "boolean",
+      "description": "Read exclude patterns from the VCS ignore files",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "no-null",
+      "flag": "--no-null",
+      "type": "boolean",
+      "description": "Disable the effect of the previous --null option",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "no-recursion",
+      "flag": "--no-recursion",
+      "type": "boolean",
+      "description": "Avoid descending automatically in directories",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "no-unquote",
+      "flag": "--no-unquote",
+      "type": "boolean",
+      "description": "Do not unquote input file or member names",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "no-verbatim-files-from",
+      "flag": "--no-verbatim-files-from",
+      "type": "boolean",
+      "description": "-T treats file names starting with dash as options (default)",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "null",
+      "flag": "--null",
+      "type": "boolean",
+      "description": "-T reads null-terminated names; implies --verbatim-files-from",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "recursion",
+      "flag": "--recursion",
+      "type": "boolean",
+      "description": "Recurse into directories (default)",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "files-from",
+      "flag": "-T, --files-from=FILE",
+      "type": "path",
+      "description": "Get names to extract or create from FILE",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "unquote",
+      "flag": "--unquote",
+      "type": "boolean",
+      "description": "Unquote input file or member names (default)",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "verbatim-files-from",
+      "flag": "--verbatim-files-from",
+      "type": "boolean",
+      "description": "-T reads file names verbatim (no escape or option handling)",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "exclude-from",
+      "flag": "-X, --exclude-from=FILE",
+      "type": "path",
+      "description": "Exclude patterns listed in FILE",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file name selection"
+    },
+    {
+      "name": "anchored",
+      "flag": "--anchored",
+      "type": "boolean",
+      "description": "Patterns match file name start",
+      "enumValues": [],
+      "required": false,
+      "group": "File name matching options"
+    },
+    {
+      "name": "ignore-case",
+      "flag": "--ignore-case",
+      "type": "boolean",
+      "description": "Ignore case",
+      "enumValues": [],
+      "required": false,
+      "group": "File name matching options"
+    },
+    {
+      "name": "no-anchored",
+      "flag": "--no-anchored",
+      "type": "boolean",
+      "description": "Patterns match after any '/' (default for exclusion)",
+      "enumValues": [],
+      "required": false,
+      "group": "File name matching options"
+    },
+    {
+      "name": "no-ignore-case",
+      "flag": "--no-ignore-case",
+      "type": "boolean",
+      "description": "Case sensitive matching (default)",
+      "enumValues": [],
+      "required": false,
+      "group": "File name matching options"
+    },
+    {
+      "name": "no-wildcards",
+      "flag": "--no-wildcards",
+      "type": "boolean",
+      "description": "Verbatim string matching",
+      "enumValues": [],
+      "required": false,
+      "group": "File name matching options"
+    },
+    {
+      "name": "no-wildcards-match-slash",
+      "flag": "--no-wildcards-match-slash",
+      "type": "boolean",
+      "description": "Wildcards do not match '/'",
+      "enumValues": [],
+      "required": false,
+      "group": "File name matching options"
+    },
+    {
+      "name": "wildcards",
+      "flag": "--wildcards",
+      "type": "boolean",
+      "description": "Use wildcards (default for exclusion)",
+      "enumValues": [],
+      "required": false,
+      "group": "File name matching options"
+    },
+    {
+      "name": "wildcards-match-slash",
+      "flag": "--wildcards-match-slash",
+      "type": "boolean",
+      "description": "Wildcards match '/' (default for exclusion)",
+      "enumValues": [],
+      "required": false,
+      "group": "File name matching options"
+    },
+    {
+      "name": "keep-directory-symlink",
+      "flag": "--keep-directory-symlink",
+      "type": "boolean",
+      "description": "Preserve existing symlinks to directories when extracting",
+      "enumValues": [],
+      "required": false,
+      "group": "Overwrite control"
+    },
+    {
+      "name": "keep-newer-files",
+      "flag": "--keep-newer-files",
+      "type": "boolean",
+      "description": "Don't replace existing files that are newer than their archive copies",
+      "enumValues": [],
+      "required": false,
+      "group": "Overwrite control"
+    },
+    {
+      "name": "keep-old-files",
+      "flag": "-k, --keep-old-files",
+      "type": "boolean",
+      "description": "Don't replace existing files when extracting, treat them as errors",
+      "enumValues": [],
+      "required": false,
+      "group": "Overwrite control"
+    },
+    {
+      "name": "no-overwrite-dir",
+      "flag": "--no-overwrite-dir",
+      "type": "boolean",
+      "description": "Preserve metadata of existing directories",
+      "enumValues": [],
+      "required": false,
+      "group": "Overwrite control"
+    },
+    {
+      "name": "one-top-level",
+      "flag": "--one-top-level[=DIR]",
+      "type": "string",
+      "description": "Create a subdirectory to avoid having loose files extracted",
+      "enumValues": [],
+      "required": false,
+      "group": "Overwrite control"
+    },
+    {
+      "name": "overwrite",
+      "flag": "--overwrite",
+      "type": "boolean",
+      "description": "Overwrite existing files when extracting",
+      "enumValues": [],
+      "required": false,
+      "group": "Overwrite control"
+    },
+    {
+      "name": "overwrite-dir",
+      "flag": "--overwrite-dir",
+      "type": "boolean",
+      "description": "Overwrite metadata of existing directories when extracting (default)",
+      "enumValues": [],
+      "required": false,
+      "group": "Overwrite control"
+    },
+    {
+      "name": "recursive-unlink",
+      "flag": "--recursive-unlink",
+      "type": "boolean",
+      "description": "Empty hierarchies prior to extracting directory",
+      "enumValues": [],
+      "required": false,
+      "group": "Overwrite control"
+    },
+    {
+      "name": "remove-files",
+      "flag": "--remove-files",
+      "type": "boolean",
+      "description": "Remove files after adding them to the archive",
+      "enumValues": [],
+      "required": false,
+      "group": "Overwrite control"
+    },
+    {
+      "name": "skip-old-files",
+      "flag": "--skip-old-files",
+      "type": "boolean",
+      "description": "Don't replace existing files when extracting, silently skip over them",
+      "enumValues": [],
+      "required": false,
+      "group": "Overwrite control"
+    },
+    {
+      "name": "unlink-first",
+      "flag": "-U, --unlink-first",
+      "type": "boolean",
+      "description": "Remove each file prior to extracting over it",
+      "enumValues": [],
+      "required": false,
+      "group": "Overwrite control"
+    },
+    {
+      "name": "verify",
+      "flag": "-W, --verify",
+      "type": "boolean",
+      "description": "Attempt to verify the archive after writing it",
+      "enumValues": [],
+      "required": false,
+      "group": "Overwrite control"
+    },
+    {
+      "name": "ignore-command-error",
+      "flag": "--ignore-command-error",
+      "type": "boolean",
+      "description": "Ignore exit codes of children",
+      "enumValues": [],
+      "required": false,
+      "group": "Select output stream"
+    },
+    {
+      "name": "no-ignore-command-error",
+      "flag": "--no-ignore-command-error",
+      "type": "boolean",
+      "description": "Treat non-zero exit codes of children as error",
+      "enumValues": [],
+      "required": false,
+      "group": "Select output stream"
+    },
+    {
+      "name": "to-stdout",
+      "flag": "-O, --to-stdout",
+      "type": "boolean",
+      "description": "Extract files to standard output",
+      "enumValues": [],
+      "required": false,
+      "group": "Select output stream"
+    },
+    {
+      "name": "to-command",
+      "flag": "--to-command=COMMAND",
+      "type": "string",
+      "description": "Pipe extracted files to another program",
+      "enumValues": [],
+      "required": false,
+      "group": "Select output stream"
+    },
+    {
+      "name": "atime-preserve",
+      "flag": "--atime-preserve[=METHOD]",
+      "type": "string",
+      "description": "Preserve access times on dumped files",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of file attributes"
+    },
+    {
+      "name": "clamp-mtime",
+      "flag": "--clamp-mtime",
+      "type": "boolean",
+      "description": "Only set time when the file is more recent than what was given with --mtime",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of file attributes"
+    },
+    {
+      "name": "delay-directory-restore",
+      "flag": "--delay-directory-restore",
+      "type": "boolean",
+      "description": "Delay setting modification times and permissions of extracted directories until the end of extraction",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of file attributes"
+    },
+    {
+      "name": "group",
+      "flag": "--group=NAME",
+      "type": "string",
+      "description": "Force NAME as group for added files",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of file attributes"
+    },
+    {
+      "name": "group-map",
+      "flag": "--group-map=FILE",
+      "type": "path",
+      "description": "Use FILE to map file owner GIDs and names",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of file attributes"
+    },
+    {
+      "name": "mode",
+      "flag": "--mode=CHANGES",
+      "type": "string",
+      "description": "Force (symbolic) mode CHANGES for added files",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of file attributes"
+    },
+    {
+      "name": "mtime",
+      "flag": "--mtime=DATE-OR-FILE",
+      "type": "string",
+      "description": "Set mtime for added files from DATE-OR-FILE",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of file attributes"
+    },
+    {
+      "name": "touch",
+      "flag": "-m, --touch",
+      "type": "boolean",
+      "description": "Don't extract file modified time",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of file attributes"
+    },
+    {
+      "name": "no-delay-directory-restore",
+      "flag": "--no-delay-directory-restore",
+      "type": "boolean",
+      "description": "Cancel the effect of --delay-directory-restore option",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of file attributes"
+    },
+    {
+      "name": "no-same-owner",
+      "flag": "--no-same-owner",
+      "type": "boolean",
+      "description": "Extract files as yourself (default for ordinary users)",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of file attributes"
+    },
+    {
+      "name": "no-same-permissions",
+      "flag": "--no-same-permissions",
+      "type": "boolean",
+      "description": "Apply the user's umask when extracting permissions from the archive (default for ordinary users)",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of file attributes"
+    },
+    {
+      "name": "numeric-owner",
+      "flag": "--numeric-owner",
+      "type": "boolean",
+      "description": "Always use numbers for user/group names",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of file attributes"
+    },
+    {
+      "name": "owner",
+      "flag": "--owner=NAME",
+      "type": "string",
+      "description": "Force NAME as owner for added files",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of file attributes"
+    },
+    {
+      "name": "owner-map",
+      "flag": "--owner-map=FILE",
+      "type": "path",
+      "description": "Use FILE to map file owner UIDs and names",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of file attributes"
+    },
+    {
+      "name": "preserve-permissions",
+      "flag": "-p, --preserve-permissions, --same-permissions",
+      "type": "boolean",
+      "description": "Extract information about file permissions (default for superuser)",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of file attributes"
+    },
+    {
+      "name": "same-owner",
+      "flag": "--same-owner",
+      "type": "boolean",
+      "description": "Try extracting files with the same ownership as exists in the archive (default for superuser)",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of file attributes"
+    },
+    {
+      "name": "sort",
+      "flag": "--sort=ORDER",
+      "type": "enum",
+      "description": "Directory sorting order",
+      "enumValues": [
+        "none",
+        "name",
+        "inode"
+      ],
+      "required": false,
+      "group": "Handling of file attributes"
+    },
+    {
+      "name": "preserve-order",
+      "flag": "-s, --preserve-order, --same-order",
+      "type": "boolean",
+      "description": "Member arguments are listed in the same order as the files in the archive",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of file attributes"
+    },
+    {
+      "name": "acls",
+      "flag": "--acls",
+      "type": "boolean",
+      "description": "Enable the POSIX ACLs support",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of extended file attributes"
+    },
+    {
+      "name": "no-acls",
+      "flag": "--no-acls",
+      "type": "boolean",
+      "description": "Disable the POSIX ACLs support",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of extended file attributes"
+    },
+    {
+      "name": "no-selinux",
+      "flag": "--no-selinux",
+      "type": "boolean",
+      "description": "Disable the SELinux context support",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of extended file attributes"
+    },
+    {
+      "name": "no-xattrs",
+      "flag": "--no-xattrs",
+      "type": "boolean",
+      "description": "Disable extended attributes support",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of extended file attributes"
+    },
+    {
+      "name": "selinux",
+      "flag": "--selinux",
+      "type": "boolean",
+      "description": "Enable the SELinux context support",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of extended file attributes"
+    },
+    {
+      "name": "xattrs",
+      "flag": "--xattrs",
+      "type": "boolean",
+      "description": "Enable extended attributes support",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of extended file attributes"
+    },
+    {
+      "name": "xattrs-exclude",
+      "flag": "--xattrs-exclude=MASK",
+      "type": "string",
+      "description": "Specify the exclude pattern for xattr keys",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of extended file attributes"
+    },
+    {
+      "name": "xattrs-include",
+      "flag": "--xattrs-include=MASK",
+      "type": "string",
+      "description": "Specify the include pattern for xattr keys",
+      "enumValues": [],
+      "required": false,
+      "group": "Handling of extended file attributes"
+    },
+    {
+      "name": "force-local",
+      "flag": "--force-local",
+      "type": "boolean",
+      "description": "Archive file is local even if it has a colon",
+      "enumValues": [],
+      "required": false,
+      "group": "Device selection and switching"
+    },
+    {
+      "name": "file",
+      "flag": "-f, --file=ARCHIVE",
+      "type": "path",
+      "description": "Use archive file or device ARCHIVE",
+      "enumValues": [],
+      "required": false,
+      "group": "Device selection and switching"
+    },
+    {
+      "name": "info-script",
+      "flag": "-F, --info-script=NAME, --new-volume-script=NAME",
+      "type": "string",
+      "description": "Run script at end of each tape (implies -M)",
+      "enumValues": [],
+      "required": false,
+      "group": "Device selection and switching"
+    },
+    {
+      "name": "tape-length",
+      "flag": "-L, --tape-length=NUMBER",
+      "type": "number",
+      "description": "Change tape after writing NUMBER x 1024 bytes",
+      "enumValues": [],
+      "required": false,
+      "group": "Device selection and switching"
+    },
+    {
+      "name": "multi-volume",
+      "flag": "-M, --multi-volume",
+      "type": "boolean",
+      "description": "Create/list/extract multi-volume archive",
+      "enumValues": [],
+      "required": false,
+      "group": "Device selection and switching"
+    },
+    {
+      "name": "rmt-command",
+      "flag": "--rmt-command=COMMAND",
+      "type": "string",
+      "description": "Use given rmt COMMAND instead of rmt",
+      "enumValues": [],
+      "required": false,
+      "group": "Device selection and switching"
+    },
+    {
+      "name": "rsh-command",
+      "flag": "--rsh-command=COMMAND",
+      "type": "string",
+      "description": "Use remote COMMAND instead of rsh",
+      "enumValues": [],
+      "required": false,
+      "group": "Device selection and switching"
+    },
+    {
+      "name": "volno-file",
+      "flag": "--volno-file=FILE",
+      "type": "path",
+      "description": "Use/update the volume number in FILE",
+      "enumValues": [],
+      "required": false,
+      "group": "Device selection and switching"
+    },
+    {
+      "name": "blocking-factor",
+      "flag": "-b, --blocking-factor=BLOCKS",
+      "type": "number",
+      "description": "BLOCKS x 512 bytes per record",
+      "enumValues": [],
+      "required": false,
+      "group": "Device blocking"
+    },
+    {
+      "name": "read-full-records",
+      "flag": "-B, --read-full-records",
+      "type": "boolean",
+      "description": "Reblock as we read (for 4.2BSD pipes)",
+      "enumValues": [],
+      "required": false,
+      "group": "Device blocking"
+    },
+    {
+      "name": "ignore-zeros",
+      "flag": "-i, --ignore-zeros",
+      "type": "boolean",
+      "description": "Ignore zeroed blocks in archive (means EOF)",
+      "enumValues": [],
+      "required": false,
+      "group": "Device blocking"
+    },
+    {
+      "name": "record-size",
+      "flag": "--record-size=NUMBER",
+      "type": "number",
+      "description": "NUMBER of bytes per record, multiple of 512",
+      "enumValues": [],
+      "required": false,
+      "group": "Device blocking"
+    },
+    {
+      "name": "format",
+      "flag": "-H, --format=FORMAT",
+      "type": "enum",
+      "description": "Create archive of the given format",
+      "enumValues": [
+        "gnu",
+        "oldgnu",
+        "pax",
+        "posix",
+        "ustar",
+        "v7"
+      ],
+      "required": false,
+      "group": "Archive format selection"
+    },
+    {
+      "name": "old-archive",
+      "flag": "--old-archive, --portability",
+      "type": "boolean",
+      "description": "Same as --format=v7",
+      "enumValues": [],
+      "required": false,
+      "group": "Archive format selection"
+    },
+    {
+      "name": "pax-option",
+      "flag": "--pax-option=keyword[[:]=value][,keyword[[:]=value]]...",
+      "type": "string",
+      "description": "Control pax keywords",
+      "enumValues": [],
+      "required": false,
+      "group": "Archive format selection"
+    },
+    {
+      "name": "posix",
+      "flag": "--posix",
+      "type": "boolean",
+      "description": "Same as --format=posix",
+      "enumValues": [],
+      "required": false,
+      "group": "Archive format selection"
+    },
+    {
+      "name": "label",
+      "flag": "-V, --label=TEXT",
+      "type": "string",
+      "description": "Create archive with volume name TEXT; at list/extract time, use TEXT as a globbing pattern for volume name",
+      "enumValues": [],
+      "required": false,
+      "group": "Archive format selection"
+    },
+    {
+      "name": "auto-compress",
+      "flag": "-a, --auto-compress",
+      "type": "boolean",
+      "description": "Use archive suffix to determine the compression program",
+      "enumValues": [],
+      "required": false,
+      "group": "Compression options"
+    },
+    {
+      "name": "use-compress-program",
+      "flag": "-I, --use-compress-program=PROG",
+      "type": "string",
+      "description": "Filter through PROG (must accept -d)",
+      "enumValues": [],
+      "required": false,
+      "group": "Compression options"
+    },
+    {
+      "name": "bzip2",
+      "flag": "-j, --bzip2",
+      "type": "boolean",
+      "description": "Filter the archive through bzip2",
+      "enumValues": [],
+      "required": false,
+      "group": "Compression options"
+    },
+    {
+      "name": "xz",
+      "flag": "-J, --xz",
+      "type": "boolean",
+      "description": "Filter the archive through xz",
+      "enumValues": [],
+      "required": false,
+      "group": "Compression options"
+    },
+    {
+      "name": "lzip",
+      "flag": "--lzip",
+      "type": "boolean",
+      "description": "Filter the archive through lzip",
+      "enumValues": [],
+      "required": false,
+      "group": "Compression options"
+    },
+    {
+      "name": "lzma",
+      "flag": "--lzma",
+      "type": "boolean",
+      "description": "Filter the archive through lzma",
+      "enumValues": [],
+      "required": false,
+      "group": "Compression options"
+    },
+    {
+      "name": "lzop",
+      "flag": "--lzop",
+      "type": "boolean",
+      "description": "Filter the archive through lzop",
+      "enumValues": [],
+      "required": false,
+      "group": "Compression options"
+    },
+    {
+      "name": "no-auto-compress",
+      "flag": "--no-auto-compress",
+      "type": "boolean",
+      "description": "Do not use archive suffix to determine the compression program",
+      "enumValues": [],
+      "required": false,
+      "group": "Compression options"
+    },
+    {
+      "name": "zstd",
+      "flag": "--zstd",
+      "type": "boolean",
+      "description": "Filter the archive through zstd",
+      "enumValues": [],
+      "required": false,
+      "group": "Compression options"
+    },
+    {
+      "name": "gzip",
+      "flag": "-z, --gzip, --gunzip, --ungzip",
+      "type": "boolean",
+      "description": "Filter the archive through gzip",
+      "enumValues": [],
+      "required": false,
+      "group": "Compression options"
+    },
+    {
+      "name": "compress",
+      "flag": "-Z, --compress, --uncompress",
+      "type": "boolean",
+      "description": "Filter the archive through compress",
+      "enumValues": [],
+      "required": false,
+      "group": "Compression options"
+    },
+    {
+      "name": "backup",
+      "flag": "--backup[=CONTROL]",
+      "type": "string",
+      "description": "Backup before removal, choose version CONTROL",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file selection"
+    },
+    {
+      "name": "hard-dereference",
+      "flag": "--hard-dereference",
+      "type": "boolean",
+      "description": "Follow hard links; archive and dump the files they refer to",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file selection"
+    },
+    {
+      "name": "dereference",
+      "flag": "-h, --dereference",
+      "type": "boolean",
+      "description": "Follow symlinks; archive and dump the files they point to",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file selection"
+    },
+    {
+      "name": "starting-file",
+      "flag": "-K, --starting-file=MEMBER-NAME",
+      "type": "string",
+      "description": "Begin at member MEMBER-NAME when reading the archive",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file selection"
+    },
+    {
+      "name": "newer-mtime",
+      "flag": "--newer-mtime=DATE",
+      "type": "string",
+      "description": "Compare date and time when data changed only",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file selection"
+    },
+    {
+      "name": "newer",
+      "flag": "-N, --newer=DATE-OR-FILE, --after-date=DATE-OR-FILE",
+      "type": "string",
+      "description": "Only store files newer than DATE-OR-FILE",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file selection"
+    },
+    {
+      "name": "one-file-system",
+      "flag": "--one-file-system",
+      "type": "boolean",
+      "description": "Stay in local file system when creating archive",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file selection"
+    },
+    {
+      "name": "absolute-names",
+      "flag": "-P, --absolute-names",
+      "type": "boolean",
+      "description": "Don't strip leading '/'s from file names",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file selection"
+    },
+    {
+      "name": "suffix",
+      "flag": "--suffix=STRING",
+      "type": "string",
+      "description": "Backup before removal, override usual suffix",
+      "enumValues": [],
+      "required": false,
+      "group": "Local file selection"
+    },
+    {
+      "name": "strip-components",
+      "flag": "--strip-components=NUMBER",
+      "type": "number",
+      "description": "Strip NUMBER leading components from file names on extraction",
+      "enumValues": [],
+      "required": false,
+      "group": "File name transformations"
+    },
+    {
+      "name": "transform",
+      "flag": "--transform=EXPRESSION, --xform=EXPRESSION",
+      "type": "string",
+      "description": "Use sed replace EXPRESSION to transform file names",
+      "enumValues": [],
+      "required": false,
+      "group": "File name transformations"
+    },
+    {
+      "name": "checkpoint",
+      "flag": "--checkpoint[=NUMBER]",
+      "type": "string",
+      "description": "Display progress messages every NUMBERth record (default 10)",
+      "enumValues": [],
+      "required": false,
+      "group": "Informative output"
+    },
+    {
+      "name": "checkpoint-action",
+      "flag": "--checkpoint-action=ACTION",
+      "type": "string",
+      "description": "Execute ACTION on each checkpoint",
+      "enumValues": [],
+      "required": false,
+      "group": "Informative output"
+    },
+    {
+      "name": "full-time",
+      "flag": "--full-time",
+      "type": "boolean",
+      "description": "Print file time to its full resolution",
+      "enumValues": [],
+      "required": false,
+      "group": "Informative output"
+    },
+    {
+      "name": "index-file",
+      "flag": "--index-file=FILE",
+      "type": "path",
+      "description": "Send verbose output to FILE",
+      "enumValues": [],
+      "required": false,
+      "group": "Informative output"
+    },
+    {
+      "name": "check-links",
+      "flag": "-l, --check-links",
+      "type": "boolean",
+      "description": "Print a message if not all links are dumped",
+      "enumValues": [],
+      "required": false,
+      "group": "Informative output"
+    },
+    {
+      "name": "no-quote-chars",
+      "flag": "--no-quote-chars=STRING",
+      "type": "string",
+      "description": "Disable quoting for characters from STRING",
+      "enumValues": [],
+      "required": false,
+      "group": "Informative output"
+    },
+    {
+      "name": "quote-chars",
+      "flag": "--quote-chars=STRING",
+      "type": "string",
+      "description": "Additionally quote characters from STRING",
+      "enumValues": [],
+      "required": false,
+      "group": "Informative output"
+    },
+    {
+      "name": "quoting-style",
+      "flag": "--quoting-style=STYLE",
+      "type": "enum",
+      "description": "Set name quoting style",
+      "enumValues": [
+        "literal",
+        "shell",
+        "shell-always",
+        "shell-escape",
+        "shell-escape-always",
+        "c",
+        "c-maybe",
+        "escape",
+        "locale",
+        "clocale"
+      ],
+      "required": false,
+      "group": "Informative output"
+    },
+    {
+      "name": "block-number",
+      "flag": "-R, --block-number",
+      "type": "boolean",
+      "description": "Show block number within archive with each message",
+      "enumValues": [],
+      "required": false,
+      "group": "Informative output"
+    },
+    {
+      "name": "show-defaults",
+      "flag": "--show-defaults",
+      "type": "boolean",
+      "description": "Show tar defaults",
+      "enumValues": [],
+      "required": false,
+      "group": "Informative output"
+    },
+    {
+      "name": "show-omitted-dirs",
+      "flag": "--show-omitted-dirs",
+      "type": "boolean",
+      "description": "When listing or extracting, list each directory that does not match search criteria",
+      "enumValues": [],
+      "required": false,
+      "group": "Informative output"
+    },
+    {
+      "name": "show-snapshot-field-ranges",
+      "flag": "--show-snapshot-field-ranges",
+      "type": "boolean",
+      "description": "Show valid ranges for snapshot-file fields",
+      "enumValues": [],
+      "required": false,
+      "group": "Informative output"
+    },
+    {
+      "name": "show-transformed-names",
+      "flag": "--show-transformed-names, --show-stored-names",
+      "type": "boolean",
+      "description": "Show file or archive names after transformation",
+      "enumValues": [],
+      "required": false,
+      "group": "Informative output"
+    },
+    {
+      "name": "totals",
+      "flag": "--totals[=SIGNAL]",
+      "type": "string",
+      "description": "Print total bytes after processing the archive",
+      "enumValues": [],
+      "required": false,
+      "group": "Informative output"
+    },
+    {
+      "name": "utc",
+      "flag": "--utc",
+      "type": "boolean",
+      "description": "Print file modification times in UTC",
+      "enumValues": [],
+      "required": false,
+      "group": "Informative output"
+    },
+    {
+      "name": "verbose",
+      "flag": "-v, --verbose",
+      "type": "boolean",
+      "description": "Verbosely list files processed",
+      "enumValues": [],
+      "required": false,
+      "group": "Informative output"
+    },
+    {
+      "name": "warning",
+      "flag": "--warning=KEYWORD",
+      "type": "string",
+      "description": "Warning control",
+      "enumValues": [],
+      "required": false,
+      "group": "Informative output"
+    },
+    {
+      "name": "interactive",
+      "flag": "-w, --interactive, --confirmation",
+      "type": "boolean",
+      "description": "Ask for confirmation for every action",
+      "enumValues": [],
+      "required": false,
+      "group": "Informative output"
+    },
+    {
+      "name": "compat-o",
+      "flag": "-o",
+      "type": "boolean",
+      "description": "When creating, same as --old-archive; when extracting, same as --no-same-owner",
+      "enumValues": [],
+      "required": false,
+      "group": "Compatibility options"
+    },
+    {
+      "name": "help",
+      "flag": "-?, --help",
+      "type": "boolean",
+      "description": "Give this help list",
+      "enumValues": [],
+      "required": false,
+      "group": "Other options"
+    },
+    {
+      "name": "restrict",
+      "flag": "--restrict",
+      "type": "boolean",
+      "description": "Disable use of some potentially harmful options",
+      "enumValues": [],
+      "required": false,
+      "group": "Other options"
+    },
+    {
+      "name": "usage",
+      "flag": "--usage",
+      "type": "boolean",
+      "description": "Give a short usage message",
+      "enumValues": [],
+      "required": false,
+      "group": "Other options"
+    },
+    {
+      "name": "version",
+      "flag": "--version",
+      "type": "boolean",
+      "description": "Print program version",
+      "enumValues": [],
+      "required": false,
+      "group": "Other options"
+    }
+  ],
+  "positionals": [
+    {
+      "name": "FILE",
+      "type": "path",
+      "description": "Files to add to or extract from the archive",
+      "required": false,
+      "variadic": true
+    }
+  ]
+}

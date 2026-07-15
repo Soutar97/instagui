@@ -5,7 +5,11 @@ These are the read-only fallback schemas that let the demo tools work with **no 
 → **these bundled schemas** → fresh extraction. The user cache always wins; these files are
 never overwritten at runtime.
 
-Currently bundled: `ffmpeg`, `yt-dlp`, `pandoc`.
+Currently bundled: `ffmpeg`, `yt-dlp`, `pandoc`, `curl`, `jq`, `tar`, `magick`, `zip`.
+
+> `rsync` was requested for bundling too but is intentionally **not** shipped: there is no clean
+> binary available to capture an authentic `--help` fixture from on the generation platform, and a
+> bundled schema is only as honest as the fixture it was verified against. Skipped, never guessed.
 
 ## Provenance
 

@@ -6,9 +6,6 @@ As featured in [The Register](https://www.theregister.com/software/2026/07/07/ne
 
 Turn any command-line tool into a clean local web form — no config, no code changes to the tool.
 
-<!-- TODO(pre-launch): record and drop the money-demo GIF here.
-     ~10s: `npx instagui ffmpeg` → browser opens → fill a couple fields → Run → output streams.
-     Save as docs/demo.gif and it renders below. -->
 ![instagui demo — npx instagui ffmpeg opens a web form, click Run, output streams](docs/demo.gif)
 
 ```sh
@@ -30,7 +27,7 @@ parses the tool's own `--help` text with AI into a structured schema and renders
 
 ## Quick start
 
-The three demo tools ship with **bundled schemas**, so they work instantly with **no API key**:
+The demo tools ship with **bundled schemas**, so they work instantly with **no API key**:
 
 ```sh
 npx instagui ffmpeg      # video/audio transcoding
@@ -38,13 +35,14 @@ npx instagui yt-dlp      # download media
 npx instagui pandoc      # convert documents
 ```
 
-For any *other* tool, instagui extracts the schema on first run using the Claude API (see
+More common tools are bundled too — `curl`, `jq`, `tar`, `magick`, and `zip` — and are just as
+keyless. For any *other* tool, instagui extracts the schema on first run using the Claude API (see
 [How it stays free](#how-it-stays-free)):
 
 ```sh
 export ANTHROPIC_API_KEY=sk-ant-...    # POSIX
 $env:ANTHROPIC_API_KEY="sk-ant-..."    # Windows / PowerShell
-npx instagui curl
+npx instagui wget
 ```
 
 Get a key at <https://console.anthropic.com>. The first extraction is cached, so every launch
@@ -92,8 +90,8 @@ So instagui never asks you to put a key in a file — you set the relevant **env
 Pick one explicitly with `--engine <name>`:
 
 ```sh
-npx instagui curl --engine claude    # use the claude CLI (no API key needed, just `claude` login)
-npx instagui curl --engine openai    # use the OpenAI API (needs OPENAI_API_KEY)
+npx instagui wget --engine claude    # use the claude CLI (no API key needed, just `claude` login)
+npx instagui wget --engine openai    # use the OpenAI API (needs OPENAI_API_KEY)
 ```
 
 Built-in engine names, no config required:
@@ -130,8 +128,8 @@ model, or set a `default` engine, create `~/.instagui/config.json`:
 **environment variable** that holds the key — instagui never reads a raw key from disk, and a
 config that puts a plaintext `key` in the file is rejected with an error pointing you back to `keyEnv`.
 
-None of this applies to the bundled demo tools: `ffmpeg`, `yt-dlp`, and `pandoc` resolve from
-shipped schemas and need **no engine at all**, ready or not.
+None of this applies to the bundled tools (`ffmpeg`, `yt-dlp`, `pandoc`, `curl`, `jq`, `tar`,
+`magick`, `zip`): they resolve from shipped schemas and need **no engine at all**, ready or not.
 
 ## How it works
 
@@ -154,7 +152,7 @@ instagui resolves a schema in this order, and only the last step costs an API ca
 | --- | --- | --- |
 | 1 | `--schema <file>` override you supply | no |
 | 2 | Your cache in `~/.instagui/` (written on first extraction) | no |
-| 3 | Bundled schemas shipped with the package (ffmpeg, yt-dlp, pandoc) | no |
+| 3 | Bundled schemas shipped with the package (ffmpeg, yt-dlp, pandoc, curl, jq, tar, magick, zip) | no |
 | 4 | Fresh extraction via your selected AI engine | **yes** (a key or a logged-in CLI — see [Choosing an AI engine](#choosing-an-ai-engine)) |
 
 So the demo tools are free forever, any tool you've used once is free forever after, and you only
@@ -262,6 +260,11 @@ hallucinated options. See [`schemas/README.md`](schemas/README.md) for provenanc
 Deliberately out of scope to keep it small and sharp: interactive/TUI programs (vim, top, REPLs);
 subcommand trees (flat tools only — `git commit` vs `git push` is v0.2); native file-picker dialogs;
 a hosted version, auth, telemetry, or a plugin system.
+
+## Support
+
+If instagui saves you time, you can sponsor development on [GitHub](https://github.com/sponsors/Soutar97).
+Starring the repo and contributing schemas helps just as much.
 
 ## License
 
