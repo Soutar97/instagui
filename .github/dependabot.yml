@@ -11,6 +11,18 @@ updates:
     commit-message:
       prefix: chore
       include: scope
+    # Collapse routine dev-tooling noise: minor + patch bumps of
+    # devDependencies land in one weekly PR instead of one-per-package.
+    # Scope is deliberately narrow — production deps (@anthropic-ai/sdk,
+    # zod) and ALL major bumps stay ungrouped so each gets its own PR and
+    # its own review, per CLAUDE.md's runtime-dependency and supply-chain
+    # rules.
+    groups:
+      dev-dependencies:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
 
   # GitHub Actions used in workflows. Dependabot bumps the pinned commit SHAs
   # (and updates the version comment beside each) so pin-by-SHA stays current.
