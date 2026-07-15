@@ -23,6 +23,18 @@ updates:
         update-types:
           - minor
           - patch
+    ignore:
+      # TypeScript major bumps are blocked by our lint toolchain, not our code:
+      # typescript-eslint 8.x pins `peer typescript >=4.8.4 <6.1.0`, and
+      # @typescript-eslint/typescript-estree crashes on TS 7's native-port
+      # compiler internals — failing npm ci, lint, and the AD-2 dependency-rule
+      # tests. TS 7 itself compiles our sources fine; the ecosystem just hasn't
+      # caught up. Stop the weekly re-open against the same wall (closed PR #13);
+      # revisit deliberately once typescript-eslint ships TS 7 support, then drop
+      # this ignore. Minor/patch TS updates still flow through normally.
+      - dependency-name: typescript
+        update-types:
+          - version-update:semver-major
 
   # GitHub Actions used in workflows. Dependabot bumps the pinned commit SHAs
   # (and updates the version comment beside each) so pin-by-SHA stays current.
