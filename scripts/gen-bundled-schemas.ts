@@ -57,14 +57,68 @@ const DEMOS: Demo[] = [
       { flag: '-t', type: 'string' },
     ],
   },
+  // Growth item #1 — additional bundled tools (curl, jq, tar, magick, zip). rsync was
+  // requested too but has no clean Windows binary to capture an authentic --help fixture
+  // from, so it is deliberately not bundled (skip-with-a-note, never shipped broken).
+  {
+    tool: 'curl',
+    fixture: 'curl-help.txt',
+    golden: [
+      { flag: '-o', type: 'path' },
+      { flag: '-L', type: 'boolean' },
+      { flag: '-d', type: 'string' },
+    ],
+  },
+  {
+    tool: 'jq',
+    fixture: 'jq-help.txt',
+    golden: [
+      { flag: '-r', type: 'boolean' },
+      { flag: '-s', type: 'boolean' },
+      { flag: '-c', type: 'boolean' },
+    ],
+  },
+  {
+    tool: 'tar',
+    fixture: 'tar-help.txt',
+    golden: [
+      { flag: '-c', type: 'boolean' },
+      { flag: '-x', type: 'boolean' },
+      { flag: '-f', type: 'path' },
+    ],
+  },
+  {
+    tool: 'magick',
+    fixture: 'magick-help.txt',
+    golden: [
+      { flag: '-resize', type: 'string' },
+      { flag: '-quality', type: 'number' },
+      { flag: '-strip', type: 'boolean' },
+    ],
+  },
+  {
+    tool: 'zip',
+    fixture: 'zip-help.txt',
+    golden: [
+      { flag: '-r', type: 'boolean' },
+      { flag: '-e', type: 'boolean' },
+      { flag: '-m', type: 'boolean' },
+    ],
+  },
 ];
 
 async function main(): Promise<number> {
   mkdirSync(outDir, { recursive: true });
   console.error(`gen-bundled-schemas: engine=${activeEngineName()}`);
 
+  // Optional tool filter: `gen-bundled-schemas.ts curl jq` regenerates only those tools,
+  // leaving the other committed schemas untouched. No args → regenerate every bundled tool.
+  const only = new Set(process.argv.slice(2));
+  const selected = only.size > 0 ? DEMOS.filter((d) => only.has(d.tool)) : DEMOS;
+  if (only.size > 0) console.error(`gen-bundled-schemas: filter=${[...only].join(', ')}`);
+
   let failures = 0;
-  for (const demo of DEMOS) {
+  for (const demo of selected) {
     const helpText = readFileSync(path.join(fixtures, demo.fixture), 'utf8');
     console.error(`\n[${demo.tool}] extracting from ${demo.fixture} ...`);
     try {
@@ -98,7 +152,7 @@ async function main(): Promise<number> {
     }
   }
 
-  console.error(`\ngen-bundled-schemas: ${DEMOS.length - failures}/${DEMOS.length} generated.`);
+  console.error(`\ngen-bundled-schemas: ${selected.length - failures}/${selected.length} generated.`);
   return failures === 0 ? 0 : 1;
 }
 

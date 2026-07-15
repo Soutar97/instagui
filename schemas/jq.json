@@ -1,0 +1,292 @@
+{
+  "tool": "jq",
+  "summary": "commandline JSON processor",
+  "options": [
+    {
+      "name": "null-input",
+      "flag": "-n, --null-input",
+      "type": "boolean",
+      "description": "use `null` as the single input value",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "raw-input",
+      "flag": "-R, --raw-input",
+      "type": "boolean",
+      "description": "read each line as string instead of JSON",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "slurp",
+      "flag": "-s, --slurp",
+      "type": "boolean",
+      "description": "read all inputs into an array and use it as the single input value",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "compact-output",
+      "flag": "-c, --compact-output",
+      "type": "boolean",
+      "description": "compact instead of pretty-printed output",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "raw-output",
+      "flag": "-r, --raw-output",
+      "type": "boolean",
+      "description": "output strings without escapes and quotes",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "raw-output0",
+      "flag": "--raw-output0",
+      "type": "boolean",
+      "description": "implies -r and output NUL after each output",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "join-output",
+      "flag": "-j, --join-output",
+      "type": "boolean",
+      "description": "implies -r and output without newline after each output",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "ascii-output",
+      "flag": "-a, --ascii-output",
+      "type": "boolean",
+      "description": "output strings by only ASCII characters using escape sequences",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "sort-keys",
+      "flag": "-S, --sort-keys",
+      "type": "boolean",
+      "description": "sort keys of each object on output",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "color-output",
+      "flag": "-C, --color-output",
+      "type": "boolean",
+      "description": "colorize JSON output",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "monochrome-output",
+      "flag": "-M, --monochrome-output",
+      "type": "boolean",
+      "description": "disable colored output",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "tab",
+      "flag": "--tab",
+      "type": "boolean",
+      "description": "use tabs for indentation",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "indent",
+      "flag": "--indent",
+      "type": "number",
+      "description": "use n spaces for indentation (max 7 spaces)",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "unbuffered",
+      "flag": "--unbuffered",
+      "type": "boolean",
+      "description": "flush output stream after each output",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "stream",
+      "flag": "--stream",
+      "type": "boolean",
+      "description": "parse the input value in streaming fashion",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "stream-errors",
+      "flag": "--stream-errors",
+      "type": "boolean",
+      "description": "implies --stream and report parse error as an array",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "seq",
+      "flag": "--seq",
+      "type": "boolean",
+      "description": "parse input/output as application/json-seq",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "from-file",
+      "flag": "-f, --from-file",
+      "type": "path",
+      "description": "load the filter from a file",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "library-path",
+      "flag": "-L, --library-path",
+      "type": "path",
+      "description": "search modules from the directory",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "arg",
+      "flag": "--arg",
+      "type": "string",
+      "description": "set $name to the string value",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "argjson",
+      "flag": "--argjson",
+      "type": "string",
+      "description": "set $name to the JSON value",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "slurpfile",
+      "flag": "--slurpfile",
+      "type": "path",
+      "description": "set $name to an array of JSON values read from the file",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "rawfile",
+      "flag": "--rawfile",
+      "type": "path",
+      "description": "set $name to string contents of file",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "args",
+      "flag": "--args",
+      "type": "boolean",
+      "description": "consume remaining arguments as positional string values",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "jsonargs",
+      "flag": "--jsonargs",
+      "type": "boolean",
+      "description": "consume remaining arguments as positional JSON values",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "exit-status",
+      "flag": "-e, --exit-status",
+      "type": "boolean",
+      "description": "set exit status code based on the output",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "binary",
+      "flag": "-b, --binary",
+      "type": "boolean",
+      "description": "open input/output streams in binary mode",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "version",
+      "flag": "-V, --version",
+      "type": "boolean",
+      "description": "show the version",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "build-configuration",
+      "flag": "--build-configuration",
+      "type": "boolean",
+      "description": "show jq's build configuration",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    },
+    {
+      "name": "help",
+      "flag": "-h, --help",
+      "type": "boolean",
+      "description": "show the help",
+      "enumValues": [],
+      "required": false,
+      "group": "Command options"
+    }
+  ],
+  "positionals": [
+    {
+      "name": "jq filter",
+      "type": "string",
+      "description": "jq filter expression to apply to JSON input",
+      "required": true,
+      "variadic": false
+    },
+    {
+      "name": "file",
+      "type": "path",
+      "description": "input JSON file(s) to process",
+      "required": false,
+      "variadic": true
+    }
+  ]
+}

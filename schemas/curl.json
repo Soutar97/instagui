@@ -1,0 +1,2485 @@
+{
+  "tool": "curl",
+  "summary": "",
+  "options": [
+    {
+      "name": "abstract-unix-socket",
+      "flag": "--abstract-unix-socket <path>",
+      "type": "path",
+      "description": "Connect via abstract Unix domain socket",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "alt-svc",
+      "flag": "--alt-svc <filename>",
+      "type": "path",
+      "description": "Enable alt-svc with this cache file",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "anyauth",
+      "flag": "--anyauth",
+      "type": "boolean",
+      "description": "Pick any authentication method",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "append",
+      "flag": "-a, --append",
+      "type": "boolean",
+      "description": "Append to target file when uploading",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "aws-sigv4",
+      "flag": "--aws-sigv4 <provider1[:prvdr2[:reg[:srv]]]>",
+      "type": "string",
+      "description": "AWS V4 signature auth",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "basic",
+      "flag": "--basic",
+      "type": "boolean",
+      "description": "HTTP Basic Authentication",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ca-native",
+      "flag": "--ca-native",
+      "type": "boolean",
+      "description": "Load CA certs from the OS",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "cacert",
+      "flag": "--cacert <file>",
+      "type": "path",
+      "description": "CA certificate to verify peer against",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "capath",
+      "flag": "--capath <dir>",
+      "type": "path",
+      "description": "CA directory to verify peer against",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "cert",
+      "flag": "-E, --cert <certificate[:password]>",
+      "type": "string",
+      "description": "Client certificate file and password",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "cert-status",
+      "flag": "--cert-status",
+      "type": "boolean",
+      "description": "Verify server cert status OCSP-staple",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "cert-type",
+      "flag": "--cert-type <type>",
+      "type": "enum",
+      "description": "Certificate type (DER/PEM/ENG/PROV/P12)",
+      "enumValues": [
+        "DER",
+        "PEM",
+        "ENG",
+        "PROV",
+        "P12"
+      ],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ciphers",
+      "flag": "--ciphers <list>",
+      "type": "string",
+      "description": "TLS 1.2 (1.1, 1.0) ciphers to use",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "compressed",
+      "flag": "--compressed",
+      "type": "boolean",
+      "description": "Request compressed response",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "compressed-ssh",
+      "flag": "--compressed-ssh",
+      "type": "boolean",
+      "description": "Enable SSH compression",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "config",
+      "flag": "-K, --config <file>",
+      "type": "path",
+      "description": "Read config from a file",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "connect-timeout",
+      "flag": "--connect-timeout <seconds>",
+      "type": "number",
+      "description": "Maximum time allowed to connect",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "connect-to",
+      "flag": "--connect-to <HOST1:PORT1:HOST2:PORT2>",
+      "type": "string",
+      "description": "Connect to host2 instead of host1",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "continue-at",
+      "flag": "-C, --continue-at <offset>",
+      "type": "string",
+      "description": "Resumed transfer offset",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "cookie",
+      "flag": "-b, --cookie <data|filename>",
+      "type": "string",
+      "description": "Send cookies from string/load from file",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "cookie-jar",
+      "flag": "-c, --cookie-jar <filename>",
+      "type": "path",
+      "description": "Save cookies to filename after operation",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "create-dirs",
+      "flag": "--create-dirs",
+      "type": "boolean",
+      "description": "Create necessary local directory hierarchy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "create-file-mode",
+      "flag": "--create-file-mode <mode>",
+      "type": "string",
+      "description": "File mode for created files",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "crlf",
+      "flag": "--crlf",
+      "type": "boolean",
+      "description": "Convert LF to CRLF in upload",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "crlfile",
+      "flag": "--crlfile <file>",
+      "type": "path",
+      "description": "Certificate Revocation list",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "curves",
+      "flag": "--curves <list>",
+      "type": "string",
+      "description": "(EC) TLS key exchange algorithms to request",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "data",
+      "flag": "-d, --data <data>",
+      "type": "string",
+      "description": "HTTP POST data",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "data-ascii",
+      "flag": "--data-ascii <data>",
+      "type": "string",
+      "description": "HTTP POST ASCII data",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "data-binary",
+      "flag": "--data-binary <data>",
+      "type": "string",
+      "description": "HTTP POST binary data",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "data-raw",
+      "flag": "--data-raw <data>",
+      "type": "string",
+      "description": "HTTP POST data, '@' allowed",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "data-urlencode",
+      "flag": "--data-urlencode <data>",
+      "type": "string",
+      "description": "HTTP POST data URL encoded",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "delegation",
+      "flag": "--delegation <LEVEL>",
+      "type": "string",
+      "description": "GSS-API delegation permission",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "digest",
+      "flag": "--digest",
+      "type": "boolean",
+      "description": "HTTP Digest Authentication",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "disable",
+      "flag": "-q, --disable",
+      "type": "boolean",
+      "description": "Disable .curlrc",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "disable-eprt",
+      "flag": "--disable-eprt",
+      "type": "boolean",
+      "description": "Inhibit using EPRT or LPRT",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "disable-epsv",
+      "flag": "--disable-epsv",
+      "type": "boolean",
+      "description": "Inhibit using EPSV",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "disallow-username-in-url",
+      "flag": "--disallow-username-in-url",
+      "type": "boolean",
+      "description": "Disallow username in URL",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "dns-interface",
+      "flag": "--dns-interface <interface>",
+      "type": "string",
+      "description": "Interface to use for DNS requests",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "dns-ipv4-addr",
+      "flag": "--dns-ipv4-addr <address>",
+      "type": "string",
+      "description": "IPv4 address to use for DNS requests",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "dns-ipv6-addr",
+      "flag": "--dns-ipv6-addr <address>",
+      "type": "string",
+      "description": "IPv6 address to use for DNS requests",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "dns-servers",
+      "flag": "--dns-servers <addresses>",
+      "type": "string",
+      "description": "DNS server addrs to use",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "doh-cert-status",
+      "flag": "--doh-cert-status",
+      "type": "boolean",
+      "description": "Verify DoH server cert status OCSP-staple",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "doh-insecure",
+      "flag": "--doh-insecure",
+      "type": "boolean",
+      "description": "Allow insecure DoH server connections",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "doh-url",
+      "flag": "--doh-url <URL>",
+      "type": "string",
+      "description": "Resolve hostnames over DoH",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "dump-ca-embed",
+      "flag": "--dump-ca-embed",
+      "type": "boolean",
+      "description": "Write the embedded CA bundle to standard output",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "dump-header",
+      "flag": "-D, --dump-header <filename>",
+      "type": "path",
+      "description": "Write the received headers to filename",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ech",
+      "flag": "--ech <config>",
+      "type": "string",
+      "description": "Configure ECH",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "egd-file",
+      "flag": "--egd-file <file>",
+      "type": "path",
+      "description": "EGD socket path for random data",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "engine",
+      "flag": "--engine <name>",
+      "type": "string",
+      "description": "Crypto engine to use",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "etag-compare",
+      "flag": "--etag-compare <file>",
+      "type": "path",
+      "description": "Load ETag from file",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "etag-save",
+      "flag": "--etag-save <file>",
+      "type": "path",
+      "description": "Parse incoming ETag and save to a file",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "expect100-timeout",
+      "flag": "--expect100-timeout <seconds>",
+      "type": "number",
+      "description": "How long to wait for 100-continue",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "fail",
+      "flag": "-f, --fail",
+      "type": "boolean",
+      "description": "Fail fast with no output on HTTP errors",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "fail-early",
+      "flag": "--fail-early",
+      "type": "boolean",
+      "description": "Fail on first transfer error",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "fail-with-body",
+      "flag": "--fail-with-body",
+      "type": "boolean",
+      "description": "Fail on HTTP errors but save the body",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "false-start",
+      "flag": "--false-start",
+      "type": "boolean",
+      "description": "Enable TLS False Start",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "follow",
+      "flag": "--follow",
+      "type": "boolean",
+      "description": "Follow redirects per spec",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "form",
+      "flag": "-F, --form <name=content>",
+      "type": "string",
+      "description": "Specify multipart MIME data",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "form-escape",
+      "flag": "--form-escape",
+      "type": "boolean",
+      "description": "Escape form fields using backslash",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "form-string",
+      "flag": "--form-string <name=string>",
+      "type": "string",
+      "description": "Specify multipart MIME data",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ftp-account",
+      "flag": "--ftp-account <data>",
+      "type": "string",
+      "description": "Account data string",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ftp-alternative-to-user",
+      "flag": "--ftp-alternative-to-user <command>",
+      "type": "string",
+      "description": "String to replace USER [name]",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ftp-create-dirs",
+      "flag": "--ftp-create-dirs",
+      "type": "boolean",
+      "description": "Create the remote dirs if not present",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ftp-method",
+      "flag": "--ftp-method <method>",
+      "type": "string",
+      "description": "Control CWD usage",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ftp-pasv",
+      "flag": "--ftp-pasv",
+      "type": "boolean",
+      "description": "Send PASV/EPSV instead of PORT",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ftp-port",
+      "flag": "-P, --ftp-port <address>",
+      "type": "string",
+      "description": "Send PORT instead of PASV",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ftp-pret",
+      "flag": "--ftp-pret",
+      "type": "boolean",
+      "description": "Send PRET before PASV",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ftp-skip-pasv-ip",
+      "flag": "--ftp-skip-pasv-ip",
+      "type": "boolean",
+      "description": "Skip the IP address for PASV",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ftp-ssl-ccc",
+      "flag": "--ftp-ssl-ccc",
+      "type": "boolean",
+      "description": "Send CCC after authenticating",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ftp-ssl-ccc-mode",
+      "flag": "--ftp-ssl-ccc-mode <active/passive>",
+      "type": "enum",
+      "description": "Set CCC mode",
+      "enumValues": [
+        "active",
+        "passive"
+      ],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ftp-ssl-control",
+      "flag": "--ftp-ssl-control",
+      "type": "boolean",
+      "description": "Require TLS for login, clear for transfer",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "get",
+      "flag": "-G, --get",
+      "type": "boolean",
+      "description": "Put the post data in the URL and use GET",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "globoff",
+      "flag": "-g, --globoff",
+      "type": "boolean",
+      "description": "Disable URL globbing with {} and []",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "happy-eyeballs-timeout-ms",
+      "flag": "--happy-eyeballs-timeout-ms <ms>",
+      "type": "number",
+      "description": "Time for IPv6 before IPv4",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "haproxy-clientip",
+      "flag": "--haproxy-clientip <ip>",
+      "type": "string",
+      "description": "Set address in HAProxy PROXY",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "haproxy-protocol",
+      "flag": "--haproxy-protocol",
+      "type": "boolean",
+      "description": "Send HAProxy PROXY protocol v1 header",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "head",
+      "flag": "-I, --head",
+      "type": "boolean",
+      "description": "Show document info only",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "header",
+      "flag": "-H, --header <header/@file>",
+      "type": "string",
+      "description": "Pass custom header(s) to server",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "help",
+      "flag": "-h, --help <subject>",
+      "type": "string",
+      "description": "Get help for commands",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "hostpubmd5",
+      "flag": "--hostpubmd5 <md5>",
+      "type": "string",
+      "description": "Acceptable MD5 hash of host public key",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "hostpubsha256",
+      "flag": "--hostpubsha256 <sha256>",
+      "type": "string",
+      "description": "Acceptable SHA256 hash of host public key",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "hsts",
+      "flag": "--hsts <filename>",
+      "type": "path",
+      "description": "Enable HSTS with this cache file",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "http0.9",
+      "flag": "--http0.9",
+      "type": "boolean",
+      "description": "Allow HTTP/0.9 responses",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "http1.0",
+      "flag": "-0, --http1.0",
+      "type": "boolean",
+      "description": "Use HTTP/1.0",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "http1.1",
+      "flag": "--http1.1",
+      "type": "boolean",
+      "description": "Use HTTP/1.1",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "http2",
+      "flag": "--http2",
+      "type": "boolean",
+      "description": "Use HTTP/2",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "http2-prior-knowledge",
+      "flag": "--http2-prior-knowledge",
+      "type": "boolean",
+      "description": "Use HTTP/2 without HTTP/1.1 Upgrade",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "http3",
+      "flag": "--http3",
+      "type": "boolean",
+      "description": "Use HTTP/3",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "http3-only",
+      "flag": "--http3-only",
+      "type": "boolean",
+      "description": "Use HTTP/3 only",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ignore-content-length",
+      "flag": "--ignore-content-length",
+      "type": "boolean",
+      "description": "Ignore the size of the remote resource",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "insecure",
+      "flag": "-k, --insecure",
+      "type": "boolean",
+      "description": "Allow insecure server connections",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "interface",
+      "flag": "--interface <name>",
+      "type": "string",
+      "description": "Use network interface",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ip-tos",
+      "flag": "--ip-tos <string>",
+      "type": "string",
+      "description": "Set IP Type of Service or Traffic Class",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ipfs-gateway",
+      "flag": "--ipfs-gateway <URL>",
+      "type": "string",
+      "description": "Gateway for IPFS",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ipv4",
+      "flag": "-4, --ipv4",
+      "type": "boolean",
+      "description": "Resolve names to IPv4 addresses",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ipv6",
+      "flag": "-6, --ipv6",
+      "type": "boolean",
+      "description": "Resolve names to IPv6 addresses",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "json",
+      "flag": "--json <data>",
+      "type": "string",
+      "description": "HTTP POST JSON",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "junk-session-cookies",
+      "flag": "-j, --junk-session-cookies",
+      "type": "boolean",
+      "description": "Ignore session cookies read from file",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "keepalive-cnt",
+      "flag": "--keepalive-cnt <integer>",
+      "type": "number",
+      "description": "Maximum number of keepalive probes",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "keepalive-time",
+      "flag": "--keepalive-time <seconds>",
+      "type": "number",
+      "description": "Interval time for keepalive probes",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "key",
+      "flag": "--key <key>",
+      "type": "path",
+      "description": "Private key filename",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "key-type",
+      "flag": "--key-type <type>",
+      "type": "enum",
+      "description": "Private key file type (DER/PEM/ENG)",
+      "enumValues": [
+        "DER",
+        "PEM",
+        "ENG"
+      ],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "knownhosts",
+      "flag": "--knownhosts <file>",
+      "type": "path",
+      "description": "Specify knownhosts path",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "krb",
+      "flag": "--krb <level>",
+      "type": "string",
+      "description": "Enable Kerberos with security level",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "libcurl",
+      "flag": "--libcurl <file>",
+      "type": "path",
+      "description": "Generate libcurl code for this command line",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "limit-rate",
+      "flag": "--limit-rate <speed>",
+      "type": "string",
+      "description": "Limit transfer speed to RATE",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "list-only",
+      "flag": "-l, --list-only",
+      "type": "boolean",
+      "description": "List only mode",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "local-port",
+      "flag": "--local-port <range>",
+      "type": "string",
+      "description": "Use a local port number within RANGE",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "location",
+      "flag": "-L, --location",
+      "type": "boolean",
+      "description": "Follow redirects",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "location-trusted",
+      "flag": "--location-trusted",
+      "type": "boolean",
+      "description": "As --location, but send secrets to other hosts",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "login-options",
+      "flag": "--login-options <options>",
+      "type": "string",
+      "description": "Server login options",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "mail-auth",
+      "flag": "--mail-auth <address>",
+      "type": "string",
+      "description": "Originator address of the original email",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "mail-from",
+      "flag": "--mail-from <address>",
+      "type": "string",
+      "description": "Mail from this address",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "mail-rcpt",
+      "flag": "--mail-rcpt <address>",
+      "type": "string",
+      "description": "Mail to this address",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "mail-rcpt-allowfails",
+      "flag": "--mail-rcpt-allowfails",
+      "type": "boolean",
+      "description": "Allow RCPT TO command to fail",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "manual",
+      "flag": "-M, --manual",
+      "type": "boolean",
+      "description": "Display the full manual",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "max-filesize",
+      "flag": "--max-filesize <bytes>",
+      "type": "number",
+      "description": "Maximum file size to download",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "max-redirs",
+      "flag": "--max-redirs <num>",
+      "type": "number",
+      "description": "Maximum number of redirects allowed",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "max-time",
+      "flag": "-m, --max-time <seconds>",
+      "type": "number",
+      "description": "Maximum time allowed for transfer",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "metalink",
+      "flag": "--metalink",
+      "type": "boolean",
+      "description": "Process given URLs as metalink XML file",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "mptcp",
+      "flag": "--mptcp",
+      "type": "boolean",
+      "description": "Enable Multipath TCP",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "negotiate",
+      "flag": "--negotiate",
+      "type": "boolean",
+      "description": "Use HTTP Negotiate (SPNEGO) authentication",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "netrc",
+      "flag": "-n, --netrc",
+      "type": "boolean",
+      "description": "Must read .netrc for username and password",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "netrc-file",
+      "flag": "--netrc-file <filename>",
+      "type": "path",
+      "description": "Specify FILE for netrc",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "netrc-optional",
+      "flag": "--netrc-optional",
+      "type": "boolean",
+      "description": "Use either .netrc or URL",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "next",
+      "flag": "-:, --next",
+      "type": "boolean",
+      "description": "Make next URL use separate options",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "no-alpn",
+      "flag": "--no-alpn",
+      "type": "boolean",
+      "description": "Disable the ALPN TLS extension",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "no-buffer",
+      "flag": "-N, --no-buffer",
+      "type": "boolean",
+      "description": "Disable buffering of the output stream",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "no-clobber",
+      "flag": "--no-clobber",
+      "type": "boolean",
+      "description": "Do not overwrite files that already exist",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "no-keepalive",
+      "flag": "--no-keepalive",
+      "type": "boolean",
+      "description": "Disable TCP keepalive on the connection",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "no-npn",
+      "flag": "--no-npn",
+      "type": "boolean",
+      "description": "Disable the NPN TLS extension",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "no-progress-meter",
+      "flag": "--no-progress-meter",
+      "type": "boolean",
+      "description": "Do not show the progress meter",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "no-sessionid",
+      "flag": "--no-sessionid",
+      "type": "boolean",
+      "description": "Disable SSL session-ID reusing",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "noproxy",
+      "flag": "--noproxy <no-proxy-list>",
+      "type": "string",
+      "description": "List of hosts which do not use proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ntlm",
+      "flag": "--ntlm",
+      "type": "boolean",
+      "description": "HTTP NTLM authentication",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ntlm-wb",
+      "flag": "--ntlm-wb",
+      "type": "boolean",
+      "description": "HTTP NTLM authentication with winbind",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "oauth2-bearer",
+      "flag": "--oauth2-bearer <token>",
+      "type": "string",
+      "description": "OAuth 2 Bearer Token",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "out-null",
+      "flag": "--out-null",
+      "type": "boolean",
+      "description": "Discard response data into the void",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "output",
+      "flag": "-o, --output <file>",
+      "type": "path",
+      "description": "Write to file instead of stdout",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "output-dir",
+      "flag": "--output-dir <dir>",
+      "type": "path",
+      "description": "Directory to save files in",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "parallel",
+      "flag": "-Z, --parallel",
+      "type": "boolean",
+      "description": "Perform transfers in parallel",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "parallel-immediate",
+      "flag": "--parallel-immediate",
+      "type": "boolean",
+      "description": "Do not wait for multiplexing",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "parallel-max",
+      "flag": "--parallel-max <num>",
+      "type": "number",
+      "description": "Maximum concurrency for parallel transfers",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "parallel-max-host",
+      "flag": "--parallel-max-host <num>",
+      "type": "number",
+      "description": "Maximum connections to a single host",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "pass",
+      "flag": "--pass <phrase>",
+      "type": "string",
+      "description": "Passphrase for the private key",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "path-as-is",
+      "flag": "--path-as-is",
+      "type": "boolean",
+      "description": "Do not squash .. sequences in URL path",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "pinnedpubkey",
+      "flag": "--pinnedpubkey <hashes>",
+      "type": "string",
+      "description": "Public key to verify peer against",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "post301",
+      "flag": "--post301",
+      "type": "boolean",
+      "description": "Do not switch to GET after a 301 redirect",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "post302",
+      "flag": "--post302",
+      "type": "boolean",
+      "description": "Do not switch to GET after a 302 redirect",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "post303",
+      "flag": "--post303",
+      "type": "boolean",
+      "description": "Do not switch to GET after a 303 redirect",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "preproxy",
+      "flag": "--preproxy <[protocol://]host[:port]>",
+      "type": "string",
+      "description": "Use this proxy first",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "progress-bar",
+      "flag": "-#, --progress-bar",
+      "type": "boolean",
+      "description": "Display transfer progress as a bar",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proto",
+      "flag": "--proto <protocols>",
+      "type": "string",
+      "description": "Enable/disable PROTOCOLS",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proto-default",
+      "flag": "--proto-default <protocol>",
+      "type": "string",
+      "description": "Use PROTOCOL for any URL missing a scheme",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proto-redir",
+      "flag": "--proto-redir <protocols>",
+      "type": "string",
+      "description": "Enable/disable PROTOCOLS on redirect",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy",
+      "flag": "-x, --proxy <[protocol://]host[:port]>",
+      "type": "string",
+      "description": "Use this proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-anyauth",
+      "flag": "--proxy-anyauth",
+      "type": "boolean",
+      "description": "Pick any proxy authentication method",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-basic",
+      "flag": "--proxy-basic",
+      "type": "boolean",
+      "description": "Use Basic authentication on the proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-ca-native",
+      "flag": "--proxy-ca-native",
+      "type": "boolean",
+      "description": "Load CA certs from the OS to verify proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-cacert",
+      "flag": "--proxy-cacert <file>",
+      "type": "path",
+      "description": "CA certificates to verify proxy against",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-capath",
+      "flag": "--proxy-capath <dir>",
+      "type": "path",
+      "description": "CA directory to verify proxy against",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-cert",
+      "flag": "--proxy-cert <cert[:passwd]>",
+      "type": "string",
+      "description": "Set client certificate for proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-cert-type",
+      "flag": "--proxy-cert-type <type>",
+      "type": "string",
+      "description": "Client certificate type for HTTPS proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-ciphers",
+      "flag": "--proxy-ciphers <list>",
+      "type": "string",
+      "description": "TLS 1.2 (1.1, 1.0) ciphers to use for proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-crlfile",
+      "flag": "--proxy-crlfile <file>",
+      "type": "path",
+      "description": "Set a CRL list for proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-digest",
+      "flag": "--proxy-digest",
+      "type": "boolean",
+      "description": "Digest auth with the proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-header",
+      "flag": "--proxy-header <header/@file>",
+      "type": "string",
+      "description": "Pass custom header(s) to proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-http2",
+      "flag": "--proxy-http2",
+      "type": "boolean",
+      "description": "Use HTTP/2 with HTTPS proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-insecure",
+      "flag": "--proxy-insecure",
+      "type": "boolean",
+      "description": "Skip HTTPS proxy cert verification",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-key",
+      "flag": "--proxy-key <key>",
+      "type": "path",
+      "description": "Private key for HTTPS proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-key-type",
+      "flag": "--proxy-key-type <type>",
+      "type": "string",
+      "description": "Private key file type for proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-negotiate",
+      "flag": "--proxy-negotiate",
+      "type": "boolean",
+      "description": "HTTP Negotiate (SPNEGO) auth with the proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-ntlm",
+      "flag": "--proxy-ntlm",
+      "type": "boolean",
+      "description": "NTLM authentication with the proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-pass",
+      "flag": "--proxy-pass <phrase>",
+      "type": "string",
+      "description": "Passphrase for private key for HTTPS proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-pinnedpubkey",
+      "flag": "--proxy-pinnedpubkey <hashes>",
+      "type": "string",
+      "description": "FILE/HASHES public key to verify proxy with",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-service-name",
+      "flag": "--proxy-service-name <name>",
+      "type": "string",
+      "description": "SPNEGO proxy service name",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-ssl-allow-beast",
+      "flag": "--proxy-ssl-allow-beast",
+      "type": "boolean",
+      "description": "Allow this security flaw for HTTPS proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-ssl-auto-client-cert",
+      "flag": "--proxy-ssl-auto-client-cert",
+      "type": "boolean",
+      "description": "Auto client certificate for proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-tls13-ciphers",
+      "flag": "--proxy-tls13-ciphers <list>",
+      "type": "string",
+      "description": "TLS 1.3 proxy cipher suites",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-tlsauthtype",
+      "flag": "--proxy-tlsauthtype <type>",
+      "type": "string",
+      "description": "TLS authentication type for HTTPS proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-tlspassword",
+      "flag": "--proxy-tlspassword <string>",
+      "type": "string",
+      "description": "TLS password for HTTPS proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-tlsuser",
+      "flag": "--proxy-tlsuser <name>",
+      "type": "string",
+      "description": "TLS username for HTTPS proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-tlsv1",
+      "flag": "--proxy-tlsv1",
+      "type": "boolean",
+      "description": "TLSv1 for HTTPS proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy-user",
+      "flag": "-U, --proxy-user <user:password>",
+      "type": "string",
+      "description": "Proxy user and password",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxy1.0",
+      "flag": "--proxy1.0 <host[:port]>",
+      "type": "string",
+      "description": "Use HTTP/1.0 proxy on given port",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "proxytunnel",
+      "flag": "-p, --proxytunnel",
+      "type": "boolean",
+      "description": "HTTP proxy tunnel (using CONNECT)",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "pubkey",
+      "flag": "--pubkey <key>",
+      "type": "path",
+      "description": "SSH Public key filename",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "quote",
+      "flag": "-Q, --quote <command>",
+      "type": "string",
+      "description": "Send command(s) to server before transfer",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "random-file",
+      "flag": "--random-file <file>",
+      "type": "path",
+      "description": "File for reading random data from",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "range",
+      "flag": "-r, --range <range>",
+      "type": "string",
+      "description": "Retrieve only the bytes within RANGE",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "rate",
+      "flag": "--rate <max request rate>",
+      "type": "string",
+      "description": "Request rate for serial transfers",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "raw",
+      "flag": "--raw",
+      "type": "boolean",
+      "description": "Do HTTP raw; no transfer decoding",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "referer",
+      "flag": "-e, --referer <URL>",
+      "type": "string",
+      "description": "Referrer URL",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "remote-header-name",
+      "flag": "-J, --remote-header-name",
+      "type": "boolean",
+      "description": "Use the header-provided filename",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "remote-name",
+      "flag": "-O, --remote-name",
+      "type": "boolean",
+      "description": "Write output to file named as remote file",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "remote-name-all",
+      "flag": "--remote-name-all",
+      "type": "boolean",
+      "description": "Use the remote filename for all URLs",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "remote-time",
+      "flag": "-R, --remote-time",
+      "type": "boolean",
+      "description": "Set remote file's time on local output",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "remove-on-error",
+      "flag": "--remove-on-error",
+      "type": "boolean",
+      "description": "Remove output file on errors",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "request",
+      "flag": "-X, --request <method>",
+      "type": "string",
+      "description": "Specify request method to use",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "request-target",
+      "flag": "--request-target <path>",
+      "type": "string",
+      "description": "Specify the target for this request",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "resolve",
+      "flag": "--resolve <[+]host:port:addr[,addr]...>",
+      "type": "string",
+      "description": "Resolve host+port to address",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "retry",
+      "flag": "--retry <num>",
+      "type": "number",
+      "description": "Retry request if transient problems occur",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "retry-all-errors",
+      "flag": "--retry-all-errors",
+      "type": "boolean",
+      "description": "Retry all errors (with --retry)",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "retry-connrefused",
+      "flag": "--retry-connrefused",
+      "type": "boolean",
+      "description": "Retry on connection refused (with --retry)",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "retry-delay",
+      "flag": "--retry-delay <seconds>",
+      "type": "number",
+      "description": "Wait time between retries",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "retry-max-time",
+      "flag": "--retry-max-time <seconds>",
+      "type": "number",
+      "description": "Retry only within this period",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "sasl-authzid",
+      "flag": "--sasl-authzid <identity>",
+      "type": "string",
+      "description": "Identity for SASL PLAIN authentication",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "sasl-ir",
+      "flag": "--sasl-ir",
+      "type": "boolean",
+      "description": "Initial response in SASL authentication",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "service-name",
+      "flag": "--service-name <name>",
+      "type": "string",
+      "description": "SPNEGO service name",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "show-error",
+      "flag": "-S, --show-error",
+      "type": "boolean",
+      "description": "Show error even when -s is used",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "show-headers",
+      "flag": "-i, --show-headers",
+      "type": "boolean",
+      "description": "Show response headers in output",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "sigalgs",
+      "flag": "--sigalgs <list>",
+      "type": "string",
+      "description": "TLS signature algorithms to use",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "silent",
+      "flag": "-s, --silent",
+      "type": "boolean",
+      "description": "Silent mode",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "skip-existing",
+      "flag": "--skip-existing",
+      "type": "boolean",
+      "description": "Skip download if local file already exists",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "socks4",
+      "flag": "--socks4 <host[:port]>",
+      "type": "string",
+      "description": "SOCKS4 proxy on given host + port",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "socks4a",
+      "flag": "--socks4a <host[:port]>",
+      "type": "string",
+      "description": "SOCKS4a proxy on given host + port",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "socks5",
+      "flag": "--socks5 <host[:port]>",
+      "type": "string",
+      "description": "SOCKS5 proxy on given host + port",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "socks5-basic",
+      "flag": "--socks5-basic",
+      "type": "boolean",
+      "description": "Username/password auth for SOCKS5 proxies",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "socks5-gssapi",
+      "flag": "--socks5-gssapi",
+      "type": "boolean",
+      "description": "Enable GSS-API auth for SOCKS5 proxies",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "socks5-gssapi-nec",
+      "flag": "--socks5-gssapi-nec",
+      "type": "boolean",
+      "description": "Compatibility with NEC SOCKS5 server",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "socks5-gssapi-service",
+      "flag": "--socks5-gssapi-service <name>",
+      "type": "string",
+      "description": "SOCKS5 proxy service name for GSS-API",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "socks5-hostname",
+      "flag": "--socks5-hostname <host[:port]>",
+      "type": "string",
+      "description": "SOCKS5 proxy, pass hostname to proxy",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "speed-limit",
+      "flag": "-Y, --speed-limit <speed>",
+      "type": "number",
+      "description": "Stop transfers slower than this",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "speed-time",
+      "flag": "-y, --speed-time <seconds>",
+      "type": "number",
+      "description": "Trigger 'speed-limit' abort after this time",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ssl",
+      "flag": "--ssl",
+      "type": "boolean",
+      "description": "Try enabling TLS",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ssl-allow-beast",
+      "flag": "--ssl-allow-beast",
+      "type": "boolean",
+      "description": "Allow security flaw to improve interop",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ssl-auto-client-cert",
+      "flag": "--ssl-auto-client-cert",
+      "type": "boolean",
+      "description": "Use auto client certificate (Schannel)",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ssl-no-revoke",
+      "flag": "--ssl-no-revoke",
+      "type": "boolean",
+      "description": "Disable cert revocation checks (Schannel)",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ssl-reqd",
+      "flag": "--ssl-reqd",
+      "type": "boolean",
+      "description": "Require SSL/TLS",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ssl-revoke-best-effort",
+      "flag": "--ssl-revoke-best-effort",
+      "type": "boolean",
+      "description": "Ignore missing cert CRL dist points",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "ssl-sessions",
+      "flag": "--ssl-sessions <filename>",
+      "type": "path",
+      "description": "Load/save SSL session tickets from/to this file",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "sslv2",
+      "flag": "-2, --sslv2",
+      "type": "boolean",
+      "description": "SSLv2",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "sslv3",
+      "flag": "-3, --sslv3",
+      "type": "boolean",
+      "description": "SSLv3",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "stderr",
+      "flag": "--stderr <file>",
+      "type": "path",
+      "description": "Where to redirect stderr",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "styled-output",
+      "flag": "--styled-output",
+      "type": "boolean",
+      "description": "Enable styled output for HTTP headers",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "suppress-connect-headers",
+      "flag": "--suppress-connect-headers",
+      "type": "boolean",
+      "description": "Suppress proxy CONNECT response headers",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "tcp-fastopen",
+      "flag": "--tcp-fastopen",
+      "type": "boolean",
+      "description": "Use TCP Fast Open",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "tcp-nodelay",
+      "flag": "--tcp-nodelay",
+      "type": "boolean",
+      "description": "Set TCP_NODELAY",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "telnet-option",
+      "flag": "-t, --telnet-option <opt=val>",
+      "type": "string",
+      "description": "Set telnet option",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "tftp-blksize",
+      "flag": "--tftp-blksize <value>",
+      "type": "number",
+      "description": "Set TFTP BLKSIZE option",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "tftp-no-options",
+      "flag": "--tftp-no-options",
+      "type": "boolean",
+      "description": "Do not send any TFTP options",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "time-cond",
+      "flag": "-z, --time-cond <time>",
+      "type": "string",
+      "description": "Transfer based on a time condition",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "tls-earlydata",
+      "flag": "--tls-earlydata",
+      "type": "boolean",
+      "description": "Allow use of TLSv1.3 early data (0RTT)",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "tls-max",
+      "flag": "--tls-max <VERSION>",
+      "type": "string",
+      "description": "Maximum allowed TLS version",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "tls13-ciphers",
+      "flag": "--tls13-ciphers <list>",
+      "type": "string",
+      "description": "TLS 1.3 cipher suites to use",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "tlsauthtype",
+      "flag": "--tlsauthtype <type>",
+      "type": "string",
+      "description": "TLS authentication type",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "tlspassword",
+      "flag": "--tlspassword <string>",
+      "type": "string",
+      "description": "TLS password",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "tlsuser",
+      "flag": "--tlsuser <name>",
+      "type": "string",
+      "description": "TLS username",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "tlsv1",
+      "flag": "-1, --tlsv1",
+      "type": "boolean",
+      "description": "TLSv1.0 or greater",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "tlsv1.0",
+      "flag": "--tlsv1.0",
+      "type": "boolean",
+      "description": "TLSv1.0 or greater",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "tlsv1.1",
+      "flag": "--tlsv1.1",
+      "type": "boolean",
+      "description": "TLSv1.1 or greater",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "tlsv1.2",
+      "flag": "--tlsv1.2",
+      "type": "boolean",
+      "description": "TLSv1.2 or greater",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "tlsv1.3",
+      "flag": "--tlsv1.3",
+      "type": "boolean",
+      "description": "TLSv1.3 or greater",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "tr-encoding",
+      "flag": "--tr-encoding",
+      "type": "boolean",
+      "description": "Request compressed transfer encoding",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "trace",
+      "flag": "--trace <file>",
+      "type": "path",
+      "description": "Write a debug trace to FILE",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "trace-ascii",
+      "flag": "--trace-ascii <file>",
+      "type": "path",
+      "description": "Like --trace, but without hex output",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "trace-config",
+      "flag": "--trace-config <string>",
+      "type": "string",
+      "description": "Details to log in trace/verbose output",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "trace-ids",
+      "flag": "--trace-ids",
+      "type": "boolean",
+      "description": "Transfer + connection ids in verbose output",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "trace-time",
+      "flag": "--trace-time",
+      "type": "boolean",
+      "description": "Add time stamps to trace/verbose output",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "unix-socket",
+      "flag": "--unix-socket <path>",
+      "type": "path",
+      "description": "Connect through this Unix domain socket",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "upload-file",
+      "flag": "-T, --upload-file <file>",
+      "type": "path",
+      "description": "Transfer local FILE to destination",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "upload-flags",
+      "flag": "--upload-flags <flags>",
+      "type": "string",
+      "description": "IMAP upload behavior",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "url",
+      "flag": "--url <url/file>",
+      "type": "string",
+      "description": "URL(s) to work with",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "url-query",
+      "flag": "--url-query <data>",
+      "type": "string",
+      "description": "Add a URL query part",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "use-ascii",
+      "flag": "-B, --use-ascii",
+      "type": "boolean",
+      "description": "Use ASCII/text transfer",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "user",
+      "flag": "-u, --user <user:password>",
+      "type": "string",
+      "description": "Server user and password",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "user-agent",
+      "flag": "-A, --user-agent <name>",
+      "type": "string",
+      "description": "Send User-Agent to server",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "variable",
+      "flag": "--variable <[%]name=text/@file>",
+      "type": "string",
+      "description": "Set variable",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "verbose",
+      "flag": "-v, --verbose",
+      "type": "boolean",
+      "description": "Make the operation more talkative",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "version",
+      "flag": "-V, --version",
+      "type": "boolean",
+      "description": "Show version number and quit",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "vlan-priority",
+      "flag": "--vlan-priority <priority>",
+      "type": "number",
+      "description": "Set VLAN priority",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "write-out",
+      "flag": "-w, --write-out <format>",
+      "type": "string",
+      "description": "Output FORMAT after completion",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "xattr",
+      "flag": "--xattr",
+      "type": "boolean",
+      "description": "Store metadata in extended file attributes",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    }
+  ],
+  "positionals": [
+    {
+      "name": "url",
+      "type": "string",
+      "description": "URL(s) to transfer data from or to",
+      "required": false,
+      "variadic": true
+    }
+  ]
+}

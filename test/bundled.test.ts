@@ -35,11 +35,20 @@ test('readBundled returns null for a tool that is not bundled', () => {
   }
 });
 
-// The keyless demo promise: these three must ship and resolve with no key, no API call.
+// The keyless promise: every bundled tool must ship and resolve with no key, no API call.
+// The first three are the original demo tools; the rest are growth item #1 (more bundled
+// tools). rsync was requested too but is deliberately not bundled — no clean binary exists to
+// capture an authentic --help fixture from, so it is skipped rather than shipped from a guessed
+// fixture. Each schema here is re-checked verbatim against its captured fixture.
 const DEMO_FIXTURES: Record<string, string> = {
   ffmpeg: 'ffmpeg-help.txt',
   'yt-dlp': 'yt-dlp-help.txt',
   pandoc: 'pandoc-help.txt',
+  curl: 'curl-help.txt',
+  jq: 'jq-help.txt',
+  tar: 'tar-help.txt',
+  magick: 'magick-help.txt',
+  zip: 'zip-help.txt',
 };
 
 for (const [tool, fixture] of Object.entries(DEMO_FIXTURES)) {

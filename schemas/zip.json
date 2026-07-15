@@ -1,0 +1,310 @@
+{
+  "tool": "zip",
+  "summary": "Package and compress (archive) files into a ZIP file.",
+  "options": [
+    {
+      "name": "freshen",
+      "flag": "-f",
+      "type": "boolean",
+      "description": "Freshen: only changed files",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "update",
+      "flag": "-u",
+      "type": "boolean",
+      "description": "Update: only changed or new files",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "delete",
+      "flag": "-d",
+      "type": "boolean",
+      "description": "Delete entries in zipfile",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "move",
+      "flag": "-m",
+      "type": "boolean",
+      "description": "Move into zipfile (delete OS files)",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "recurse",
+      "flag": "-r",
+      "type": "boolean",
+      "description": "Recurse into directories",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "junk-paths",
+      "flag": "-j",
+      "type": "boolean",
+      "description": "Junk (don't record) directory names",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "store-only",
+      "flag": "-0",
+      "type": "boolean",
+      "description": "Store only (no compression)",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "convert-lf",
+      "flag": "-l",
+      "type": "boolean",
+      "description": "Convert LF to CR LF",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "compress-faster",
+      "flag": "-1",
+      "type": "boolean",
+      "description": "Compress faster",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "compress-better",
+      "flag": "-9",
+      "type": "boolean",
+      "description": "Compress better",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "quiet",
+      "flag": "-q",
+      "type": "boolean",
+      "description": "Quiet operation",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "verbose",
+      "flag": "-v",
+      "type": "boolean",
+      "description": "Verbose operation / print version info",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "comments",
+      "flag": "-c",
+      "type": "boolean",
+      "description": "Add one-line comments",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "zipfile-comment",
+      "flag": "-z",
+      "type": "boolean",
+      "description": "Add zipfile comment",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "read-stdin",
+      "flag": "-@",
+      "type": "boolean",
+      "description": "Read names from stdin",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "oldest",
+      "flag": "-o",
+      "type": "boolean",
+      "description": "Make zipfile as old as latest entry",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "exclude",
+      "flag": "-x",
+      "type": "string",
+      "description": "Exclude the following names",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "include",
+      "flag": "-i",
+      "type": "string",
+      "description": "Include only the following names",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "fix",
+      "flag": "-F",
+      "type": "boolean",
+      "description": "Fix zipfile (-FF try harder)",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "no-dir-entries",
+      "flag": "-D",
+      "type": "boolean",
+      "description": "Do not add directory entries",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "adjust-sfx",
+      "flag": "-A",
+      "type": "boolean",
+      "description": "Adjust self-extracting exe",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "junk-sfx",
+      "flag": "-J",
+      "type": "boolean",
+      "description": "Junk zipfile prefix (unzipsfx)",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "test",
+      "flag": "-T",
+      "type": "boolean",
+      "description": "Test zipfile integrity",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "exclude-extra",
+      "flag": "-X",
+      "type": "boolean",
+      "description": "eXclude eXtra file attributes",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "privileges",
+      "flag": "-!",
+      "type": "boolean",
+      "description": "Use privileges (if granted) to obtain all aspects of WinNT security",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "volume-label",
+      "flag": "-$",
+      "type": "boolean",
+      "description": "Include volume label",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "system-hidden",
+      "flag": "-S",
+      "type": "boolean",
+      "description": "Include system and hidden files",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "encrypt",
+      "flag": "-e",
+      "type": "boolean",
+      "description": "Encrypt",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "no-compress-suffixes",
+      "flag": "-n",
+      "type": "string",
+      "description": "Don't compress these suffixes",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "temp-path",
+      "flag": "-b",
+      "type": "path",
+      "description": "Use specified path for temporary files",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "before-date",
+      "flag": "-t",
+      "type": "string",
+      "description": "Only include files modified after specified date (mmddyyyy)",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    },
+    {
+      "name": "more-help",
+      "flag": "-h2",
+      "type": "boolean",
+      "description": "Show more help",
+      "enumValues": [],
+      "required": false,
+      "group": ""
+    }
+  ],
+  "positionals": [
+    {
+      "name": "zipfile",
+      "type": "path",
+      "description": "The ZIP archive file to create or modify",
+      "required": false,
+      "variadic": false
+    },
+    {
+      "name": "list",
+      "type": "string",
+      "description": "Files to add to the ZIP archive",
+      "required": false,
+      "variadic": true
+    }
+  ]
+}
