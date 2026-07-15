@@ -35,6 +35,16 @@ updates:
       - dependency-name: typescript
         update-types:
           - version-update:semver-major
+      # @types/node must track our lowest supported runtime, not the latest
+      # release. `engines` pins node >=22 and CI runs a Node 22-only matrix, so
+      # 22 is the real floor. Types ahead of the floor (e.g. @types/node 26)
+      # invert the guardrail: the compiler would accept APIs added after Node 22
+      # that don't exist at runtime, failing only on a user's Node 22 — not at
+      # build time. Majors only; minor/patch @types/node updates flow normally.
+      # Drop this (and bump the pin) when `engines`/the CI matrix raise the floor.
+      - dependency-name: "@types/node"
+        update-types:
+          - version-update:semver-major
 
   # GitHub Actions used in workflows. Dependabot bumps the pinned commit SHAs
   # (and updates the version comment beside each) so pin-by-SHA stays current.
