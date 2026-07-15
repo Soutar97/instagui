@@ -1,6 +1,6 @@
 {
   "name": "instagui",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "npx instagui <any-cli-tool> — turn any CLI tool into a local web GUI. One command.",
   "type": "module",
   "license": "MIT",
