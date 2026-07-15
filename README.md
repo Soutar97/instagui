@@ -6,9 +6,6 @@ As featured in [The Register](https://www.theregister.com/software/2026/07/07/ne
 
 Turn any command-line tool into a clean local web form — no config, no code changes to the tool.
 
-<!-- TODO(pre-launch): record and drop the money-demo GIF here.
-     ~10s: `npx instagui ffmpeg` → browser opens → fill a couple fields → Run → output streams.
-     Save as docs/demo.gif and it renders below. -->
 ![instagui demo — npx instagui ffmpeg opens a web form, click Run, output streams](docs/demo.gif)
 
 ```sh
