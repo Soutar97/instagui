@@ -55,6 +55,11 @@ jobs:
       - name: Test
         run: npm test
 
+      - name: Audit production dependencies
+        # Same gate as CI. An advisory can land between the last green CI run and
+        # the release, so re-check here rather than publish a vulnerable lockfile.
+        run: npm audit --omit=dev --audit-level=high
+
       - name: Publish with provenance
         # No NODE_AUTH_TOKEN: authentication is via OIDC Trusted Publishing,
         # configured once on npmjs.com (see PR description / RELEASING.md).
