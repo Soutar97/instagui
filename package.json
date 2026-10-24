@@ -48,8 +48,8 @@
     "extract": "tsx src/cli/index.ts"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.111.0",
-    "zod": "^4.4.3"
+    "@anthropic-ai/sdk": "^0.132.1",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
